@@ -6,10 +6,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable , HasRoles , SoftDeletes;
+    use HasApiTokens , Notifiable , HasRoles , SoftDeletes;
 
     protected  $guard_name = 'web';
     /**
@@ -52,8 +53,6 @@ class User extends Authenticatable
         'ip',
         'user_agent',
 
-
-
     ];
 
     /**
@@ -73,4 +72,40 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
+    public function getCountry() {
+        return $this->hasOne(Country::class, 'id', 'country_id');
+    }
+
+    public function getGender() {
+        return $this->hasOne(Lookup::class, 'id', 'gender_id');
+    }
+
+    public function getReigon() {
+        return $this->hasOne(Lookup::class, 'id', 'reigon_id');
+    }
+
+    public function getMaterialStatus() {
+        return $this->hasOne(Lookup::class, 'id', 'material_status_id');
+    }
+
+    public function getWorkType() {
+        return $this->hasOne(Lookup::class, 'id', 'work_type_id');
+    }
+
+    public function getContractType() {
+        return $this->hasOne(Lookup::class, 'id', 'contract_type_id');
+    }
+
+    public function getStatusUser() {
+        return $this->hasOne(Lookup::class, 'id', 'status_user_id');
+    }
+
+    public function getDirectory() {
+        return $this->hasOne(User::class , 'id' , 'is_directory');
+    }
 }

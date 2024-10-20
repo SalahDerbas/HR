@@ -58,7 +58,7 @@ class CreateUsersTable extends Migration
             $table->boolean('enable_notification')->default(true);
             $table->string('ip')->nullable();
             $table->json('user_agent')->nullable();
-            
+
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

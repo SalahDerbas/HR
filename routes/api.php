@@ -29,3 +29,12 @@ Route::prefix('user')->group(function () {
     Route::post('reset-new-password',  [AuthController::class, 'resetNewPassword'])->name('api.user.resetNewPassword');
 
 });
+
+
+Route::middleware('auth:api')->group(function () {
+
+    Route::prefix('user')->group(function () {
+
+    });
+
+});

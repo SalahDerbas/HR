@@ -1,16 +1,7 @@
 <?php
 use App\Http\Response\ApiResponse;
 
-define('Model_Not_Found', 1111);
-define('PRIVATE_KEY_CODE', 1112);
-define('INCCORECT_DATA_ERROR_CODE', 1125); // done
-define('LOGIN_SUCCESS_CODE', 1100); // done
-define('MESSAGE_NOT_FOUND_CODE', 3003);
 
-
-
-
-define('ALL_MESSAGE_CODE', 3002);
 
 
 
@@ -25,25 +16,6 @@ function getStatusText($responseCode){
 
     return ($responseCode == ALL_MESSAGE_CODE) ? $statusTexts: $statusTexts[$responseCode] ?? MESSAGE_NOT_FOUND_CODE;
 
-}
-
-
-
-
-if (!function_exists('UploadPhotoUser')) {
-    function UploadPhotoUser($file , $type)
-    {
-        if($type == 'update')  {
-            $file_name = time().$file->getClientOriginalName();
-            $file->move('Profile/' , $file_name);
-            $Image = env('APP_URL').'/Profile/'.$file_name;
-            return $Image;
-        }
-        $file_name = time().$file->getClientOriginalName();
-        $file->move('Profile/' , $file_name);
-        $Image = env('APP_URL').'/Profile/'.$file_name;
-        return $Image;
-    }
 }
 
 
@@ -112,4 +84,23 @@ function respondTooManyRequest($message)
 
 //  End ALL Function for Response Customize
 // =================================================================================================
+
+
+
+if (!function_exists('UploadPhotoUser')) {
+    function UploadPhotoUser($file , $type)
+    {
+        if($type == 'update')  {
+            $file_name = time().$file->getClientOriginalName();
+            $file->move('Profile/' , $file_name);
+            $Image = env('APP_URL').'/Profile/'.$file_name;
+            return $Image;
+        }
+        $file_name = time().$file->getClientOriginalName();
+        $file->move('Profile/' , $file_name);
+        $Image = env('APP_URL').'/Profile/'.$file_name;
+        return $Image;
+    }
+}
+
 
