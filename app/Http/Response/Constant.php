@@ -2,7 +2,8 @@
 
 
 // Success Code
-define('LOGIN_SUCCESS_CODE'            , 1000);
+define('LOGIN_SUCCESS_CODE'                   , 1000);
+define('MESSAGE_CODE_SUCCESS_CODE'            , 1001);
 
 
 // Validation Code
@@ -15,3 +16,4 @@ define('Model_Not_Found', 1111);
 define('PRIVATE_KEY_CODE', 1112);
 define('EMAIL_VERIFIED_AT', 2504);
 define('MESSAGE_NOT_FOUND_CODE', 3003);
+define('MESSAGE_CODE_ERROR_CODE', 3001);

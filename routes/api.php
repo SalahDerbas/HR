@@ -15,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\MessageController;
+
+
+
+Route::prefix('message')->group(function () {
+
+    Route::get('list',         [MessageController::class, 'index'])->name('api.message.index');
+    Route::get('show/{code}',  [MessageController::class, 'show'])->name('api.message.show');
+
+});
 
 
 Route::prefix('user')->group(function () {
@@ -29,6 +39,7 @@ Route::prefix('user')->group(function () {
     Route::post('reset-new-password',  [AuthController::class, 'resetNewPassword'])->name('api.user.resetNewPassword');
 
 });
+
 
 
 Route::middleware('auth:api')->group(function () {

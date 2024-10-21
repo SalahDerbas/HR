@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 
 use App\Http\Requests\API\AuthRequest;
 
-use App\Http\Resources\API\UserResource;
+use App\Http\Resources\API\Auth\UserResource;
 
 use App\Models\User;
 

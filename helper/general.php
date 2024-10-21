@@ -8,10 +8,13 @@ use App\Http\Response\ApiResponse;
 
 function getStatusText($responseCode){
     $statusTexts = [
-        Model_Not_Found => trans('api_response.Model_Not_Found'), //done
-        PRIVATE_KEY_CODE => trans('api_response.PRIVATE_KEY_CODE'), //done
-        INCCORECT_DATA_ERROR_CODE => trans('api_response.INCCORECT_DATA_ERROR_CODE'), //done
-        LOGIN_SUCCESS_CODE => trans('api_response.LOGIN_SUCCESS_CODE'), //done
+        Model_Not_Found                       => trans('api_response.Model_Not_Found'),
+        PRIVATE_KEY_CODE                      => trans('api_response.PRIVATE_KEY_CODE'),
+        INCCORECT_DATA_ERROR_CODE             => trans('api_response.INCCORECT_DATA_ERROR_CODE'),
+        LOGIN_SUCCESS_CODE                    => trans('api_response.LOGIN_SUCCESS_CODE'),
+        MESSAGE_NOT_FOUND_CODE                => trans('api_response.MESSAGE_NOT_FOUND_CODE'),
+        MESSAGE_CODE_ERROR_CODE               => trans('api_response.MESSAGE_CODE_ERROR_CODE'),
+        MESSAGE_CODE_SUCCESS_CODE             => trans('api_response.MESSAGE_CODE_SUCCESS_CODE'),
     ];
 
     return ($responseCode == ALL_MESSAGE_CODE) ? $statusTexts: $statusTexts[$responseCode] ?? MESSAGE_NOT_FOUND_CODE;
