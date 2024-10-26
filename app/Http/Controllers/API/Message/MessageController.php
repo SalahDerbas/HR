@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Message;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,18 +17,29 @@ class MessageController extends Controller
      * This function handles List of Message & code (API's).
      *
      * @return \Illuminate\Http\JsonResponse Returns a JSON response.
-     * @result string "Array of Messagea"
+     * @result string "Array of Messages and Codes for End Points "
      * @throws \Exception
      * @author Salah Derbas
      */
     public function index()
     {
-        $messages     = getStatusText(ALL_MESSAGE_CODE);
-        $data = array_map(fn($message, $code) => ['code' => $code, 'message' => $message], $messages, array_keys($messages));
+        $messages  = getStatusText(ALL_MESSAGE_CODE);
+        $data      = array_map(fn($message, $code) => ['code' => $code, 'message' => $message], $messages, array_keys($messages));
 
         return responseSuccess(MessageResource::collection($data), getStatusText(MESSAGE_CODE_SUCCESS_CODE), MESSAGE_CODE_SUCCESS_CODE);
     }
 
+    /**
+     * Get Single of Message & code (API)
+     *
+     * This function handles Message & code (API).
+     *
+     * @return \Illuminate\Http\JsonResponse Returns a JSON response.
+     * @result string "Message and Code for Single End Point "
+     * @param string $code The code for response.
+     * @throws \Exception
+     * @author Salah Derbas
+     */
     public function show($code)
     {
         $message = getStatusText($code);

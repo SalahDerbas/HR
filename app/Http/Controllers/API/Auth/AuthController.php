@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 
 use App\Http\Requests\API\AuthRequest;
 
-use App\Http\Resources\API\Auth\UserResource;
+use App\Http\Resources\API\User\UserResource;
 
 use App\Models\User;
 
@@ -35,9 +35,7 @@ class AuthController extends Controller
         if (!Auth::attempt(['email'  => $request->email  ,'password'=>$request->password]))
             return responseError(getStatusText(INCCORECT_DATA_ERROR_CODE), Response::HTTP_UNPROCESSABLE_ENTITY ,INCCORECT_DATA_ERROR_CODE);
 
-        $user = User::where(['email'  => $request->email])->with([
-                    'getCountry' , 'getGender' , 'getReigon' , 'getMaterialStatus' , 'getWorkType' , 'getContractType' , 'getStatusUser'
-                ])->first();
+        $user = getUserWithRelations($request->email);
         if(is_null($user->email_verified_at))
             return $this->resendEmail($request->email , rand(10000 , 99999));
 
@@ -61,10 +59,20 @@ class AuthController extends Controller
         SendVerifyEmailJob::dispatch($email, $otp);// Dispatch the job to send verification email
         User::where('email' , $email)->update(['code_auth' => $otp]);
 
-        return responseError(getStatusText(EMAIL_VERIFIED_AT), Response::HTTP_UNPROCESSABLE_ENTITY ,EMAIL_VERIFIED_AT);
+        return responseError(getStatusText(EMAIL_VERIFIED_AT_CODE), Response::HTTP_UNPROCESSABLE_ENTITY ,EMAIL_VERIFIED_AT_CODE);
     }
 
-
+    /**
+     * Register user to the application.
+     *
+     * This function handles the Register process for the user.
+     *
+     * @param string $email The email address of the user.
+     * @return \Illuminate\Http\JsonResponse Returns a JSON response containing the authentication token on success.
+     * @result string "send OTP to email for user for verify"
+     * @throws \Exception
+     * @author Salah Derbas
+     */
     public function register(AuthRequest $request)
     {
         $otp = rand(10000 , 99999);

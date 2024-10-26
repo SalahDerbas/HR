@@ -29,10 +29,10 @@ class LookupSeeder extends Seeder
             ['code' => 'U-MaterialStatus', 'key' => 'material_status', 'value_ar' => 'متزوج', 'value_en' => 'Married'],
             ['code' => 'U-MaterialStatus', 'key' => 'material_status', 'value_ar' => 'خاطب', 'value_en' => 'Sngaged'],
 
-            ['code' => 'U-Workلإype', 'key' => 'work_type', 'value_ar' => 'دوام كامل', 'value_en' => 'Full Time'],
-            ['code' => 'U-Workلإype', 'key' => 'work_type', 'value_ar' => 'دوام جزئي', 'value_en' => 'Part Time'],
-            ['code' => 'U-Workلإype', 'key' => 'work_type', 'value_ar' => 'مختلط', 'value_en' => 'Hypred'],
-            ['code' => 'U-Workلإype', 'key' => 'work_type', 'value_ar' => 'أونلاين', 'value_en' => 'Remotly'],
+            ['code' => 'U-Worktype', 'key' => 'work_type', 'value_ar' => 'دوام كامل', 'value_en' => 'Full Time'],
+            ['code' => 'U-Worktype', 'key' => 'work_type', 'value_ar' => 'دوام جزئي', 'value_en' => 'Part Time'],
+            ['code' => 'U-Worktype', 'key' => 'work_type', 'value_ar' => 'مختلط', 'value_en' => 'Hypred'],
+            ['code' => 'U-Worktype', 'key' => 'work_type', 'value_ar' => 'أونلاين', 'value_en' => 'Remotly'],
 
             ['code' => 'U-ContractType', 'key' => 'contract_type', 'value_ar' => 'غير محدد', 'value_en' => 'Unlimeted'],
             ['code' => 'U-ContractType', 'key' => 'contract_type', 'value_ar' => 'سنوي', 'value_en' => 'Yearly'],

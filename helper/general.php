@@ -1,6 +1,8 @@
 <?php
 use App\Http\Response\ApiResponse;
 
+use App\Models\User;
+
 
 
 
@@ -8,13 +10,14 @@ use App\Http\Response\ApiResponse;
 
 function getStatusText($responseCode){
     $statusTexts = [
-        Model_Not_Found                       => trans('api_response.Model_Not_Found'),
+        Model_Not_Found_CODE                  => trans('api_response.Model_Not_Found_CODE'),
         PRIVATE_KEY_CODE                      => trans('api_response.PRIVATE_KEY_CODE'),
         INCCORECT_DATA_ERROR_CODE             => trans('api_response.INCCORECT_DATA_ERROR_CODE'),
         LOGIN_SUCCESS_CODE                    => trans('api_response.LOGIN_SUCCESS_CODE'),
         MESSAGE_NOT_FOUND_CODE                => trans('api_response.MESSAGE_NOT_FOUND_CODE'),
         MESSAGE_CODE_ERROR_CODE               => trans('api_response.MESSAGE_CODE_ERROR_CODE'),
         MESSAGE_CODE_SUCCESS_CODE             => trans('api_response.MESSAGE_CODE_SUCCESS_CODE'),
+        LOOKUPS_SUCCESS_CODE                  => trans('api_response.LOOKUPS_SUCCESS_CODE'),
     ];
 
     return ($responseCode == ALL_MESSAGE_CODE) ? $statusTexts: $statusTexts[$responseCode] ?? MESSAGE_NOT_FOUND_CODE;
@@ -103,6 +106,22 @@ if (!function_exists('UploadPhotoUser')) {
         $file->move('Profile/' , $file_name);
         $Image = env('APP_URL').'/Profile/'.$file_name;
         return $Image;
+    }
+}
+
+
+if (!function_exists('getUserWithRelations')) {
+    function getUserWithRelations($email)
+    {
+        return User::where(['email'  => $email])->with([
+                    'getCountry' ,
+                    'getGender' ,
+                    'getReigon' ,
+                    'getMaterialStatus' ,
+                    'getWorkType' ,
+                    'getContractType' ,
+                    'getStatusUser'
+        ])->first();
     }
 }
 
