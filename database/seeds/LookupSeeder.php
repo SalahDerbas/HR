@@ -80,6 +80,11 @@ class LookupSeeder extends Seeder
             ['code' => 'U-TypeDocument', 'key' => 'type_document_id', 'value_ar' => 'دفتر العيلة', 'value_en' => 'Family book'],
             ['code' => 'U-TypeDocument', 'key' => 'type_document_id', 'value_ar' => 'السيرة الذاتية', 'value_en' => 'CV'],
 
+            ['code' => 'U-Content', 'key' => 'about_us', 'value_ar' => 'معلومات عنا', 'value_en' => 'About Us'],
+            ['code' => 'U-Content', 'key' => 'privacy_policy', 'value_ar' => 'سياسة الخصوصية', 'value_en' => 'Privacy Policy'],
+            ['code' => 'U-Content', 'key' => 'FAQ', 'value_ar' => 'أسئلة شائعة', 'value_en' => 'FAQ'],
+            ['code' => 'U-Content', 'key' => 'terms_conditions', 'value_ar' => 'الشروط والأحكام', 'value_en' => 'Terms & Conditions'],
+            ['code' => 'U-Content', 'key' => 'sliders', 'value_ar' => 'شرائح', 'value_en' => 'Sliders'],
 
 
             // ..............

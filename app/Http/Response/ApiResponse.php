@@ -84,7 +84,7 @@ class ApiResponse
 
     public function respondModelNotFound($message = 'Model {$resp} Not found')
     {
-        return responseError($message, Response::HTTP_NOT_FOUND , Model_Not_Found_CODE );
+        return responseError($message, Response::HTTP_NOT_FOUND , MODEL_NOT_FOUND_CODE );
     }
     public function respondValidationFailed($message = 'Validation failed' , $validate_errors , $codes)
     {

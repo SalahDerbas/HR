@@ -192,6 +192,13 @@ Route::prefix('lookups')->group( function () {
     Route::get('work_types',            [LookupController::class, 'workTypes'])->name('api.lookups.work_types');
     Route::get('contract_types',        [LookupController::class, 'contractTypes'])->name('api.lookups.contract_types');
     Route::get('status_user',           [LookupController::class, 'statusUser'])->name('api.lookups.status_user');
+    Route::get('status_attendance',      [LookupController::class, 'statusAttendance'])->name('api.lookups.status_attendance');
+    Route::get('reason_leave',          [LookupController::class, 'reasonLeave'])->name('api.lookups.reason_leave');
+    Route::get('status_leave',          [LookupController::class, 'statusLeave'])->name('api.lookups.status_leave');
+    Route::get('vacation_type',         [LookupController::class, 'vacationTypes'])->name('api.lookups.vacation_type');
+    Route::get('asset_type',            [LookupController::class, 'assetTypes'])->name('api.lookups.asset_type');
+    Route::get('missing_punch_type',    [LookupController::class, 'missingPunchTypes'])->name('api.lookups.missing_punch_type');
+    Route::get('document_type',         [LookupController::class, 'documentTypes'])->name('api.lookups.document_type');
 
 });
 
