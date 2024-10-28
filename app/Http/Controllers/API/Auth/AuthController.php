@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Carbon;
 
-use App\Http\Requests\API\AuthRequest;
+use App\Http\Requests\API\Auth\AuthRequest;
 
 use App\Http\Resources\API\User\UserResource;
 

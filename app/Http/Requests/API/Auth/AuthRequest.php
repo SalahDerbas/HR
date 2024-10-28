@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\API;
+namespace App\Http\Requests\API\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -8,9 +8,9 @@ use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-use App\Rules\UserIsDelete;
-use App\Rules\UserGoogleIdIsFound;
-use App\Rules\UserFacebookIdIsFound;
+use App\Rules\API\Auth\UserIsDelete;
+use App\Rules\API\Auth\UserGoogleIdIsFound;
+use App\Rules\API\Auth\UserFacebookIdIsFound;
 
 use App\Models\User;
 

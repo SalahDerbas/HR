@@ -13,4 +13,9 @@ class Department extends Model
     protected $fillable = [
         'name_ar','title_ar','name_en','title_en',
     ];
+
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
 }

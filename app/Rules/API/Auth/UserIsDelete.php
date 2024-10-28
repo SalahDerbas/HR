@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rules;
+namespace App\Rules\API\Auth;
 
 use Illuminate\Contracts\Validation\Rule;
 use App\Models\User;

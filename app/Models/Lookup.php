@@ -15,4 +15,9 @@ class Lookup extends Model
         'value_ar',
         'value_en',
     ];
+
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
 }

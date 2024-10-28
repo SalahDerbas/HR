@@ -19,6 +19,10 @@ class Vacation extends Model
        'doucument'
     ];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }

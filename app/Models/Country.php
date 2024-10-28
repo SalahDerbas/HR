@@ -15,4 +15,8 @@ class Country extends Model
     ];
 
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
 }

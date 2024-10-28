@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\API;
+namespace App\Http\Requests\API\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
@@ -69,7 +69,7 @@ class ContentRequest extends FormRequest
              ];
         }
 
-        $errorMessage = $validator->errors->all();
+        $errorMessage      = $validator->errors()->all();
         $validCodes = [];
 
         foreach ($errorMessage as $message)

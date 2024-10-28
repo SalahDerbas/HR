@@ -14,6 +14,10 @@ class Certifiate extends Model
        'name','start_date' , 'end_date', 'note' ,'document','user_id'
     ];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }

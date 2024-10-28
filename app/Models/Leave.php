@@ -14,6 +14,10 @@ class Leave extends Model
        'start_time','end_time','reason_leave_id','status_leave_id','user_id','doucument'
     ];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }

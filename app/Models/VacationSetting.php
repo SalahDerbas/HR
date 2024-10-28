@@ -14,5 +14,9 @@ class VacationSetting extends Model
        'name','count'
     ];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
 
 }

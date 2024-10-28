@@ -12,6 +12,10 @@ class Pushnotification extends Model
 
     protected $guarded = ['id'];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }

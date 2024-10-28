@@ -14,6 +14,10 @@ class Experince extends Model
        'company_name','company_phone','company_location','start_date','end_date','note','leave_reason','document','user_id'
     ];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }

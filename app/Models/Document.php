@@ -18,4 +18,7 @@ class Document extends Model
         return $this->belongsTo(User::class , 'user_id');
     }
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
 }

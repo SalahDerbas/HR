@@ -15,8 +15,10 @@ class CreatePushnotificationsTable extends Migration
     {
         Schema::create('pushnotifications', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('body');
+            $table->string('title_en');
+            $table->string('title_ar');
+            $table->string('body_en');
+            $table->string('body_ar');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();

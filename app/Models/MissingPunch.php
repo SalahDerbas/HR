@@ -14,6 +14,10 @@ class MissingPunch extends Model
        'date','time' , 'reason', 'document' ,'user_id' ,'type_missing_punch_id'
     ];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }

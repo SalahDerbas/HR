@@ -14,6 +14,10 @@ class Attendance extends Model
        'date','time' , 'status_attendance_id', 'location' ,'user_id'
     ];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }

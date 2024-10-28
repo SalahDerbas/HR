@@ -20,4 +20,8 @@ class Content extends Model
         'type_id',
     ];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
 }

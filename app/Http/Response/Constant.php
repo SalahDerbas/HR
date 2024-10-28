@@ -8,6 +8,11 @@ define('LOOKUPS_SUCCESS_CODE'                 , 1003);
 define('CONTENT_EMPTY_CODE'                   , 1004);
 define('CONTENT_SUCCESS_CODE'                 , 1005);
 define('CONTACT_US_SUCCESS_CODE'              , 1006);
+define('NOTIFICATION_EMPTY_CODE'              , 1007);
+define('NOTIFICATIONS_SUCCESS_CODE'           , 1008);
+define('USER_NOT_FOUND_CODE'                  , 1009);
+define('ENABLED_NOTIFICATION_SUCCESS_CODE'    , 1010);
+define('SEND_NOTIFICATION_SUCCESS_CODE'       , 1011);
 
 
 
@@ -34,6 +39,11 @@ define('CONFIRM_PASSWORD_REQUIRED_WITH_CODE'  , 4018);
 define('CONFIRM_PASSWORD_SAME_CODE'           , 4019);
 define('CONFIRM_PASSWORD_MIN_CODE'            , 4020);
 define('MESSAGE_REQUIRED_CODE'                , 4020);
+define('TITLE_EN_REQUIRED_CODE'               , 4021);
+define('TITLE_AR_REQUIRED_CODE'               , 4022);
+define('BODY_EN_REQUIRED_CODE'                , 4023);
+define('BODY_AR_REQUIRED_CODE'                , 4024);
+define('USERS_STRING_CODE'                    , 4025);
 
 
 

@@ -4,6 +4,7 @@
 use App\Http\Response\ApiResponse;
 use App\Models\User;
 use App\Models\Lookup;
+use Carbon\Carbon;
 
 
 
@@ -45,6 +46,23 @@ function getStatusText($responseCode){
             MESSAGE_REQUIRED_CODE                 => trans('api_response.MESSAGE_REQUIRED_CODE'),
             SUBJECT_REQUIRED_CODE                 => trans('api_response.SUBJECT_REQUIRED_CODE'),
             CONTACT_US_SUCCESS_CODE               => trans('api_response.CONTACT_US_SUCCESS_CODE'),
+            NOTIFICATION_EMPTY_CODE               => trans('api_response.NOTIFICATION_EMPTY_CODE'),
+            NOTIFICATIONS_SUCCESS_CODE            => trans('api_response.NOTIFICATIONS_SUCCESS_CODE'),
+            USER_NOT_FOUND_CODE                   => trans('api_response.USER_NOT_FOUND_CODE'),
+            ENABLED_NOTIFICATION_SUCCESS_CODE     => trans('api_response.ENABLED_NOTIFICATION_SUCCESS_CODE'),
+            TITLE_EN_REQUIRED_CODE                => trans('api_response.=TITLE_EN_REQUIRED_CODE'),
+            TITLE_AR_REQUIRED_CODE                => trans('api_response.TITLE_AR_REQUIRED_CODE'),
+            BODY_EN_REQUIRED_CODE                 => trans('api_response.BODY_EN_REQUIRED_CODE'),
+            BODY_AR_REQUIRED_CODE                 => trans('api_response.BODY_AR_REQUIRED_CODE'),
+            USERS_STRING_CODE                     => trans('api_response.USERS_STRING_CODE'),
+            SEND_NOTIFICATION_SUCCESS_CODE        => trans('api_response.SEND_NOTIFICATION_SUCCESS_CODE'),
+
+
+
+
+
+
+
 
 
 
@@ -195,5 +213,13 @@ if (!function_exists('getIDLookups')) {
     function getIDLookups($key)
     {
         return Lookup::where(['key' => $key ])->pluck('id')->first();
+    }
+}
+
+
+if (!function_exists('formatDate')) {
+    function formatDate($date)
+    {
+        return (!is_null($date)) ? Carbon::parse($date)->format('Y-m-d') : NULL ;
     }
 }

@@ -85,7 +85,7 @@ Route::prefix('user')->group( function () {
 
 
 // Authenticated User Routes
-Route::middleware('auth:api')->group( function () {
+Route::group(['middleware' => ['auth:api']],function () {
 
     // User Routes API With Authenticate
     Route::prefix('user')->group( function () {

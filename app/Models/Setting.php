@@ -22,5 +22,9 @@ class Setting extends Model
         'note'
     ];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
+
 
 }

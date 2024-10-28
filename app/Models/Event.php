@@ -11,8 +11,11 @@ class Event extends Model
     use HasFactory , SoftDeletes;
     protected $table = "events";
     protected $fillable = [
-       'name','from_time' , 'to_time', 'photo' 
+       'name','from_time' , 'to_time', 'photo'
     ];
 
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
 
 }

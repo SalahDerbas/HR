@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\API\User\ContentResource;
 use App\Models\Content;
-use App\Http\Requests\API\ContentRequest;
+use App\Http\Requests\API\User\ContentRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendContactUsMail;
 
