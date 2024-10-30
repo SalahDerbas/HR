@@ -8,6 +8,8 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ContentRequest extends FormRequest
 {
+    private const ROUTE_CONTACT_US     = 'api.content.contact_us';
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -19,65 +21,89 @@ class ContentRequest extends FormRequest
     }
 
     /**
+     * Get the validation rules for the contact us request.
+     *
+     * @return array
+     */
+    private function contactUsRequest()
+    {
+        return [
+            'rules'   =>  [
+                'name'                            => ['required'],
+                'email'                           => ['required' , 'email'],
+                'subject'                         => ['required'],
+                'message'                         => ['required'],
+            ],
+            'messages'  => [
+                'name.required'                   => getStatusText(NAME_REQUIRED_CODE),
+                'email.email'                     => getStatusText(EMAIL_EMAIL_CODE),
+                'email.required'                  => getStatusText(EMAIL_REQUIRED_CODE) ,
+                'subject.required'                => getStatusText(SUBJECT_REQUIRED_CODE),
+                'message.required'                => getStatusText(MESSAGE_REQUIRED_CODE),
+            ],
+        ];
+    }
+
+    /**
+     * Retrieve requested validation data based on the current route.
+     *
+     * @param string $key
+     * @return mixed
+     */
+    private function requested($key)
+    {
+        $route = $this->route()->getName();
+        $data = match ($route) {
+                self::ROUTE_CONTACT_US                => $this->contactUsRequest(),
+            default => []
+        };
+        return $data[$key];
+
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
     public function rules()
     {
-        $route =  $this->route()->getName();
-        if($route == "api.content.contactUs")
-        {
-            $rules = [
-                'name'            => ['required'],
-                'email'           => ['required' , 'email'],
-                'subject'         => ['required'],
-                'message'         => ['required'],
-            ];
-        }
-        return $rules;
+        return $this->requested('rules');
     }
 
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
     public function messages()
     {
-        $route =  $this->route()->getName();
-        if($route == "api.content.contactUs")
-        {
-            $messages =  [
-                    'name.required'       =>  trans('api_response.NAME_REQUIRED_CODE'),
-                    'email.email'         =>  trans('api_response.EMAIL_EMAIL_CODE'),
-                    'email.required'      =>  trans('api_response.EMAIL_REQUIRED_CODE') ,
-                    'subject.required'    =>  trans('api_response.SUBJECT_REQUIRED_CODE'),
-                    'message.required'    =>  trans('api_response.MESSAGE_REQUIRED_CODE'),
-            ];
-        }
-        return $messages;
+        return $this->requested('messages');
     }
 
+    /**
+     * Handle a failed validation attempt.
+     *
+     * @param Validator $validator
+     * @throws HttpResponseException
+     */
     protected function failedValidation(Validator $validator)
     {
         $route             =  $this->route()->getName();
         $messages          = $this->messages();
 
-        if ($route == "api.content.contactUs") {
-        $errorMap = [
-                    $messages['name.required']          => NAME_REQUIRED_CODE ,
-                    $messages['email.required']         => EMAIL_REQUIRED_CODE,
-                    $messages['email.email']            => EMAIL_EMAIL_CODE,
-                    $messages['subject.required']       => SUBJECT_REQUIRED_CODE,
-                    $messages['message.required']       => MESSAGE_REQUIRED_CODE,
-             ];
-        }
+        $errorMap = match ($route) {
+                self::ROUTE_CONTACT_US => [
+                        $messages['name.required']          => NAME_REQUIRED_CODE ,
+                        $messages['email.required']         => EMAIL_REQUIRED_CODE,
+                        $messages['email.email']            => EMAIL_EMAIL_CODE,
+                        $messages['subject.required']       => SUBJECT_REQUIRED_CODE,
+                        $messages['message.required']       => MESSAGE_REQUIRED_CODE,
+        ],
+            default => []
+        };
 
-        $errorMessage      = $validator->errors()->all();
-        $validCodes = [];
-
-        foreach ($errorMessage as $message)
-            $validCodes[] = $errorMap[$message];
-
-        throw new HttpResponseException(
-            respondValidationFailed($errorMessage[0], $validator->errors() , $validCodes[0] )
-        );
+        $this->handleFailedValidation($validator, $errorMap);
     }
 
 }

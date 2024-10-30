@@ -46,6 +46,11 @@ return [
         'BODY_AR_REQUIRED_CODE'                => 'BODY_AR_REQUIRED_CODE',
         'USERS_STRING_CODE'                    => 'USERS_STRING_CODE',
         'SEND_NOTIFICATION_SUCCESS_CODE'       => 'SEND_NOTIFICATION_SUCCESS_CODE',
+        'SEND_OTP_SUCCESS_CODE'                => 'SEND_OTP_SUCCESS_CODE',
+        'OTP_INVALID_CODE'                     => 'OTP_INVALID_CODE',
+        'EXPIRE_TIME_INVALID_CODE'             => 'EXPIRE_TIME_INVALID_CODE',
+        'CHECK_OTP_SUCCESS_CODE'               => 'CHECK_OTP_SUCCESS_CODE',
+
 
 
 

@@ -64,18 +64,18 @@ Route::prefix('user')->group( function () {
     Route::post('login-by-google',     [AuthController::class, 'loginByGoogle'])->name('api.user.login_by_google');
     Route::post('login-by-facebook',   [AuthController::class, 'loginByFacebook'])->name('api.user.login_by_facebook');
     Route::post('login-by-apple',      [AuthController::class, 'loginByApple'])->name('api.user.login_by_apple');
-    Route::post('forget-password',     [AuthController::class, 'forgetPassword'])->name('api.user.forgetPassword');
-    Route::post('reset-password',      [AuthController::class, 'resetPassword'])->name('api.user.resetPassword');
+    Route::post('forget-password',     [AuthController::class, 'forgetPassword'])->name('api.user.forget_password');
+    Route::post('reset-password',      [AuthController::class, 'resetPassword'])->name('api.user.reset_password');
 
     // Content Routes API For HR Project
     Route::prefix('content')->group( function () {
 
-        Route::get('terms-conditions',     [ContentController::class, 'getTermsConditions'])->name('api.content.getTermsConditions');
-        Route::get('privacy-policy',       [ContentController::class, 'getPrivacyPolicy'])->name('api.content.getPrivacyPolicy');
-        Route::get('about-us',             [ContentController::class, 'getAboutUs'])->name('api.content.getAboutUs');
-        Route::get('faq',                  [ContentController::class, 'getFAQ'])->name('api.content.getFAQ');
-        Route::get('sliders',              [ContentController::class, 'getSliders'])->name('api.content.getSliders');
-        Route::post('contact-us',          [ContentController::class, 'contactUs'])->name('api.content.contactUs');
+        Route::get('terms-conditions',     [ContentController::class, 'getTermsConditions'])->name('api.content.get_terms_conditions');
+        Route::get('privacy-policy',       [ContentController::class, 'getPrivacyPolicy'])->name('api.content.get_privacy_policy');
+        Route::get('about-us',             [ContentController::class, 'getAboutUs'])->name('api.content.get_about_us');
+        Route::get('faq',                  [ContentController::class, 'getFAQ'])->name('api.content.get_faq');
+        Route::get('sliders',              [ContentController::class, 'getSliders'])->name('api.content.get_sliders');
+        Route::post('contact-us',          [ContentController::class, 'contactUs'])->name('api.content.contact_us');
     });
 
 });
@@ -90,10 +90,10 @@ Route::group(['middleware' => ['auth:api']],function () {
     // User Routes API With Authenticate
     Route::prefix('user')->group( function () {
 
-        Route::get('get-profile',             [AuthController::class, 'getProfile'])->name('api.user.getProfile');
-        Route::get('refresh-token',           [AuthController::class, 'refreshToken'])->name('api.user.refreshToken');
+        Route::get('get-profile',             [AuthController::class, 'getProfile'])->name('api.user.get_profile');
+        Route::get('refresh-token',           [AuthController::class, 'refreshToken'])->name('api.user.refresh_token');
         Route::get('logout' ,                 [AuthController::class, 'logout'])->name('api.user.logout');
-        Route::post('update-profile',         [AuthController::class, 'updateProfile'])->name('api.user.updateProfile');
+        Route::post('update-profile',         [AuthController::class, 'updateProfile'])->name('api.user.update_profile');
         Route::delete('delete',               [AuthController::class, 'delete'])->name('api.user.delete');
 
 
@@ -101,7 +101,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         Route::prefix('notification')->group( function () {
 
             Route::get('list',                [NotificationController::class, 'index'])->name('api.user.notification.index');
-            Route::get('update-enable',       [NotificationController::class, 'updateEnable'])->name('api.user.notification.updateEnable');
+            Route::get('update-enable',       [NotificationController::class, 'updateEnable'])->name('api.user.notification.update_enable');
 
         });
 

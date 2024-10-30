@@ -19,7 +19,7 @@
         <div style="margin-top: 10px; width: 100%;background-color:#E8E8E8; margin-bottom: 10px; padding:60px">
             <p style="font-size: 15px !important; margin-left:30px; font-family:Segoe UI">Dear valued customer,</p>
             <p style="font-size: 14px !important;margin-left:30px;font-family:Segoe UI">
-                Please copy the OTP below to verify your email address. <span>{{ $data['email'] }}</span>
+                Please copy the OTP of your email address. <span>{{ $data['email'] }}</span>
             </p>
             <p style="font-size: 14px !important;margin-left:30px;font-family:Segoe UI">
                 `OTP` :  <h1> {{ $data['otp'] }} </h1>

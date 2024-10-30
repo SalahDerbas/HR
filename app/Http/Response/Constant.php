@@ -13,6 +13,8 @@ define('NOTIFICATIONS_SUCCESS_CODE'           , 1008);
 define('USER_NOT_FOUND_CODE'                  , 1009);
 define('ENABLED_NOTIFICATION_SUCCESS_CODE'    , 1010);
 define('SEND_NOTIFICATION_SUCCESS_CODE'       , 1011);
+define('SEND_OTP_SUCCESS_CODE'                , 1012);
+define('CHECK_OTP_SUCCESS_CODE'               , 1013);
 
 
 
@@ -56,6 +58,8 @@ define('PRIVATE_KEY_CODE'                    , 9003);
 define('EMAIL_VERIFIED_AT_CODE'              , 9004);
 define('MESSAGE_NOT_FOUND_CODE'              , 9005);
 define('MESSAGE_CODE_ERROR_CODE'             , 9006);
+define('OTP_INVALID_CODE'                    , 9007);
+define('EXPIRE_TIME_INVALID_CODE'            , 9008);
 
 
 

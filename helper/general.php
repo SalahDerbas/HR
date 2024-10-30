@@ -56,6 +56,10 @@ function getStatusText($responseCode){
             BODY_AR_REQUIRED_CODE                 => trans('api_response.BODY_AR_REQUIRED_CODE'),
             USERS_STRING_CODE                     => trans('api_response.USERS_STRING_CODE'),
             SEND_NOTIFICATION_SUCCESS_CODE        => trans('api_response.SEND_NOTIFICATION_SUCCESS_CODE'),
+            SEND_OTP_SUCCESS_CODE                 => trans('api_response.SEND_OTP_SUCCESS_CODE'),
+            OTP_INVALID_CODE                      => trans('api_response.OTP_INVALID_CODE'),
+            EXPIRE_TIME_INVALID_CODE              => trans('api_response.EXPIRE_TIME_INVALID_CODE'),
+            CHECK_OTP_SUCCESS_CODE                => trans('api_response.CHECK_OTP_SUCCESS_CODE'),
 
 
 
