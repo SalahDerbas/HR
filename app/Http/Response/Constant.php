@@ -46,6 +46,7 @@ define('TITLE_AR_REQUIRED_CODE'               , 4022);
 define('BODY_EN_REQUIRED_CODE'                , 4023);
 define('BODY_AR_REQUIRED_CODE'                , 4024);
 define('USERS_STRING_CODE'                    , 4025);
+define('APPLE_ID_FAILED_CODE'                 , 4026);
 
 
 

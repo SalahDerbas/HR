@@ -60,7 +60,6 @@ Route::prefix('user')->group( function () {
     Route::post('register',            [AuthController::class, 'register'])->name('api.user.register');
     Route::post('check-otp' ,          [AuthController::class, 'checkOtp'])->name('api.user.check_otp');
     Route::post('re-send-otp' ,        [AuthController::class, 'resendOtp'])->name('api.user.resend_otp');
-    Route::post('verify',              [AuthController::class, 'verify'])->name('api.user.verify');
     Route::post('login-by-google',     [AuthController::class, 'loginByGoogle'])->name('api.user.login_by_google');
     Route::post('login-by-facebook',   [AuthController::class, 'loginByFacebook'])->name('api.user.login_by_facebook');
     Route::post('login-by-apple',      [AuthController::class, 'loginByApple'])->name('api.user.login_by_apple');

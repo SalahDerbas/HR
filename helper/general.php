@@ -60,6 +60,7 @@ function getStatusText($responseCode){
             OTP_INVALID_CODE                      => trans('api_response.OTP_INVALID_CODE'),
             EXPIRE_TIME_INVALID_CODE              => trans('api_response.EXPIRE_TIME_INVALID_CODE'),
             CHECK_OTP_SUCCESS_CODE                => trans('api_response.CHECK_OTP_SUCCESS_CODE'),
+            APPLE_ID_FAILED_CODE                  => trans('api_response.APPLE_ID_FAILED_CODE')
 
 
 

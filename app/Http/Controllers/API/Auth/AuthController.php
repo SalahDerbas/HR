@@ -37,11 +37,8 @@ class AuthController extends Controller
         if (!Auth::attempt(['email'  => $request->email  ,'password'=>$request->password]))
             return responseError(getStatusText(INCCORECT_DATA_ERROR_CODE), Response::HTTP_UNPROCESSABLE_ENTITY ,INCCORECT_DATA_ERROR_CODE);
 
-        // $user = getUserWithRelations($request->email);
-            return $this->sendOTPEmail($request->email , rand(10000 , 99999));
-
-        // User::where(['email'  => $request->email])->update(['fcm_token' => $request->fcm_token , 'last_login' => Carbon::now()  ]);
-        // return responseSuccess( new UserResource($user) , getStatusText(LOGIN_SUCCESS_CODE)  , LOGIN_SUCCESS_CODE );
+        User::where(['email'  => $request->email])->update(['fcm_token' => $request->fcm_token , 'last_login' => Carbon::now()  ]);
+        return $this->sendOTPEmail($request->email , rand(10000 , 99999));
     }
 
     /**
@@ -63,6 +60,84 @@ class AuthController extends Controller
         return responseSuccess('', getStatusText(SEND_OTP_SUCCESS_CODE) ,SEND_OTP_SUCCESS_CODE);
     }
 
+
+
+    /**
+     * Validate the OTP (One-Time Password) for a user based on the provided email and OTP code.
+     * If the OTP is valid and has not expired, the user is authenticated and logged in.
+     *
+     * @param AuthRequest $request The incoming request containing the user's email and OTP.
+     * @return \Illuminate\Http\JsonResponse The response indicating the success or failure of the OTP validation.
+     */
+    public function checkOtp(AuthRequest $request)
+    {
+        $user     = User::where(['email'=> $request->email , 'code_auth' => $request->otp ])->first();
+        if(is_null($user))
+            return responseError(getStatusText(OTP_INVALID_CODE), Response::HTTP_UNPROCESSABLE_ENTITY ,OTP_INVALID_CODE);
+
+        if (Carbon::now()->isAfter($user->expire_time))
+            return responseError(getStatusText(EXPIRE_TIME_INVALID_CODE), Response::HTTP_UNPROCESSABLE_ENTITY ,EXPIRE_TIME_INVALID_CODE);
+
+        return $this->successAuth($user);
+    }
+
+    /**
+     * Log in the user after successful OTP validation and retrieve the user's details with relations.
+     *
+     * @param User $user The authenticated user object.
+     * @return \Illuminate\Http\JsonResponse The response containing the user's information and success status.
+     */
+    private function successAuth($user)
+    {
+        Auth::login($user);
+        return responseSuccess( new UserResource($user) , getStatusText(CHECK_OTP_SUCCESS_CODE)  , CHECK_OTP_SUCCESS_CODE );
+    }
+
+    /**
+     * Resend a One-Time Password (OTP) to the user's email address.
+     * A random OTP is generated and sent via email to the provided email address.
+     *
+     * @param AuthRequest $request The incoming request containing the user's email.
+     * @return mixed The result of the OTP email sending process.
+     */
+    public function resendOtp(AuthRequest $request)
+    {
+        return $this->sendOTPEmail($request->email , rand(10000 , 99999));
+    }
+
+    /**
+     * Authenticate a user using their Google account.
+     * Retrieves the user by their Google ID and logs them in.
+     *
+     * @param AuthRequest $request The incoming request containing the Google ID.
+     * @return \Illuminate\Http\JsonResponse The response indicating the success of the login process.
+     */
+    public function loginByGoogle(AuthRequest $request)
+    {
+        $user = User::where(['google_id' => $request->google_id])->first();
+        Auth::login($user);
+        return responseSuccess( new UserResource($user) , getStatusText(LOGIN_SUCCESS_CODE)  , LOGIN_SUCCESS_CODE );
+    }
+
+    /**
+     * Authenticate a user using their Facebook account.
+     * Retrieves the user by their Facebook ID and logs them in.
+     *
+     * @param AuthRequest $request The incoming request containing the Facebook ID.
+     * @return \Illuminate\Http\JsonResponse The response indicating the success of the login process.
+     */
+    public function loginByFacebook(AuthRequest $request)
+    {
+        $user = User::where( 'facebook_id', $request->facebook_id)->first();
+        Auth::login($user);
+        return responseSuccess( new UserResource( $user ) , getStatusText(LOGIN_SUCCESS_CODE)  , LOGIN_SUCCESS_CODE );
+    }
+
+    public function loginByApple(AuthRequest $request)
+    {
+        return 121212;
+    }
+
     /**
      * Register user to the application.
      *
@@ -79,35 +154,5 @@ class AuthController extends Controller
 
     }
 
-    /**
-     * Check the validity of the OTP (One-Time Password) provided by the user.
-     *
-     * This function verifies if the provided email and OTP match a user record
-     * in the database and checks if the OTP has expired. If both conditions
-     * are met, the user is logged in and their data is returned.
-     *
-     * @param AuthRequest $request The request containing email and OTP.
-     * @return \Illuminate\Http\JsonResponse The response indicating success or failure.
-     */
-    public function checkOtp(AuthRequest $request)
-    {
-        $user     = User::where(['email'=> $request->email , 'code_auth' => $request->otp ])->first();
-        if(is_null($user))
-            return responseError(getStatusText(OTP_INVALID_CODE), Response::HTTP_UNPROCESSABLE_ENTITY ,OTP_INVALID_CODE);
-
-        $validateDate    = Carbon::parse($user->expire_time);
-        if (!$validateDate->isPast())
-            return responseError(getStatusText(EXPIRE_TIME_INVALID_CODE), Response::HTTP_UNPROCESSABLE_ENTITY ,EXPIRE_TIME_INVALID_CODE);
-
-        return $this->successOTP($user);
-    }
-
-    private function successOTP($user)
-    {
-        Auth::login($user);
-        $user = getUserWithRelations($user->email);
-        return responseSuccess( new UserResource($user) , getStatusText(CHECK_OTP_SUCCESS_CODE)  , CHECK_OTP_SUCCESS_CODE );
-
-    }
 
 }

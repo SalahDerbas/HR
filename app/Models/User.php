@@ -48,6 +48,7 @@ class User extends Authenticatable
         'google_id',
         'facebook_id',
         'twitter_id',
+        'apple_id',
         'enable_notification',
         'ip',
         'user_agent',

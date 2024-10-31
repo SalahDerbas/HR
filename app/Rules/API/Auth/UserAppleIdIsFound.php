@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Rule;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 
-class UserFacebookIdIsFound implements Rule
+class UserAppleIdIsFound implements Rule
 {
     /**
      * Create a new rule instance.
@@ -29,8 +29,8 @@ class UserFacebookIdIsFound implements Rule
      */
     public function passes($attribute, $value)
     {
-        $user = User::where('facebook_id', $this->user->facebook_id)->first();
-
+        $user = User::where('apple_id', $this->user->apple_id)->first();
+        dd($user);
         (is_null($user)) ? ($this->createUser()) : ($this->updateUser($user));
 
         return true;
@@ -47,7 +47,7 @@ class UserFacebookIdIsFound implements Rule
             'email'              => 'fb.' . encrypt('hr_api') . '@gmail.com',
             'email_verified_at'  => Carbon::now(),
             'fcm_token'          => $this->user->fcm_token,
-            'facebook_id'        => $this->user->facebook_id,
+            'apple_id'           => $this->user->apple_id,
             'last_login'         => Carbon::now(),
 
         ]);
@@ -62,7 +62,7 @@ class UserFacebookIdIsFound implements Rule
     private function updateUser($user)
     {
         $user->update([
-            'facebook_id'       => $this->user->facebook_id,
+            'apple_id'          => $this->user->apple_id,
             'fcm_token'         => $this->user->fcm_token,
             'last_login'        => Carbon::now(),
 

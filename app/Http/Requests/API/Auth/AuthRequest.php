@@ -11,6 +11,8 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Rules\API\Auth\UserIsDelete;
 use App\Rules\API\Auth\UserGoogleIdIsFound;
 use App\Rules\API\Auth\UserFacebookIdIsFound;
+use App\Rules\API\Auth\UserAppleIdIsFound;
+
 
 use App\Models\User;
 
@@ -23,6 +25,7 @@ class AuthRequest extends BaseRequest
     private const ROUTE_RESEND_OTP         = 'api.user.resend_otp';
     private const ROUTE_LOGIN_BY_GOOGLE    = 'api.user.login_by_google';
     private const ROUTE_LOGIN_BY_FACEBOOK  = 'api.user.login_by_facebook';
+    private const ROUTE_LOGIN_BY_APPLE     = 'api.user.login_by_apple';
     private const ROUTE_FORGET_PASSWORD    = 'api.user.forgetPassword';
     private const ROUTE_RESET_PASSWORD     = 'api.user.resetPassword';
 
@@ -164,6 +167,24 @@ class AuthRequest extends BaseRequest
     }
 
     /**
+     * Get the validation rules for logging in via Apple.
+     *
+     * @return array
+     */
+    private function loginByAppleRequest()
+    {
+        return [
+            'rules'   =>  [
+                'apple_id'              => [new UserAppleIdIsFound($this)],
+            ],
+            'messages'  => [
+                'apple_id'              => getStatusText(APPLE_ID_FAILED_CODE),
+            ],
+        ];
+
+    }
+
+    /**
      * Get the validation rules for forgetting the password.
      *
      * @return array
@@ -224,8 +245,10 @@ class AuthRequest extends BaseRequest
                 self::ROUTE_RESEND_OTP           => $this->resendOtpRequest(),
                 self::ROUTE_LOGIN_BY_GOOGLE      => $this->loginByGoogleRequest(),
                 self::ROUTE_LOGIN_BY_FACEBOOK    => $this->loginByFacebookRequest(),
+                self::ROUTE_LOGIN_BY_APPLE       => $this->loginByAppleRequest(),
                 self::ROUTE_FORGET_PASSWORD      => $this->forgetPasswordRequest(),
                 self::ROUTE_RESET_PASSWORD       => $this->resetPasswordRequest(),
+
             default => []
         };
         return $data[$key];
@@ -298,7 +321,10 @@ class AuthRequest extends BaseRequest
                     $messages['status']               => USER_DELETED_CODE,
             ],
             self::ROUTE_LOGIN_BY_FACEBOOK => [
-                    $messages['facebook_id']          => FACEBOOK_FAILED_CODE,
+                        $messages['facebook_id']      => FACEBOOK_FAILED_CODE,
+            ],
+            self::ROUTE_LOGIN_BY_APPLE   => [
+                        $messages['apple_id']         => APPLE_ID_FAILED_CODE,
             ],
             self::ROUTE_FORGET_PASSWORD => [
                     $messages['email']                => EMAIL_EXISTS_CODE,

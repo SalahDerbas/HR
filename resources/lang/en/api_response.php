@@ -50,6 +50,7 @@ return [
         'OTP_INVALID_CODE'                     => 'OTP_INVALID_CODE',
         'EXPIRE_TIME_INVALID_CODE'             => 'EXPIRE_TIME_INVALID_CODE',
         'CHECK_OTP_SUCCESS_CODE'               => 'CHECK_OTP_SUCCESS_CODE',
+        'APPLE_ID_FAILED_CODE'                 => 'APPLE_ID_FAILED_CODE',
 
 
 
