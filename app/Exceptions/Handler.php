@@ -5,6 +5,15 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\ModelNotFoundException;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -50,6 +59,22 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if ($exception instanceof AuthenticationException)
+        return respondUnauthorized('Unauthorized');
+        if($exception instanceof ThrottleRequestsException)
+            return respondTooManyRequest('Too Many Requests');
+        if ($exception instanceof UnauthorizedHttpException)
+            return respondUnauthorized('Unauthorized');
+        if ($exception instanceof RouteNotFoundException)
+            return respondNotFound('Not Found');
+        if ($exception instanceof MethodNotAllowedHttpException)
+            return respondMethodAllowed('Method Not Allowed');
+        if ($exception instanceof NotFoundHttpException)
+            return respondNotFound('Not Found');
+        if ($exception instanceof ModelNotFoundException){
+            $resp = str_replace('App\\Models\\', '', $exception->getModel());
+            return respondModelNotFound('Model {$resp} Not found' );
+        }
         return parent::render($request, $exception);
     }
 }

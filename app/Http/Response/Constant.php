@@ -15,6 +15,12 @@ define('ENABLED_NOTIFICATION_SUCCESS_CODE'    , 1010);
 define('SEND_NOTIFICATION_SUCCESS_CODE'       , 1011);
 define('SEND_OTP_SUCCESS_CODE'                , 1012);
 define('CHECK_OTP_SUCCESS_CODE'               , 1013);
+define('RESET_NEW_PASSWOED_CODE'              , 1014);
+define('GET_PROFILE_CODE'                     , 1015);
+define('REFRESH_TOKEN_CODE'                   , 1016);
+define('USER_LOGOUT_CODE'                     , 1017);
+define('DELETE_ACCONT_CODE'                   , 1018);
+define('LIST_USERS_SUCCESS_CODE'              , 1019);
 
 
 
@@ -48,6 +54,37 @@ define('BODY_AR_REQUIRED_CODE'                , 4024);
 define('USERS_STRING_CODE'                    , 4025);
 define('APPLE_ID_FAILED_CODE'                 , 4026);
 
+define('NAME_AR_CODE'                         , 4027);
+define('NAME_EN_CODE'                         , 4028);
+define('PHONE_CODE'                           , 4029);
+define('ID_CODE_CODE'                         , 4030);
+define('PASSPORT_CODE_CODE'                   , 4031);
+define('SALARY_CODE'                          , 4032);
+define('LOCATION_AR_CODE'                     , 4033);
+define('LOCATION_EN_CODE'                     , 4034);
+define('DATE_OF_BRITH_REQUIRED_CODE'          , 4035);
+define('DATE_OF_BRITH_DATE_CODE'              , 4036);
+define('JOIN_DATE_REQUIRED_CODE'              , 4037);
+define('JOIN_DATE_DATE_CODE'                  , 4038);
+define('COUNTRY_ID_REQUIRED_CODE'             , 4039);
+define('COUNTRY_ID_EXISTS_CODE'               , 4040);
+define('GENDER_ID_REQUIRED_CODE'              , 4041);
+define('GENDER_ID_EXISTS_CODE'                , 4042);
+define('REIGON_ID_REQUIRED_CODE'              , 4043);
+define('REIGON_ID_EXISTS_CODE'                , 4044);
+define('MATERIL_STATUS_ID_REQUIRED_CODE'      , 4045);
+define('MATERIL_STATUS_ID_EXISTS_CODE'        , 4046);
+define('WORK_TYPE_ID_REQUIRED_CODE'           , 4047);
+define('WORK_TYPE_ID_EXISTS_CODE'             , 4048);
+define('CONTRACT_TYPE_ID_REQUIRED_CODE'       , 4049);
+define('CONTRACT_TYPE_ID_EXISTS_CODE'         , 4050);
+define('DIRECTORY_ID_NULLABLE_CODE'           , 4051);
+define('DIRECTORY_ID_EXISTS_CODE'             , 4052);
+define('PHOTO_FILE_CODE'                      , 4053);
+define('IS_DIRECTORY_REQUIRED_CODE'           , 4054);
+define('IS_DIRECTORY_BOOLEAN_CODE'            , 4055);
+define('STORE_USER_SUCCESS_CODE'              , 4056);
+define('UPDATE_PROFILE_SUCCESS_CODE'          , 4057);
 
 
 
@@ -61,6 +98,7 @@ define('MESSAGE_NOT_FOUND_CODE'              , 9005);
 define('MESSAGE_CODE_ERROR_CODE'             , 9006);
 define('OTP_INVALID_CODE'                    , 9007);
 define('EXPIRE_TIME_INVALID_CODE'            , 9008);
+define('DATA_ERROR_CODE'                     , 9009);
 
 
 

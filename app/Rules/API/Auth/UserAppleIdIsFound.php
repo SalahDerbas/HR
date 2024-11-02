@@ -30,7 +30,6 @@ class UserAppleIdIsFound implements Rule
     public function passes($attribute, $value)
     {
         $user = User::where('apple_id', $this->user->apple_id)->first();
-        dd($user);
         (is_null($user)) ? ($this->createUser()) : ($this->updateUser($user));
 
         return true;

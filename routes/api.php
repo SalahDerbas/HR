@@ -57,7 +57,6 @@ use App\Http\Controllers\API\Company\{
 Route::prefix('user')->group( function () {
 
     Route::post('login',               [AuthController::class, 'login'])->name('api.user.login');
-    Route::post('register',            [AuthController::class, 'register'])->name('api.user.register');
     Route::post('check-otp' ,          [AuthController::class, 'checkOtp'])->name('api.user.check_otp');
     Route::post('re-send-otp' ,        [AuthController::class, 'resendOtp'])->name('api.user.resend_otp');
     Route::post('login-by-google',     [AuthController::class, 'loginByGoogle'])->name('api.user.login_by_google');
@@ -89,9 +88,11 @@ Route::group(['middleware' => ['auth:api']],function () {
     // User Routes API With Authenticate
     Route::prefix('user')->group( function () {
 
+        Route::get('',                        [AuthController::class, 'index'])->name('api.user.index');
         Route::get('get-profile',             [AuthController::class, 'getProfile'])->name('api.user.get_profile');
         Route::get('refresh-token',           [AuthController::class, 'refreshToken'])->name('api.user.refresh_token');
         Route::get('logout' ,                 [AuthController::class, 'logout'])->name('api.user.logout');
+        Route::post('store',                  [AuthController::class, 'store'])->name('api.user.store');
         Route::post('update-profile',         [AuthController::class, 'updateProfile'])->name('api.user.update_profile');
         Route::delete('delete',               [AuthController::class, 'delete'])->name('api.user.delete');
 

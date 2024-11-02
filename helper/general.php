@@ -60,7 +60,52 @@ function getStatusText($responseCode){
             OTP_INVALID_CODE                      => trans('api_response.OTP_INVALID_CODE'),
             EXPIRE_TIME_INVALID_CODE              => trans('api_response.EXPIRE_TIME_INVALID_CODE'),
             CHECK_OTP_SUCCESS_CODE                => trans('api_response.CHECK_OTP_SUCCESS_CODE'),
-            APPLE_ID_FAILED_CODE                  => trans('api_response.APPLE_ID_FAILED_CODE')
+            APPLE_ID_FAILED_CODE                  => trans('api_response.APPLE_ID_FAILED_CODE'),
+            RESET_NEW_PASSWOED_CODE               => trans('api_response.RESET_NEW_PASSWOED_CODE'),
+            GET_PROFILE_CODE                      => trans('api_response.GET_PROFILE_CODE'),
+            REFRESH_TOKEN_CODE                    => trans('api_response.REFRESH_TOKEN_CODE'),
+            USER_LOGOUT_CODE                      => trans('api_response.USER_LOGOUT_CODE'),
+            NAME_AR_CODE                          => trans('api_response.NAME_AR_CODE'),
+            NAME_EN_CODE                          => trans('api_response.NAME_EN_CODE'),
+            PHONE_CODE                            => trans('api_response.PHONE_CODE'),
+            ID_CODE_CODE                          => trans('api_response.ID_CODE_CODE'),
+            PASSPORT_CODE_CODE                    => trans('api_response.PASSPORT_CODE_CODE'),
+            SALARY_CODE                           => trans('api_response.SALARY_CODE'),
+            LOCATION_AR_CODE                      => trans('api_response.LOCATION_AR_CODE'),
+            LOCATION_EN_CODE                      => trans('api_response.LOCATION_EN_CODE'),
+            DATE_OF_BRITH_REQUIRED_CODE           => trans('api_response.DATE_OF_BRITH_REQUIRED_CODE'),
+            DATE_OF_BRITH_DATE_CODE               => trans('api_response.DATE_OF_BRITH_DATE_CODE'),
+            JOIN_DATE_REQUIRED_CODE               => trans('api_response.JOIN_DATE_REQUIRED_CODE'),
+            JOIN_DATE_DATE_CODE                   => trans('api_response.JOIN_DATE_DATE_CODE'),
+            COUNTRY_ID_REQUIRED_CODE              => trans('api_response.COUNTRY_ID_REQUIRED_CODE'),
+            COUNTRY_ID_EXISTS_CODE                => trans('api_response.COUNTRY_ID_EXISTS_CODE'),
+            GENDER_ID_REQUIRED_CODE               => trans('api_response.GENDER_ID_REQUIRED_CODE'),
+            GENDER_ID_EXISTS_CODE                 => trans('api_response.GENDER_ID_EXISTS_CODE'),
+            REIGON_ID_REQUIRED_CODE               => trans('api_response.REIGON_ID_REQUIRED_CODE'),
+            REIGON_ID_EXISTS_CODE                 => trans('api_response.REIGON_ID_EXISTS_CODE'),
+            MATERIL_STATUS_ID_REQUIRED_CODE       => trans('api_response.MATERIL_STATUS_ID_REQUIRED_CODE'),
+            MATERIL_STATUS_ID_EXISTS_CODE         => trans('api_response.MATERIL_STATUS_ID_EXISTS_CODE'),
+            WORK_TYPE_ID_REQUIRED_CODE            => trans('api_response.WORK_TYPE_ID_REQUIRED_CODE'),
+            WORK_TYPE_ID_EXISTS_CODE              => trans('api_response.WORK_TYPE_ID_EXISTS_CODE'),
+            CONTRACT_TYPE_ID_REQUIRED_CODE        => trans('api_response.CONTRACT_TYPE_ID_REQUIRED_CODE'),
+            CONTRACT_TYPE_ID_EXISTS_CODE          => trans('api_response.CONTRACT_TYPE_ID_EXISTS_CODE'),
+            DIRECTORY_ID_NULLABLE_CODE            => trans('api_response.DIRECTORY_ID_NULLABLE_CODE'),
+            DIRECTORY_ID_EXISTS_CODE              => trans('api_response.DIRECTORY_ID_EXISTS_CODE'),
+            PHOTO_FILE_CODE                       => trans('api_response.PHOTO_FILE_CODE'),
+            IS_DIRECTORY_REQUIRED_CODE            => trans('api_response.IS_DIRECTORY_REQUIRED_CODE'),
+            IS_DIRECTORY_BOOLEAN_CODE             => trans('api_response.IS_DIRECTORY_BOOLEAN_CODE'),
+            STORE_USER_SUCCESS_CODE               => trans('api_response.STORE_USER_SUCCESS_CODE'),
+            UPDATE_PROFILE_SUCCESS_CODE           => trans('api_response.UPDATE_PROFILE_SUCCESS_CODE'),
+            DATA_ERROR_CODE                       => trans('api_response.DATA_ERROR_CODE'),
+            DELETE_ACCONT_CODE                    => trans('api_response.DELETE_ACCONT_CODE'),
+            LIST_USERS_SUCCESS_CODE               => trans('api_response.LIST_USERS_SUCCESS_CODE'),
+
+
+
+
+
+
+
 
 
 
