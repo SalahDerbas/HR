@@ -26,4 +26,8 @@ class Vacation extends Model
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }
+    public function getVacationType(){
+        return $this->hasOne(Lookup::class, 'id', 'type_vacation_id');
+
+    }
 }

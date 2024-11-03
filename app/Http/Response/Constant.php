@@ -21,7 +21,9 @@ define('REFRESH_TOKEN_CODE'                   , 1016);
 define('USER_LOGOUT_CODE'                     , 1017);
 define('DELETE_ACCONT_CODE'                   , 1018);
 define('LIST_USERS_SUCCESS_CODE'              , 1019);
-
+define('VACATION_EMPTY_CODE'                  , 1020);
+define('VACATIONS_SUCCESS_CODE'               , 1021);
+define('STORE_LEAVE_SUCCESS_CODE'             , 1022);
 
 
 
@@ -53,7 +55,6 @@ define('BODY_EN_REQUIRED_CODE'                , 4023);
 define('BODY_AR_REQUIRED_CODE'                , 4024);
 define('USERS_STRING_CODE'                    , 4025);
 define('APPLE_ID_FAILED_CODE'                 , 4026);
-
 define('NAME_AR_CODE'                         , 4027);
 define('NAME_EN_CODE'                         , 4028);
 define('PHONE_CODE'                           , 4029);
@@ -85,6 +86,47 @@ define('IS_DIRECTORY_REQUIRED_CODE'           , 4054);
 define('IS_DIRECTORY_BOOLEAN_CODE'            , 4055);
 define('STORE_USER_SUCCESS_CODE'              , 4056);
 define('UPDATE_PROFILE_SUCCESS_CODE'          , 4057);
+
+
+define('START_DATE_REQUIRED_CODE'             , 4058);
+define('START_DATE_DATE_CODE'                 , 4059);
+define('END_DATE_REQUIRED_CODE'               , 4060);
+define('END_DATE_DATE_CODE'                   , 4060);
+define('REASON_REQUIRED_CODE'                 , 4061);
+define('TYPE_VACATION_ID_REQUIRED_CODE'       , 4062);
+define('TYPE_VACATION_ID_EXISTS_CODE'         , 4063);
+define('DOCUMENT_REQUIRED_CODE'               , 4064);
+define('DOCUMENT_FILE_CODE'                   , 4065);
+define('STORE_VACATION_SUCCESS_CODE'          , 4066);
+define('UPDATE_VACATION_SUCCESS_CODE'         , 4067);
+define('DELETE_VACATION_CODE'                 , 4068);
+define('MISSING_PUNCH_EMPTY_CODE'             , 4069);
+define('MISSING_PUNCHS_SUCCESS_CODE'          , 4070);
+
+define('DATE_REQUIRED_CODE'                   , 4070);
+define('DATE_DATE_CODE'                       , 4071);
+define('TYPE_MISSINGPUNCH_ID_REQUIRED_CODE'   , 4072);
+define('TYPE_MISSINGPUNCH_ID_EXISTS_CODE'     , 4073);
+define('TIME_REQUIRED_CODE'                   , 4074);
+define('STORE_MISSING_PUNCH_SUCCESS_CODE'     , 4075);
+define('UPDATE_MISSING_PUNCH_SUCCESS_CODE'    , 4076);
+define('DELETE_MISSING_PUNCH_CODE'            , 4077);
+define('LEAVE_EMPTY_CODE'                     , 4078);
+define('LEAVES_SUCCESS_CODE'                  , 4079);
+define('START_TIME_REQUIRED_CODE'             , 4080);
+define('END_TIME_REQUIRED_CODE'               , 4081);
+define('TYPE_REASON_LEAVE_ID_REQUIRED_CODE'   , 4082);
+define('TYPE_REASON_LEAVE_ID_EXISTS_CODE'     , 4083);
+define('END_TIME_REQUIRED_CODE'               , 4084);
+define('END_TIME_REQUIRED_CODE'               , 4085);
+define('END_TIME_REQUIRED_CODE'               , 4086);
+define('END_TIME_REQUIRED_CODE'               , 4087);
+define('END_TIME_REQUIRED_CODE'               , 4088);
+define('END_TIME_REQUIRED_CODE'               , 4089);
+define('END_TIME_REQUIRED_CODE'               , 4090);
+define('END_TIME_REQUIRED_CODE'               , 4091);
+define('END_TIME_REQUIRED_CODE'               , 4092);
+define('END_TIME_REQUIRED_CODE'               , 4093);
 
 
 

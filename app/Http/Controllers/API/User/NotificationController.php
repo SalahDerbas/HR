@@ -23,12 +23,16 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $data = Pushnotification::where('user_id' , Auth::id())->get();
+        try{
+            $data = Pushnotification::where('user_id' , Auth::id())->get();
 
-        if($data->isEmpty())
-            return responseSuccess('', getStatusText(NOTIFICATION_EMPTY_CODE), NOTIFICATION_EMPTY_CODE);
+            if($data->isEmpty())
+                return responseSuccess('', getStatusText(NOTIFICATION_EMPTY_CODE), NOTIFICATION_EMPTY_CODE);
 
-        return responseSuccess(NotificationResource::collection($data) , getStatusText(NOTIFICATIONS_SUCCESS_CODE)  , NOTIFICATIONS_SUCCESS_CODE );
+            return responseSuccess(NotificationResource::collection($data) , getStatusText(NOTIFICATIONS_SUCCESS_CODE)  , NOTIFICATIONS_SUCCESS_CODE );
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -38,13 +42,17 @@ class NotificationController extends Controller
      */
     public function updateEnable()
     {
-        $user = User::find(Auth::id())->whereNotNull('fcm_token')->first();
-        if (is_null($user))
-            return responseError(getStatusText(USER_NOT_FOUND_CODE), Response::HTTP_UNPROCESSABLE_ENTITY ,USER_NOT_FOUND_CODE);
+        try{
+            $user = User::find(Auth::id())->whereNotNull('fcm_token')->first();
+            if (is_null($user))
+                return responseError(getStatusText(USER_NOT_FOUND_CODE), Response::HTTP_UNPROCESSABLE_ENTITY ,USER_NOT_FOUND_CODE);
 
-        $user->enable_notification = !$user->enable_notification;
-        $user->save();
-        return responseSuccess((boolean)$user->enable_notification, getStatusText(ENABLED_NOTIFICATION_SUCCESS_CODE)  , ENABLED_NOTIFICATION_SUCCESS_CODE );
+            $user->enable_notification = !$user->enable_notification;
+            $user->save();
+            return responseSuccess((boolean)$user->enable_notification, getStatusText(ENABLED_NOTIFICATION_SUCCESS_CODE)  , ENABLED_NOTIFICATION_SUCCESS_CODE );
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
 
@@ -111,15 +119,19 @@ class NotificationController extends Controller
      */
     public function send(NotificationRequest $request)
     {
-        $userIds = explode(',', $request->ids);
-        $fcmTokens = User::whereIn('id', $userIds)->where('fcm_token', '!=', null)->where('enable_notification', true)->pluck('fcm_token')->toArray();
+        try{
+            $userIds = explode(',', $request->ids);
+            $fcmTokens = User::whereIn('id', $userIds)->where('fcm_token', '!=', null)->where('enable_notification', true)->pluck('fcm_token')->toArray();
 
-        if (collect($fcmTokens)->isEmpty())
-            return responseSuccess([], getStatusText(NOTIFICATION_EMPTY_CODE), NOTIFICATION_EMPTY_CODE);
+            if (collect($fcmTokens)->isEmpty())
+                return responseSuccess([], getStatusText(NOTIFICATION_EMPTY_CODE), NOTIFICATION_EMPTY_CODE);
 
-        $this->pushNotificationByFirebase($fcmTokens, $request);
+            $this->pushNotificationByFirebase($fcmTokens, $request);
 
-        return responseSuccess('', getStatusText(SEND_NOTIFICATION_SUCCESS_CODE), SEND_NOTIFICATION_SUCCESS_CODE);
+            return responseSuccess('', getStatusText(SEND_NOTIFICATION_SUCCESS_CODE), SEND_NOTIFICATION_SUCCESS_CODE);
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
 

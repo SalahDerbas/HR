@@ -107,9 +107,9 @@ Route::group(['middleware' => ['auth:api']],function () {
 
         // Common resource routes for HR-related entities
         $entities = [
-                'vacation'            => VacationController::class,
-                'missing-punches'     => MissingPunchsController::class,
-                'leave'               => LeaveController::class,
+                // 'vacation'            => \App\Http\Controllers\API\User\VacationController::class,
+                // 'missing-punches'     => MissingPunchsController::class,
+                // 'leave'               => LeaveController::class,
                 'experience'          => ExperienceController::class,
                 'event'               => EventController::class,
                 'document'            => DocumentController::class,
@@ -117,8 +117,36 @@ Route::group(['middleware' => ['auth:api']],function () {
                 'attendance'          => AttendanceController::class,
                 'asset'               => AssetController::class,
         ];
+        Route::prefix('vacation')->group( function () {
+
+            Route::get('' ,         [VacationController::class , 'index'])->name("api.user.vacation.index");
+            Route::get('{id}' ,     [VacationController::class , 'show'])->name("api.user.vacation.show");
+            Route::post('' ,        [VacationController::class , 'store'])->name("api.user.vacation.store");
+            Route::post('{id}' ,    [VacationController::class , 'update'])->name("api.user.vacation.update");
+            Route::delete('{id}' ,  [VacationController::class , 'destroy'])->name("api.user.vacation.destroy");
+        });
+
+        Route::prefix('missing-punches')->group( function () {
+
+            Route::get('' ,         [MissingPunchsController::class , 'index'])->name("api.user.missing_punches.index");
+            Route::get('{id}' ,     [MissingPunchsController::class , 'show'])->name("api.user.missing_punches.show");
+            Route::post('' ,        [MissingPunchsController::class , 'store'])->name("api.user.missing_punches.store");
+            Route::post('{id}' ,    [MissingPunchsController::class , 'update'])->name("api.user.missing_punches.update");
+            Route::delete('{id}' ,  [MissingPunchsController::class , 'destroy'])->name("api.user.missing_punches.destroy");
+        });
+
+        Route::prefix('leave')->group( function () {
+
+            Route::get('' ,         [LeaveController::class , 'index'])->name("api.user.leave.index");
+            Route::get('{id}' ,     [LeaveController::class , 'show'])->name("api.user.leave.show");
+            Route::post('' ,        [LeaveController::class , 'store'])->name("api.user.leave.store");
+            Route::post('{id}' ,    [LeaveController::class , 'update'])->name("api.user.leave.update");
+            Route::delete('{id}' ,  [LeaveController::class , 'destroy'])->name("api.user.leave.destroy");
+        });
 
         foreach ($entities as $entity => $controller) {
+            Route::get($entity , [$controller , 'index'])->name("api.user.$entity.index");
+
             Route::resource($entity, $controller,
             ['names' => [
                             'index'   => "api.user.$entity.index",

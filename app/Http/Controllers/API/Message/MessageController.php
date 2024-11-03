@@ -23,10 +23,14 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages  = getStatusText(ALL_MESSAGE_CODE);
-        $data      = array_map(fn($message, $code) => ['code' => $code, 'message' => $message], $messages, array_keys($messages));
+        try{
+            $messages  = getStatusText(ALL_MESSAGE_CODE);
+            $data      = array_map(fn($message, $code) => ['code' => $code, 'message' => $message], $messages, array_keys($messages));
 
-        return responseSuccess(MessageResource::collection($data), getStatusText(MESSAGE_CODE_SUCCESS_CODE), MESSAGE_CODE_SUCCESS_CODE);
+            return responseSuccess(MessageResource::collection($data), getStatusText(MESSAGE_CODE_SUCCESS_CODE), MESSAGE_CODE_SUCCESS_CODE);
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -42,10 +46,15 @@ class MessageController extends Controller
      */
     public function show($code)
     {
-        $message = getStatusText($code);
-        if ($message == MESSAGE_NOT_FOUND_CODE)
-            return respondNotFound(getStatusText(MESSAGE_CODE_ERROR_CODE), Response::HTTP_NOT_FOUND, MESSAGE_CODE_ERROR_CODE);
+        try{
+            $message = getStatusText($code);
+            if ($message == MESSAGE_NOT_FOUND_CODE)
+                return respondNotFound(getStatusText(MESSAGE_CODE_ERROR_CODE), Response::HTTP_NOT_FOUND, MESSAGE_CODE_ERROR_CODE);
 
-        return responseSuccess(new MessageResource(['code' => $code, 'message' => $message]), getStatusText(MESSAGE_CODE_SUCCESS_CODE), MESSAGE_CODE_SUCCESS_CODE);
+            return responseSuccess(new MessageResource(['code' => $code, 'message' => $message]), getStatusText(MESSAGE_CODE_SUCCESS_CODE), MESSAGE_CODE_SUCCESS_CODE);
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
+
     }
 }

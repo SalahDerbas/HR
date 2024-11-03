@@ -5,8 +5,9 @@ namespace App\Http\Requests\API\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Http\Requests\API\BaseRequest;
 
-class NotificationRequest extends FormRequest
+class NotificationRequest extends BaseRequest
 {
     private const ROUTE_NOTIFICATION_SEND     = 'api.company.notification.send';
 

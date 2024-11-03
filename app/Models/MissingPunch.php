@@ -21,4 +21,8 @@ class MissingPunch extends Model
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }
+    public function getMissingPunchType(){
+        return $this->hasOne(Lookup::class, 'id', 'type_missing_punch_id');
+
+    }
 }

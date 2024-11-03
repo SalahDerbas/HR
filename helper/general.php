@@ -99,6 +99,42 @@ function getStatusText($responseCode){
             DATA_ERROR_CODE                       => trans('api_response.DATA_ERROR_CODE'),
             DELETE_ACCONT_CODE                    => trans('api_response.DELETE_ACCONT_CODE'),
             LIST_USERS_SUCCESS_CODE               => trans('api_response.LIST_USERS_SUCCESS_CODE'),
+            VACATION_EMPTY_CODE                   => trans('api_response.VACATION_EMPTY_CODE'),
+            VACATIONS_SUCCESS_CODE                => trans('api_response.VACATIONS_SUCCESS_CODE'),
+            START_DATE_REQUIRED_CODE              => trans('api_response.START_DATE_REQUIRED_CODE'),
+            START_DATE_DATE_CODE                  => trans('api_response.START_DATE_DATE_CODE'),
+            END_DATE_REQUIRED_CODE                => trans('api_response.END_DATE_REQUIRED_CODE'),
+            END_DATE_DATE_CODE                    => trans('api_response.END_DATE_DATE_CODE'),
+            REASON_REQUIRED_CODE                  => trans('api_response.REASON_REQUIRED_CODE'),
+            TYPE_VACATION_ID_REQUIRED_CODE        => trans('api_response.TYPE_VACATION_ID_REQUIRED_CODE'),
+            TYPE_VACATION_ID_EXISTS_CODE          => trans('api_response.TYPE_VACATION_ID_EXISTS_CODE'),
+            DOCUMENT_REQUIRED_CODE                => trans('api_response.DOCUMENT_REQUIRED_CODE'),
+            DOCUMENT_FILE_CODE                    => trans('api_response.DOCUMENT_FILE_CODE'),
+            STORE_VACATION_SUCCESS_CODE           => trans('api_response.STORE_VACATION_SUCCESS_CODE'),
+            UPDATE_VACATION_SUCCESS_CODE          => trans('api_response.UPDATE_VACATION_SUCCESS_CODE'),
+            DELETE_VACATION_CODE                  => trans('api_response.DELETE_VACATION_CODE'),
+            MISSING_PUNCH_EMPTY_CODE              => trans('api_response.MISSING_PUNCH_EMPTY_CODE'),
+            MISSING_PUNCHS_SUCCESS_CODE           => trans('api_response.MISSING_PUNCHS_SUCCESS_CODE'),
+            DATE_REQUIRED_CODE                    => trans('api_response.DATE_REQUIRED_CODE'),
+            DATE_DATE_CODE                        => trans('api_response.DATE_DATE_CODE'),
+            TYPE_MISSINGPUNCH_ID_REQUIRED_CODE    => trans('api_response.TYPE_MISSINGPUNCH_ID_REQUIRED_CODE'),
+            TYPE_MISSINGPUNCH_ID_EXISTS_CODE      => trans('api_response.TYPE_MISSINGPUNCH_ID_EXISTS_CODE'),
+            TIME_REQUIRED_CODE                    => trans('api_response.TIME_REQUIRED_CODE'),
+            STORE_MISSING_PUNCH_SUCCESS_CODE      => trans('api_response.STORE_MISSING_PUNCH_SUCCESS_CODE'),
+            UPDATE_MISSING_PUNCH_SUCCESS_CODE     => trans('api_response.UPDATE_MISSING_PUNCH_SUCCESS_CODE'),
+            DELETE_MISSING_PUNCH_CODE             => trans('api_response.DELETE_MISSING_PUNCH_CODE'),
+            LEAVE_EMPTY_CODE                      => trans('api_response.LEAVE_EMPTY_CODE'),
+            LEAVES_SUCCESS_CODE                   => trans('api_response.LEAVES_SUCCESS_CODE'),
+            START_TIME_REQUIRED_CODE              => trans('api_response.START_TIME_REQUIRED_CODE'),
+            END_TIME_REQUIRED_CODE                => trans('api_response.END_TIME_REQUIRED_CODE'),
+            TYPE_REASON_LEAVE_ID_REQUIRED_CODE    => trans('api_response.TYPE_REASON_LEAVE_ID_REQUIRED_CODE'),
+            TYPE_REASON_LEAVE_ID_EXISTS_CODE      => trans('api_response.TYPE_REASON_LEAVE_ID_EXISTS_CODE'),
+            STORE_LEAVE_SUCCESS_CODE              => trans('api_response.STORE_LEAVE_SUCCESS_CODE'),
+
+
+
+
+
 
 
 

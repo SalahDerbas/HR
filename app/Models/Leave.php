@@ -22,4 +22,12 @@ class Leave extends Model
         return $this->belongsTo(User::class , 'user_id');
     }
 
+    public function getReasonLeave(){
+        return $this->hasOne(Lookup::class, 'id', 'reason_leave_id');
+    }
+
+    public function getStatusLeave(){
+        return $this->hasOne(Lookup::class, 'id', 'status_leave_id');
+    }
+
 }

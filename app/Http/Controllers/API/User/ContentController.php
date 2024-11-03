@@ -22,18 +22,12 @@ class ContentController extends Controller
      */
     private function getContentData($key)
     {
-        // Lookup the type ID using the provided key
         $typeID = getIDLookups($key);
 
-        // Fetch the content based on type ID and status
         $data = Content::where(['type_id' => $typeID, 'status' => 1])->first();
-
-        // If no content is found, return an appropriate success response with an empty message
-        if (is_null($data)) {
+        if (is_null($data))
             return responseSuccess('', getStatusText(CONTENT_EMPTY_CODE), CONTENT_EMPTY_CODE);
-        }
 
-        // Return the found content wrapped in a resource, along with success status
         return responseSuccess(new ContentResource($data), getStatusText(CONTENT_SUCCESS_CODE), CONTENT_SUCCESS_CODE);
     }
 
@@ -44,7 +38,11 @@ class ContentController extends Controller
      */
     public function getTermsConditions()
     {
-        return $this->getContentData('terms_conditions');
+        try{
+            return $this->getContentData('terms_conditions');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -54,7 +52,11 @@ class ContentController extends Controller
      */
     public function getPrivacyPolicy()
     {
-        return $this->getContentData('privacy_policy');
+        try{
+            return $this->getContentData('privacy_policy');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -64,7 +66,11 @@ class ContentController extends Controller
      */
     public function getAboutUs()
     {
-        return $this->getContentData('about_us');
+        try{
+            return $this->getContentData('about_us');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -74,7 +80,11 @@ class ContentController extends Controller
      */
     public function getFAQ()
     {
-        return $this->getContentData('FAQ');
+        try{
+            return $this->getContentData('FAQ');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -84,7 +94,11 @@ class ContentController extends Controller
      */
     public function getSliders()
     {
-        return $this->getContentData('sliders');
+        try{
+            return $this->getContentData('sliders');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -95,9 +109,13 @@ class ContentController extends Controller
 
     public function contactUs(ContentRequest $request)
     {
-        $data =  $request->all();
-        Mail::to( env('MAIL_HOST_SUPPORT') )->send(new SendContactUsMail($data));
+        try{
+            $data =  $request->all();
+            Mail::to( env('MAIL_HOST_SUPPORT') )->send(new SendContactUsMail($data));
 
-        return responseSuccess('', getStatusText(CONTACT_US_SUCCESS_CODE), CONTACT_US_SUCCESS_CODE);
+            return responseSuccess('', getStatusText(CONTACT_US_SUCCESS_CODE), CONTACT_US_SUCCESS_CODE);
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 }

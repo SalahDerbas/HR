@@ -20,8 +20,12 @@ class LookupController extends Controller
      */
     public function countries()
     {
-        $countries    = Country::all();
-        return responseSuccess( CountryResource::collection($countries) , getStatusText(LOOKUPS_SUCCESS_CODE)  , LOOKUPS_SUCCESS_CODE );
+        try{
+            $countries    = Country::all();
+            return responseSuccess( CountryResource::collection($countries) , getStatusText(LOOKUPS_SUCCESS_CODE)  , LOOKUPS_SUCCESS_CODE );
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -31,7 +35,11 @@ class LookupController extends Controller
      */
     public function genders()
     {
-        return $this->fetchLookupByCode('U-Gender');
+        try{
+            return $this->fetchLookupByCode('U-Gender');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -41,7 +49,11 @@ class LookupController extends Controller
      */
     public function regions()
     {
-        return $this->fetchLookupByCode('U-Reigon');
+        try{
+            return $this->fetchLookupByCode('U-Reigon');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -51,7 +63,11 @@ class LookupController extends Controller
      */
     public function materialStatus()
     {
-        return $this->fetchLookupByCode('U-MaterialStatus');
+        try{
+            return $this->fetchLookupByCode('U-MaterialStatus');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -61,7 +77,11 @@ class LookupController extends Controller
      */
     public function workTypes()
     {
-        return $this->fetchLookupByCode('U-Worktype');
+        try{
+            return $this->fetchLookupByCode('U-Worktype');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -71,7 +91,11 @@ class LookupController extends Controller
      */
     public function contractTypes()
     {
-        return $this->fetchLookupByCode('U-ContractType');
+        try{
+            return $this->fetchLookupByCode('U-ContractType');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -81,7 +105,11 @@ class LookupController extends Controller
      */
     public function statusUser()
     {
-        return $this->fetchLookupByCode('U-StatusUser');
+        try{
+            return $this->fetchLookupByCode('U-StatusUser');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**
@@ -91,7 +119,11 @@ class LookupController extends Controller
      */
     public function statusAttendance()
     {
-        return $this->fetchLookupByCode('U-StatusAttendance');
+        try{
+            return $this->fetchLookupByCode('U-StatusAttendance');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
      /**
      * Returns a collection of reason leave lookups.
@@ -100,7 +132,11 @@ class LookupController extends Controller
      */
     public function reasonLeave()
     {
-        return $this->fetchLookupByCode('U-ReasonLeave');
+        try{
+            return $this->fetchLookupByCode('U-ReasonLeave');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
      /**
      * Returns a collection of leave status lookups.
@@ -109,7 +145,11 @@ class LookupController extends Controller
      */
     public function statusLeave()
     {
-        return $this->fetchLookupByCode('U-StatusLeave');
+        try{
+            return $this->fetchLookupByCode('U-StatusLeave');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
      /**
      * Returns a collection of asset Types lookups.
@@ -118,7 +158,11 @@ class LookupController extends Controller
      */
     public function assetTypes()
     {
-        return $this->fetchLookupByCode('U-TypeAsset');
+        try{
+            return $this->fetchLookupByCode('U-TypeAsset');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
      /**
      * Returns a collection of vacation Types lookups.
@@ -127,7 +171,11 @@ class LookupController extends Controller
      */
     public function vacationTypes()
     {
-        return $this->fetchLookupByCode('U-TypeVacation');
+        try{
+            return $this->fetchLookupByCode('U-TypeVacation');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
      /**
      * Returns a collection of missingPunch Types lookups.
@@ -136,7 +184,11 @@ class LookupController extends Controller
      */
     public function missingPunchTypes()
     {
-        return $this->fetchLookupByCode('U-TypeMissingPunch');
+        try{
+            return $this->fetchLookupByCode('U-TypeMissingPunch');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
      /**
      * Returns a collection of document Types lookups.
@@ -145,7 +197,11 @@ class LookupController extends Controller
      */
     public function documentTypes()
     {
-        return $this->fetchLookupByCode('U-TypeDocument');
+        try{
+            return $this->fetchLookupByCode('U-TypeDocument');
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
     }
 
     /**

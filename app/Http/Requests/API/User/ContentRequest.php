@@ -5,8 +5,9 @@ namespace App\Http\Requests\API\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Http\Requests\API\BaseRequest;
 
-class ContentRequest extends FormRequest
+class ContentRequest extends BaseRequest
 {
     private const ROUTE_CONTACT_US     = 'api.content.contact_us';
 
