@@ -134,7 +134,7 @@ class LeaveRequest extends BaseRequest
                 $messages['doucument.required']            => DOCUMENT_REQUIRED_CODE,
                 $messages['doucument.file']                => DOCUMENT_FILE_CODE,
             ],
-            self::ROUTE_VACATION_UPDATE => [
+            self::ROUTE_LEAVE_UPDATE => [
 
                 $messages['start_time.required']           => START_TIME_REQUIRED_CODE,
                 $messages['end_time.required']             => END_TIME_REQUIRED_CODE,
