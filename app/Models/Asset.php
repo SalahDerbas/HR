@@ -21,4 +21,8 @@ class Asset extends Model
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }
+
+    public function getAssetType(){
+        return  $this->hasOne(Lookup::class, 'id', 'type_asset_id');
+    }
 }

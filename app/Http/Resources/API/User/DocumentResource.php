@@ -14,6 +14,16 @@ class DocumentResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        parent::toArray($request);
+
+        return [
+            'id'                     => $this['id'],
+            'note'                   => $this['note'],
+            'document'               => $this['document'],
+            'user_id'                => $this['user_id'],
+            'type_document_id'       => isset($this['type_document_id']) ? ((config('app_header.lang') == 'ar') ? $this['getDocumentType']['value_ar'] :$this['getDocumentType']['value_en']) : NULL,
+
+    ];
+
     }
 }

@@ -14,6 +14,14 @@ class CertifiateResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        parent::toArray($request);
+        return [
+                'id'                     => $this['id'],
+                'start_date'             => formatDate($this['start_date']),
+                'end_date'               => formatDate($this['end_date']),
+                'note'                   => $this['note'],
+                'document'               => $this['document'],
+                'user_id'                => $this['user_id'],
+        ];
     }
 }

@@ -105,18 +105,7 @@ Route::group(['middleware' => ['auth:api']],function () {
 
         });
 
-        // Common resource routes for HR-related entities
-        $entities = [
-                // 'vacation'            => \App\Http\Controllers\API\User\VacationController::class,
-                // 'missing-punches'     => MissingPunchsController::class,
-                // 'leave'               => LeaveController::class,
-                // 'experience'          => ExperinceController::class,
-                // 'event'               => EventController::class,
-                // 'document'            => DocumentController::class,
-                // 'certificate'         => CertifiateController::class,
-                'attendance'          => AttendanceController::class,
-                'asset'               => AssetController::class,
-        ];
+
         Route::prefix('vacation')->group( function () {
 
             Route::get('' ,         [VacationController::class , 'index'])->name("api.user.vacation.index");
@@ -180,20 +169,23 @@ Route::group(['middleware' => ['auth:api']],function () {
             Route::delete('{id}' ,  [CertifiateController::class , 'destroy'])->name("api.user.certificate.destroy");
         });
 
+        Route::prefix('attendance')->group( function () {
 
-        foreach ($entities as $entity => $controller) {
-            Route::get($entity , [$controller , 'index'])->name("api.user.$entity.index");
+            Route::get('' ,         [AttendanceController::class , 'index'])->name("api.user.attendance.index");
+            Route::get('{id}' ,     [AttendanceController::class , 'show'])->name("api.user.attendance.show");
+            Route::post('' ,        [AttendanceController::class , 'store'])->name("api.user.attendance.store");
+            Route::post('{id}' ,    [AttendanceController::class , 'update'])->name("api.user.attendance.update");
+            Route::delete('{id}' ,  [AttendanceController::class , 'destroy'])->name("api.user.attendance.destroy");
+        });
 
-            Route::resource($entity, $controller,
-            ['names' => [
-                            'index'   => "api.user.$entity.index",
-                            'show'    => "api.user.$entity.show",
-                            'store'   => "api.user.$entity.store",
-                            'update'  => "api.user.$entity.update",
-                            'destroy' => "api.user.$entity.destroy",
-                        ]
-           ])->except(['create', 'edit']);
-        }
+        Route::prefix('asset')->group( function () {
+
+            Route::get('' ,         [AssetController::class , 'index'])->name("api.user.asset.index");
+            Route::get('{id}' ,     [AssetController::class , 'show'])->name("api.user.asset.show");
+            Route::post('' ,        [AssetController::class , 'store'])->name("api.user.asset.store");
+            Route::post('{id}' ,    [AssetController::class , 'update'])->name("api.user.asset.update");
+            Route::delete('{id}' ,  [AssetController::class , 'destroy'])->name("api.user.asset.destroy");
+        });
 
         // Dashboard Routes API For HR Project
         Route::get('dashboard',                [DashboardController::class, 'index'])->name('api.user.dashboard.index');

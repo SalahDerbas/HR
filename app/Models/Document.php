@@ -21,4 +21,8 @@ class Document extends Model
     public static function getTableName() {
         return with(new static)->getTable();
     }
+    public function getDocumentType(){
+        return $this->hasOne(Lookup::class, 'id', 'type_document_id');
+
+    }
 }

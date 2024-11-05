@@ -46,15 +46,22 @@ define('DEPATMENTS_SUCCESS_CODE'              , 1041);
 define('STORE_DEPATMENT_SUCCESS_CODE'         , 1042);
 define('UPDATE_DEPATMENT_SUCCESS_CODE'        , 1043);
 define('DELETE_DEPATMENT_CODE'                , 1044);
-
-
 define('CERTIFIATE_EMPTY_CODE'                , 1045);
 define('CERTIFIATES_SUCCESS_CODE'             , 1046);
 define('STORE_CERTIFIATE_SUCCESS_CODE'        , 1047);
 define('UPDATE_CERTIFIATE_SUCCESS_CODE'       , 1048);
 define('DELETE_CERTIFIATE_CODE'               , 1050);
+define('ATTENDANCE_EMPTY_CODE'                , 1050);
+define('ATTENDANCES_SUCCESS_CODE'             , 1051);
+define('STORE_ATTENDANCE_SUCCESS_CODE'        , 1052);
+define('UPDATE_ATTENDANCE_SUCCESS_CODE'       , 1053);
+define('DELETE_ATTENDANCE_CODE'               , 1054);
 
-
+define('ASSET_EMPTY_CODE'                     , 1055);
+define('ASSETS_SUCCESS_CODE'                  , 1056);
+define('STORE_ASSET_SUCCESS_CODE'             , 1057);
+define('UPDATE_ASSET_SUCCESS_CODE'            , 1058);
+define('DELETE_ASSET_CODE'                    , 1059);
 
 
 
@@ -157,9 +164,13 @@ define('LEAVE_REASON_REQUIRED_CODE'           , 4087);
 define('NOTE_REQUIRED_CODE'                   , 4088);
 define('TYPE_DOCUMENT_ID_REQUIRED_CODE'       , 4089);
 define('TYPE_DOCUMENT_ID_EXISTS_CODE'         , 4090);
-// define('END_TIME_REQUIRED_CODE'               , 4091);
-// define('END_TIME_REQUIRED_CODE'               , 4092);
-// define('END_TIME_REQUIRED_CODE'               , 4093);
+define('STATUS_ATTENDANCE_ID_REQUIRED_CODE'   , 4091);
+define('STATUS_ATTENDANCE_ID_EXISTS_CODE'     , 4092);
+
+define('AMOUNT_REQUIRED_CODE'                 , 4093);
+define('TYPE_ASSET_ID_EXISTS_CODE'            , 4094);
+define('TYPE_ASSET_ID_REQUIRED_CODE'          , 4095);
+
 
 
 

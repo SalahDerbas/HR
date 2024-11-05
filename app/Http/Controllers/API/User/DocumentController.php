@@ -23,7 +23,7 @@ class DocumentController extends Controller
     public function index()
     {
         try{
-            $data = Document::where(['user_id' => Auth::id() ])->get();
+            $data = Document::where(['user_id' => Auth::id() ])->with(['getDocumentType'])->get();
 
             if($data->isEmpty())
                 return responseSuccess('', getStatusText(DOCUMENT_EMPTY_CODE), DOCUMENT_EMPTY_CODE);
@@ -65,7 +65,7 @@ class DocumentController extends Controller
     public function show($id)
     {
         try{
-            $data = Document::findOrFail($id);
+            $data = Document::with(['getDocumentType'])->findOrFail($id);
 
             if(is_null($data))
                 return responseSuccess('', getStatusText(DOCUMENT_EMPTY_CODE), DOCUMENT_EMPTY_CODE);

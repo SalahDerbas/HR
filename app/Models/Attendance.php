@@ -21,5 +21,8 @@ class Attendance extends Model
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }
+    public function getAttendanceStatusType(){
+        return $this->hasOne(Lookup::class, 'id', 'status_attendance_id');
+    }
 
 }

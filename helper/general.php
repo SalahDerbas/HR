@@ -159,12 +159,27 @@ function getStatusText($responseCode){
             STORE_DEPATMENT_SUCCESS_CODE          => trans('api_response.STORE_DEPATMENT_SUCCESS_CODE'),
             UPDATE_DEPATMENT_SUCCESS_CODE         => trans('api_response.UPDATE_DEPATMENT_SUCCESS_CODE'),
             DELETE_DEPATMENT_CODE                 => trans('api_response.DELETE_DEPATMENT_CODE'),
-
             CERTIFIATE_EMPTY_CODE                 => trans('api_response.CERTIFIATE_EMPTY_CODE'),
             CERTIFIATES_SUCCESS_CODE              => trans('api_response.CERTIFIATES_SUCCESS_CODE'),
             STORE_CERTIFIATE_SUCCESS_CODE         => trans('api_response.STORE_CERTIFIATE_SUCCESS_CODE'),
             UPDATE_CERTIFIATE_SUCCESS_CODE        => trans('api_response.UPDATE_CERTIFIATE_SUCCESS_CODE'),
             DELETE_CERTIFIATE_CODE                => trans('api_response.DELETE_CERTIFIATE_CODE'),
+            ATTENDANCE_EMPTY_CODE                 => trans('api_response.ATTENDANCE_EMPTY_CODE'),
+            ATTENDANCES_SUCCESS_CODE              => trans('api_response.ATTENDANCES_SUCCESS_CODE'),
+            STORE_ATTENDANCE_SUCCESS_CODE         => trans('api_response.STORE_ATTENDANCE_SUCCESS_CODE'),
+            UPDATE_ATTENDANCE_SUCCESS_CODE        => trans('api_response.UPDATE_ATTENDANCE_SUCCESS_CODE'),
+            DELETE_ATTENDANCE_CODE                => trans('api_response.DELETE_ATTENDANCE_CODE'),
+            STATUS_ATTENDANCE_ID_REQUIRED_CODE    => trans('api_response.STATUS_ATTENDANCE_ID_REQUIRED_CODE'),
+            STATUS_ATTENDANCE_ID_EXISTS_CODE      => trans('api_response.STATUS_ATTENDANCE_ID_EXISTS_CODE'),
+            ASSET_EMPTY_CODE                      => trans('api_response.ASSET_EMPTY_CODE'),
+            ASSETS_SUCCESS_CODE                   => trans('api_response.ASSETS_SUCCESS_CODE'),
+            STORE_ASSET_SUCCESS_CODE              => trans('api_response.STORE_ASSET_SUCCESS_CODE'),
+            UPDATE_ASSET_SUCCESS_CODE             => trans('api_response.UPDATE_ASSET_SUCCESS_CODE'),
+            DELETE_ASSET_CODE                     => trans('api_response.DELETE_ASSET_CODE'),
+            AMOUNT_REQUIRED_CODE                  => trans('api_response.AMOUNT_REQUIRED_CODE'),
+            TYPE_ASSET_ID_EXISTS_CODE             => trans('api_response.TYPE_ASSET_ID_EXISTS_CODE'),
+            TYPE_ASSET_ID_REQUIRED_CODE           => trans('api_response.TYPE_ASSET_ID_REQUIRED_CODE'),
+            
 
 
 
