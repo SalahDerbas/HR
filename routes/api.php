@@ -32,10 +32,10 @@ use App\Http\Controllers\API\User\{
     VacationController,
     MissingPunchsController,
     LeaveController,
-    ExperienceController,
+    ExperinceController,
     EventController,
     DocumentController,
-    CertificateController,
+    CertifiateController,
     AttendanceController,
     AssetController,
     DashboardController
@@ -110,10 +110,10 @@ Route::group(['middleware' => ['auth:api']],function () {
                 // 'vacation'            => \App\Http\Controllers\API\User\VacationController::class,
                 // 'missing-punches'     => MissingPunchsController::class,
                 // 'leave'               => LeaveController::class,
-                'experience'          => ExperienceController::class,
-                'event'               => EventController::class,
-                'document'            => DocumentController::class,
-                'certificate'         => CertificateController::class,
+                // 'experience'          => ExperinceController::class,
+                // 'event'               => EventController::class,
+                // 'document'            => DocumentController::class,
+                // 'certificate'         => CertifiateController::class,
                 'attendance'          => AttendanceController::class,
                 'asset'               => AssetController::class,
         ];
@@ -143,6 +143,43 @@ Route::group(['middleware' => ['auth:api']],function () {
             Route::post('{id}' ,    [LeaveController::class , 'update'])->name("api.user.leave.update");
             Route::delete('{id}' ,  [LeaveController::class , 'destroy'])->name("api.user.leave.destroy");
         });
+
+        Route::prefix('experince')->group( function () {
+
+            Route::get('' ,         [ExperinceController::class , 'index'])->name("api.user.experince.index");
+            Route::get('{id}' ,     [ExperinceController::class , 'show'])->name("api.user.experince.show");
+            Route::post('' ,        [ExperinceController::class , 'store'])->name("api.user.experince.store");
+            Route::post('{id}' ,    [ExperinceController::class , 'update'])->name("api.user.experince.update");
+            Route::delete('{id}' ,  [ExperinceController::class , 'destroy'])->name("api.user.experince.destroy");
+        });
+
+        Route::prefix('event')->group( function () {
+
+            Route::get('' ,         [EventController::class , 'index'])->name("api.user.event.index");
+            Route::get('{id}' ,     [EventController::class , 'show'])->name("api.user.event.show");
+            Route::post('' ,        [EventController::class , 'store'])->name("api.user.event.store");
+            Route::post('{id}' ,    [EventController::class , 'update'])->name("api.user.event.update");
+            Route::delete('{id}' ,  [EventController::class , 'destroy'])->name("api.user.event.destroy");
+        });
+
+        Route::prefix('document')->group( function () {
+
+            Route::get('' ,         [DocumentController::class , 'index'])->name("api.user.document.index");
+            Route::get('{id}' ,     [DocumentController::class , 'show'])->name("api.user.document.show");
+            Route::post('' ,        [DocumentController::class , 'store'])->name("api.user.document.store");
+            Route::post('{id}' ,    [DocumentController::class , 'update'])->name("api.user.document.update");
+            Route::delete('{id}' ,  [DocumentController::class , 'destroy'])->name("api.user.document.destroy");
+        });
+
+        Route::prefix('certificate')->group( function () {
+
+            Route::get('' ,         [CertifiateController::class , 'index'])->name("api.user.certificate.index");
+            Route::get('{id}' ,     [CertifiateController::class , 'show'])->name("api.user.certificate.show");
+            Route::post('' ,        [CertifiateController::class , 'store'])->name("api.user.certificate.store");
+            Route::post('{id}' ,    [CertifiateController::class , 'update'])->name("api.user.certificate.update");
+            Route::delete('{id}' ,  [CertifiateController::class , 'destroy'])->name("api.user.certificate.destroy");
+        });
+
 
         foreach ($entities as $entity => $controller) {
             Route::get($entity , [$controller , 'index'])->name("api.user.$entity.index");
@@ -178,8 +215,14 @@ Route::group(['middleware' => ['auth:api']],function () {
 
         // Department API For HR Project
         Route::prefix('department')->group( function () {
-            Route::resource('/', DepartmentController::class)->except(['create', 'edit']);
+
+            Route::get('' ,         [DepartmentController::class , 'index'])->name("api.user.department.index");
+            Route::get('{id}' ,     [DepartmentController::class , 'show'])->name("api.user.department.show");
+            Route::post('' ,        [DepartmentController::class , 'store'])->name("api.user.department.store");
+            Route::post('{id}' ,    [DepartmentController::class , 'update'])->name("api.user.department.update");
+            Route::delete('{id}' ,  [DepartmentController::class , 'destroy'])->name("api.user.department.destroy");
         });
+
 
         // Setting API For HR Project
         Route::get('setting',                [SettingController::class, 'setting'])->name('api.company.setting');

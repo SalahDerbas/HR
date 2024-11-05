@@ -89,7 +89,7 @@ class MissingPunchsController extends Controller
             $MissingPunchData             = $request->all();
 
             if ($request->file('document'))
-                $MissingPunchData['document']  = UploadPhotoUser($request->file('document'), 'store');
+                $MissingPunchData['document']  = UploadPhotoUser($request->file('document'), 'update');
 
             MissingPunch::findOrFail($id)->update($MissingPunchData);
             return responseSuccess('' , getStatusText(UPDATE_MISSING_PUNCH_SUCCESS_CODE)  , UPDATE_MISSING_PUNCH_SUCCESS_CODE);

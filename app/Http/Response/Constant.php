@@ -24,6 +24,39 @@ define('LIST_USERS_SUCCESS_CODE'              , 1019);
 define('VACATION_EMPTY_CODE'                  , 1020);
 define('VACATIONS_SUCCESS_CODE'               , 1021);
 define('STORE_LEAVE_SUCCESS_CODE'             , 1022);
+define('UPDATE_LEAVE_SUCCESS_CODE'            , 1023);
+define('DELETE_LEAVE_CODE'                    , 1024);
+define('EXPERINCE_EMPTY_CODE'                 , 1025);
+define('EXPERINCES_SUCCESS_CODE'              , 1026);
+define('STORE_EXPERINCE_SUCCESS_CODE'         , 1027);
+define('UPDATE_EXPERINCE_SUCCESS_CODE'        , 1028);
+define('DELETE_EXPERINCE_CODE'                , 1029);
+define('EVENT_EMPTY_CODE'                     , 1030);
+define('EVENTS_SUCCESS_CODE'                  , 1031);
+define('STORE_EVENT_SUCCESS_CODE'             , 1032);
+define('UPDATE_EVENT_SUCCESS_CODE'            , 1033);
+define('DELETE_EVENT_CODE'                    , 1034);
+define('DOCUMENT_EMPTY_CODE'                  , 1035);
+define('DOCUMENTS_SUCCESS_CODE'               , 1036);
+define('STORE_DOCUMENT_SUCCESS_CODE'          , 1037);
+define('UPDATE_DOCUMENT_SUCCESS_CODE'         , 1038);
+define('DELETE_DOCUMENT_CODE'                 , 1039);
+define('DEPATMENT_EMPTY_CODE'                 , 1040);
+define('DEPATMENTS_SUCCESS_CODE'              , 1041);
+define('STORE_DEPATMENT_SUCCESS_CODE'         , 1042);
+define('UPDATE_DEPATMENT_SUCCESS_CODE'        , 1043);
+define('DELETE_DEPATMENT_CODE'                , 1044);
+
+
+define('CERTIFIATE_EMPTY_CODE'                , 1045);
+define('CERTIFIATES_SUCCESS_CODE'             , 1046);
+define('STORE_CERTIFIATE_SUCCESS_CODE'        , 1047);
+define('UPDATE_CERTIFIATE_SUCCESS_CODE'       , 1048);
+define('DELETE_CERTIFIATE_CODE'               , 1050);
+
+
+
+
 
 
 
@@ -117,13 +150,13 @@ define('START_TIME_REQUIRED_CODE'             , 4080);
 define('END_TIME_REQUIRED_CODE'               , 4081);
 define('TYPE_REASON_LEAVE_ID_REQUIRED_CODE'   , 4082);
 define('TYPE_REASON_LEAVE_ID_EXISTS_CODE'     , 4083);
-// define('END_TIME_REQUIRED_CODE'               , 4084);
-// define('END_TIME_REQUIRED_CODE'               , 4085);
-// define('END_TIME_REQUIRED_CODE'               , 4086);
-// define('END_TIME_REQUIRED_CODE'               , 4087);
-// define('END_TIME_REQUIRED_CODE'               , 4088);
-// define('END_TIME_REQUIRED_CODE'               , 4089);
-// define('END_TIME_REQUIRED_CODE'               , 4090);
+define('COMPANY_NAME_REQUIRED_CODE'           , 4084);
+define('COMPANY_PHONE_REQUIRED_CODE'          , 4085);
+define('COMPANY_LOCATION_REQUIRED_CODE'       , 4086);
+define('LEAVE_REASON_REQUIRED_CODE'           , 4087);
+define('NOTE_REQUIRED_CODE'                   , 4088);
+define('TYPE_DOCUMENT_ID_REQUIRED_CODE'       , 4089);
+define('TYPE_DOCUMENT_ID_EXISTS_CODE'         , 4090);
 // define('END_TIME_REQUIRED_CODE'               , 4091);
 // define('END_TIME_REQUIRED_CODE'               , 4092);
 // define('END_TIME_REQUIRED_CODE'               , 4093);

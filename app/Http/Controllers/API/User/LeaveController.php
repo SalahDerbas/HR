@@ -78,7 +78,7 @@ class LeaveController extends Controller
     }
 
     /**
-     * Update the specified vacation in storage.
+     * Update the specified Leave in storage.
      *
      * @param  \App\Http\Requests\API\User\LeaveRequest  $request
      * @param  int  $id
@@ -87,20 +87,20 @@ class LeaveController extends Controller
     public function update(LeaveRequest $request, $id)
     {
         try{
-            $vacationData             = $request->all();
+            $leaveData                   = $request->all();
 
             if ($request->file('doucument'))
-                $vacationData['doucument']  = UploadPhotoUser($request->file('doucument'), 'store');
+                $leaveData['doucument']  = UploadPhotoUser($request->file('doucument'), 'update');
 
-            Leave::findOrFail($id)->update($vacationData);
-            return responseSuccess('' , getStatusText(UPDATE_VACATION_SUCCESS_CODE)  , UPDATE_VACATION_SUCCESS_CODE);
+            Leave::findOrFail($id)->update($leaveData);
+            return responseSuccess('' , getStatusText(UPDATE_LEAVE_SUCCESS_CODE)  , UPDATE_LEAVE_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
         }
     }
 
     /**
-     * Remove the specified vacation from storage.
+     * Remove the specified Leave from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -109,7 +109,7 @@ class LeaveController extends Controller
     {
         try{
             Leave::findOrFail($id)->delete();
-            return responseSuccess('', getStatusText(DELETE_VACATION_CODE), DELETE_VACATION_CODE);
+            return responseSuccess('', getStatusText(DELETE_LEAVE_CODE), DELETE_LEAVE_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
         }

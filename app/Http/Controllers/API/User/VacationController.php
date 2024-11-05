@@ -90,7 +90,7 @@ class VacationController extends Controller
             $vacationData             = $request->all();
 
             if ($request->file('doucument'))
-                $vacationData['doucument']  = UploadPhotoUser($request->file('doucument'), 'store');
+                $vacationData['doucument']  = UploadPhotoUser($request->file('doucument'), 'update');
 
             Vacation::findOrFail($id)->update($vacationData);
             return responseSuccess('' , getStatusText(UPDATE_VACATION_SUCCESS_CODE)  , UPDATE_VACATION_SUCCESS_CODE);
