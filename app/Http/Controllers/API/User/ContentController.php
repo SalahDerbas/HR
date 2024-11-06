@@ -10,6 +10,7 @@ use App\Http\Requests\API\User\ContentRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendContactUsMail;
 
+use Symfony\Component\HttpFoundation\Response;
 
 
 class ContentController extends Controller
@@ -39,7 +40,7 @@ class ContentController extends Controller
     public function getTermsConditions()
     {
         try{
-            return $this->getContentData('terms_conditions');
+            return $this->getContentData('C-terms_conditions');
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
         }
@@ -53,7 +54,7 @@ class ContentController extends Controller
     public function getPrivacyPolicy()
     {
         try{
-            return $this->getContentData('privacy_policy');
+            return $this->getContentData('C-privacy_policy');
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
         }
@@ -67,7 +68,7 @@ class ContentController extends Controller
     public function getAboutUs()
     {
         try{
-            return $this->getContentData('about_us');
+            return $this->getContentData('C-about_us');
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
         }
@@ -81,7 +82,7 @@ class ContentController extends Controller
     public function getFAQ()
     {
         try{
-            return $this->getContentData('FAQ');
+            return $this->getContentData('C-FAQ');
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
         }
@@ -95,7 +96,7 @@ class ContentController extends Controller
     public function getSliders()
     {
         try{
-            return $this->getContentData('sliders');
+            return $this->getContentData('C-sliders');
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
         }

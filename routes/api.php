@@ -188,7 +188,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         });
 
         // Dashboard Routes API For HR Project
-        Route::get('dashboard',                [DashboardController::class, 'index'])->name('api.user.dashboard.index');
+        Route::get('dashboard',     [DashboardController::class, 'index'])->name('api.user.dashboard.index');
 
     });
 
@@ -202,7 +202,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         // Notification API For HR Project
         Route::prefix('notification')->group( function () {
 
-            Route::post('send',               [NotificationController::class, 'send'])->name('api.company.notification.send');
+            Route::post('send',      [NotificationController::class, 'send'])->name('api.company.notification.send');
         });
 
         // Department API For HR Project
@@ -217,7 +217,9 @@ Route::group(['middleware' => ['auth:api']],function () {
 
 
         // Setting API For HR Project
-        Route::get('setting',                [SettingController::class, 'setting'])->name('api.company.setting');
+        Route::get('index',          [SettingController::class, 'index'])->name('api.company.index');
+        Route::post('setting',       [SettingController::class, 'update'])->name('api.company.setting');
+
 
 
     });

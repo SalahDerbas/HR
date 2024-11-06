@@ -56,12 +56,13 @@ define('ATTENDANCES_SUCCESS_CODE'             , 1051);
 define('STORE_ATTENDANCE_SUCCESS_CODE'        , 1052);
 define('UPDATE_ATTENDANCE_SUCCESS_CODE'       , 1053);
 define('DELETE_ATTENDANCE_CODE'               , 1054);
-
 define('ASSET_EMPTY_CODE'                     , 1055);
 define('ASSETS_SUCCESS_CODE'                  , 1056);
 define('STORE_ASSET_SUCCESS_CODE'             , 1057);
 define('UPDATE_ASSET_SUCCESS_CODE'            , 1058);
 define('DELETE_ASSET_CODE'                    , 1059);
+define('UPDATE_SETTING_SUCCESS_CODE'          , 1060);
+define('SETTING_SUCCESS_CODE'                 , 1061);
 
 
 

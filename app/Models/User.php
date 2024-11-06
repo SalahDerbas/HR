@@ -108,4 +108,19 @@ class User extends Authenticatable
     public function getDirectory() {
         return $this->hasOne(User::class , 'id' , 'is_directory');
     }
+
+    public function getAnuualLeave() {
+        return ;
+    }
+
+    public function getVacations()
+    {
+        return $this->hasMany(Vacation::class);
+    }
+
+    public function getSickLeave() {
+        $sickID = getIDLookups('TV-Sick');
+        return Vacation::where('user_id', $this->id)->where('type_vacation_id', $sickID)->count();
+    }
+
 }

@@ -179,7 +179,9 @@ function getStatusText($responseCode){
             AMOUNT_REQUIRED_CODE                  => trans('api_response.AMOUNT_REQUIRED_CODE'),
             TYPE_ASSET_ID_EXISTS_CODE             => trans('api_response.TYPE_ASSET_ID_EXISTS_CODE'),
             TYPE_ASSET_ID_REQUIRED_CODE           => trans('api_response.TYPE_ASSET_ID_REQUIRED_CODE'),
-            
+            UPDATE_SETTING_SUCCESS_CODE           => trans('api_response.UPDATE_SETTING_SUCCESS_CODE'),
+            SETTING_SUCCESS_CODE                  => trans('api_response.SETTING_SUCCESS_CODE'),
+
 
 
 

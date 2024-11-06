@@ -45,7 +45,7 @@ class LeaveController extends Controller
         try{
             $leaveData                    = $request->all();
             $leaveData['user_id']         = Auth::id();
-            $leaveData['status_leave_id'] = getIDLookups('status_leave');
+            $leaveData['status_leave_id'] = getIDLookups('SL-Pending');
 
             if ($request->file('doucument'))
                 $leaveData['doucument']  = UploadPhotoUser($request->file('doucument'), 'store');
