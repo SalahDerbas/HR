@@ -3,16 +3,12 @@
 namespace App\Http\Controllers\API\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
-use App\Models\Pushnotification;
-use App\Models\User;
-
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\API\User\NotificationResource;
 use Symfony\Component\HttpFoundation\Response;
-
 use App\Http\Requests\API\User\NotificationRequest;
+use App\Models\Pushnotification;
+use App\Models\User;
 
 class NotificationController extends Controller
 {

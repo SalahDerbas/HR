@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\API\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-
+use App\Http\Resources\API\User\VacationsResource;
+use App\Http\Requests\API\User\VacationRequest;
 use App\Models\Vacation;
 
-use App\Http\Resources\API\User\VacationsResource;
-
-use App\Http\Requests\API\User\VacationRequest;
 
 class VacationController extends Controller
 {

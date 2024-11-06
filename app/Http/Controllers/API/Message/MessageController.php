@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\API\Message;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use App\Http\Resources\API\Message\MessageResource;
-
 use Symfony\Component\HttpFoundation\Response;
 
 class MessageController extends Controller

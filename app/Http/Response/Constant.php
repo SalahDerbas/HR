@@ -167,7 +167,6 @@ define('TYPE_DOCUMENT_ID_REQUIRED_CODE'       , 4089);
 define('TYPE_DOCUMENT_ID_EXISTS_CODE'         , 4090);
 define('STATUS_ATTENDANCE_ID_REQUIRED_CODE'   , 4091);
 define('STATUS_ATTENDANCE_ID_EXISTS_CODE'     , 4092);
-
 define('AMOUNT_REQUIRED_CODE'                 , 4093);
 define('TYPE_ASSET_ID_EXISTS_CODE'            , 4094);
 define('TYPE_ASSET_ID_REQUIRED_CODE'          , 4095);

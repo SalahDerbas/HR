@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
+| is assigned the 'api' middleware group. Enjoy building your API!
 |
 */
 
@@ -108,83 +108,83 @@ Route::group(['middleware' => ['auth:api']],function () {
 
         Route::prefix('vacation')->group( function () {
 
-            Route::get('' ,         [VacationController::class , 'index'])->name("api.user.vacation.index");
-            Route::get('{id}' ,     [VacationController::class , 'show'])->name("api.user.vacation.show");
-            Route::post('' ,        [VacationController::class , 'store'])->name("api.user.vacation.store");
-            Route::post('{id}' ,    [VacationController::class , 'update'])->name("api.user.vacation.update");
-            Route::delete('{id}' ,  [VacationController::class , 'destroy'])->name("api.user.vacation.destroy");
+            Route::get('' ,         [VacationController::class , 'index'])->name('api.user.vacation.index');
+            Route::get('{id}' ,     [VacationController::class , 'show'])->name('api.user.vacation.show');
+            Route::post('' ,        [VacationController::class , 'store'])->name('api.user.vacation.store');
+            Route::post('{id}' ,    [VacationController::class , 'update'])->name('api.user.vacation.update');
+            Route::delete('{id}' ,  [VacationController::class , 'destroy'])->name('api.user.vacation.destroy');
         });
 
         Route::prefix('missing-punches')->group( function () {
 
-            Route::get('' ,         [MissingPunchsController::class , 'index'])->name("api.user.missing_punches.index");
-            Route::get('{id}' ,     [MissingPunchsController::class , 'show'])->name("api.user.missing_punches.show");
-            Route::post('' ,        [MissingPunchsController::class , 'store'])->name("api.user.missing_punches.store");
-            Route::post('{id}' ,    [MissingPunchsController::class , 'update'])->name("api.user.missing_punches.update");
-            Route::delete('{id}' ,  [MissingPunchsController::class , 'destroy'])->name("api.user.missing_punches.destroy");
+            Route::get('' ,         [MissingPunchsController::class , 'index'])->name('api.user.missing_punches.index');
+            Route::get('{id}' ,     [MissingPunchsController::class , 'show'])->name('api.user.missing_punches.show');
+            Route::post('' ,        [MissingPunchsController::class , 'store'])->name('api.user.missing_punches.store');
+            Route::post('{id}' ,    [MissingPunchsController::class , 'update'])->name('api.user.missing_punches.update');
+            Route::delete('{id}' ,  [MissingPunchsController::class , 'destroy'])->name('api.user.missing_punches.destroy');
         });
 
         Route::prefix('leave')->group( function () {
 
-            Route::get('' ,         [LeaveController::class , 'index'])->name("api.user.leave.index");
-            Route::get('{id}' ,     [LeaveController::class , 'show'])->name("api.user.leave.show");
-            Route::post('' ,        [LeaveController::class , 'store'])->name("api.user.leave.store");
-            Route::post('{id}' ,    [LeaveController::class , 'update'])->name("api.user.leave.update");
-            Route::delete('{id}' ,  [LeaveController::class , 'destroy'])->name("api.user.leave.destroy");
+            Route::get('' ,         [LeaveController::class , 'index'])->name('api.user.leave.index');
+            Route::get('{id}' ,     [LeaveController::class , 'show'])->name('api.user.leave.show');
+            Route::post('' ,        [LeaveController::class , 'store'])->name('api.user.leave.store');
+            Route::post('{id}' ,    [LeaveController::class , 'update'])->name('api.user.leave.update');
+            Route::delete('{id}' ,  [LeaveController::class , 'destroy'])->name('api.user.leave.destroy');
         });
 
         Route::prefix('experince')->group( function () {
 
-            Route::get('' ,         [ExperinceController::class , 'index'])->name("api.user.experince.index");
-            Route::get('{id}' ,     [ExperinceController::class , 'show'])->name("api.user.experince.show");
-            Route::post('' ,        [ExperinceController::class , 'store'])->name("api.user.experince.store");
-            Route::post('{id}' ,    [ExperinceController::class , 'update'])->name("api.user.experince.update");
-            Route::delete('{id}' ,  [ExperinceController::class , 'destroy'])->name("api.user.experince.destroy");
+            Route::get('' ,         [ExperinceController::class , 'index'])->name('api.user.experince.index');
+            Route::get('{id}' ,     [ExperinceController::class , 'show'])->name('api.user.experince.show');
+            Route::post('' ,        [ExperinceController::class , 'store'])->name('api.user.experince.store');
+            Route::post('{id}' ,    [ExperinceController::class , 'update'])->name('api.user.experince.update');
+            Route::delete('{id}' ,  [ExperinceController::class , 'destroy'])->name('api.user.experince.destroy');
         });
 
         Route::prefix('event')->group( function () {
 
-            Route::get('' ,         [EventController::class , 'index'])->name("api.user.event.index");
-            Route::get('{id}' ,     [EventController::class , 'show'])->name("api.user.event.show");
-            Route::post('' ,        [EventController::class , 'store'])->name("api.user.event.store");
-            Route::post('{id}' ,    [EventController::class , 'update'])->name("api.user.event.update");
-            Route::delete('{id}' ,  [EventController::class , 'destroy'])->name("api.user.event.destroy");
+            Route::get('' ,         [EventController::class , 'index'])->name('api.user.event.index');
+            Route::get('{id}' ,     [EventController::class , 'show'])->name('api.user.event.show');
+            Route::post('' ,        [EventController::class , 'store'])->name('api.user.event.store');
+            Route::post('{id}' ,    [EventController::class , 'update'])->name('api.user.event.update');
+            Route::delete('{id}' ,  [EventController::class , 'destroy'])->name('api.user.event.destroy');
         });
 
         Route::prefix('document')->group( function () {
 
-            Route::get('' ,         [DocumentController::class , 'index'])->name("api.user.document.index");
-            Route::get('{id}' ,     [DocumentController::class , 'show'])->name("api.user.document.show");
-            Route::post('' ,        [DocumentController::class , 'store'])->name("api.user.document.store");
-            Route::post('{id}' ,    [DocumentController::class , 'update'])->name("api.user.document.update");
-            Route::delete('{id}' ,  [DocumentController::class , 'destroy'])->name("api.user.document.destroy");
+            Route::get('' ,         [DocumentController::class , 'index'])->name('api.user.document.index');
+            Route::get('{id}' ,     [DocumentController::class , 'show'])->name('api.user.document.show');
+            Route::post('' ,        [DocumentController::class , 'store'])->name('api.user.document.store');
+            Route::post('{id}' ,    [DocumentController::class , 'update'])->name('api.user.document.update');
+            Route::delete('{id}' ,  [DocumentController::class , 'destroy'])->name('api.user.document.destroy');
         });
 
         Route::prefix('certificate')->group( function () {
 
-            Route::get('' ,         [CertifiateController::class , 'index'])->name("api.user.certificate.index");
-            Route::get('{id}' ,     [CertifiateController::class , 'show'])->name("api.user.certificate.show");
-            Route::post('' ,        [CertifiateController::class , 'store'])->name("api.user.certificate.store");
-            Route::post('{id}' ,    [CertifiateController::class , 'update'])->name("api.user.certificate.update");
-            Route::delete('{id}' ,  [CertifiateController::class , 'destroy'])->name("api.user.certificate.destroy");
+            Route::get('' ,         [CertifiateController::class , 'index'])->name('api.user.certificate.index');
+            Route::get('{id}' ,     [CertifiateController::class , 'show'])->name('api.user.certificate.show');
+            Route::post('' ,        [CertifiateController::class , 'store'])->name('api.user.certificate.store');
+            Route::post('{id}' ,    [CertifiateController::class , 'update'])->name('api.user.certificate.update');
+            Route::delete('{id}' ,  [CertifiateController::class , 'destroy'])->name('api.user.certificate.destroy');
         });
 
         Route::prefix('attendance')->group( function () {
 
-            Route::get('' ,         [AttendanceController::class , 'index'])->name("api.user.attendance.index");
-            Route::get('{id}' ,     [AttendanceController::class , 'show'])->name("api.user.attendance.show");
-            Route::post('' ,        [AttendanceController::class , 'store'])->name("api.user.attendance.store");
-            Route::post('{id}' ,    [AttendanceController::class , 'update'])->name("api.user.attendance.update");
-            Route::delete('{id}' ,  [AttendanceController::class , 'destroy'])->name("api.user.attendance.destroy");
+            Route::get('' ,         [AttendanceController::class , 'index'])->name('api.user.attendance.index');
+            Route::get('{id}' ,     [AttendanceController::class , 'show'])->name('api.user.attendance.show');
+            Route::post('' ,        [AttendanceController::class , 'store'])->name('api.user.attendance.store');
+            Route::post('{id}' ,    [AttendanceController::class , 'update'])->name('api.user.attendance.update');
+            Route::delete('{id}' ,  [AttendanceController::class , 'destroy'])->name('api.user.attendance.destroy');
         });
 
         Route::prefix('asset')->group( function () {
 
-            Route::get('' ,         [AssetController::class , 'index'])->name("api.user.asset.index");
-            Route::get('{id}' ,     [AssetController::class , 'show'])->name("api.user.asset.show");
-            Route::post('' ,        [AssetController::class , 'store'])->name("api.user.asset.store");
-            Route::post('{id}' ,    [AssetController::class , 'update'])->name("api.user.asset.update");
-            Route::delete('{id}' ,  [AssetController::class , 'destroy'])->name("api.user.asset.destroy");
+            Route::get('' ,         [AssetController::class , 'index'])->name('api.user.asset.index');
+            Route::get('{id}' ,     [AssetController::class , 'show'])->name('api.user.asset.show');
+            Route::post('' ,        [AssetController::class , 'store'])->name('api.user.asset.store');
+            Route::post('{id}' ,    [AssetController::class , 'update'])->name('api.user.asset.update');
+            Route::delete('{id}' ,  [AssetController::class , 'destroy'])->name('api.user.asset.destroy');
         });
 
         // Dashboard Routes API For HR Project
@@ -208,11 +208,11 @@ Route::group(['middleware' => ['auth:api']],function () {
         // Department API For HR Project
         Route::prefix('department')->group( function () {
 
-            Route::get('' ,         [DepartmentController::class , 'index'])->name("api.user.department.index");
-            Route::get('{id}' ,     [DepartmentController::class , 'show'])->name("api.user.department.show");
-            Route::post('' ,        [DepartmentController::class , 'store'])->name("api.user.department.store");
-            Route::post('{id}' ,    [DepartmentController::class , 'update'])->name("api.user.department.update");
-            Route::delete('{id}' ,  [DepartmentController::class , 'destroy'])->name("api.user.department.destroy");
+            Route::get('' ,         [DepartmentController::class , 'index'])->name('api.user.department.index');
+            Route::get('{id}' ,     [DepartmentController::class , 'show'])->name('api.user.department.show');
+            Route::post('' ,        [DepartmentController::class , 'store'])->name('api.user.department.store');
+            Route::post('{id}' ,    [DepartmentController::class , 'update'])->name('api.user.department.update');
+            Route::delete('{id}' ,  [DepartmentController::class , 'destroy'])->name('api.user.department.destroy');
         });
 
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Resources\API\User\ContentResource;
 use App\Models\Content;
 use App\Http\Requests\API\User\ContentRequest;

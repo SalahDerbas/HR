@@ -3,15 +3,11 @@
 namespace App\Http\Controllers\API\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-
 use App\Http\Requests\API\User\EventRequest;
-
 use App\Http\Resources\API\User\EventResource;
-
 use App\Models\Event;
+
 class EventController extends Controller
 {
     /**

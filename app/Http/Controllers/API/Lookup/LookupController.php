@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\API\Lookup;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
-use App\Models\Country;
-use App\Models\Lookup;
 use App\Http\Resources\API\Lookup\LookupResource;
 use App\Http\Resources\API\Lookup\CountryResource;
+use Symfony\Component\HttpFoundation\Response;
+use App\Models\Country;
+use App\Models\Lookup;
 
 class LookupController extends Controller
 {

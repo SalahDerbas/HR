@@ -3,20 +3,14 @@
 namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-
 use App\Http\Requests\API\Auth\AuthRequest;
-
 use App\Http\Resources\API\User\UserResource;
 use App\Http\Resources\API\User\UsersResource;
-
 use App\Models\User;
-
 use App\Jobs\SendOTPEmailJob;
+use Carbon\Carbon;
 
 
 class AuthController extends Controller
