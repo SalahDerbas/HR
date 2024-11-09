@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Country extends Model
 {
     use HasFactory , SoftDeletes;
-    protected $table = "countries";
-    protected $fillable = [
-       'name','code' , 'country_code'
-    ];
+    protected $table   = "countries";
+    protected $guarded = ['id'];
 
 
     public static function getTableName() {

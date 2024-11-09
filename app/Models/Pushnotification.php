@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Pushnotification extends Model
 {
     use HasFactory , SoftDeletes;
-
+    protected $table   = "pushnotifications";
     protected $guarded = ['id'];
 
     public static function getTableName() {

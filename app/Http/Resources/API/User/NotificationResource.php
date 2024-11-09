@@ -17,12 +17,12 @@ class NotificationResource extends JsonResource
     {
         parent::toArray($request);
         return [
-                'id'              =>   $this->id,
-                'title'           =>   (config('app_header.lang') == 'ar') ? $this->title_ar : $this->title_en,
-                'body'            =>   (config('app_header.lang') == 'ar') ? $this->body_ar : $this->body_en,
-                'user_id'         =>   $this->user_id,
-                'created_at'      =>   formatDate($this->created_at) ,
-                'updated_at'      =>   formatDate($this->updated_at) ,
+                'id'                     => $this->id,
+                'title'                  => (config('app_header.lang') == 'ar') ? $this->title_ar : $this->title_en,
+                'body'                   => (config('app_header.lang') == 'ar') ? $this->body_ar : $this->body_en,
+                'user_id'                => $this->user_id,
+                'created_at'             => formatDate($this->created_at) ,
+                'updated_at'             => formatDate($this->updated_at) ,
         ];
     }
 }

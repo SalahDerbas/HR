@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Certifiate extends Model
 {
     use HasFactory , SoftDeletes;
-    protected $table = "certifiates";
-    protected $fillable = [
-       'name','start_date' , 'end_date', 'note' ,'document','user_id'
-    ];
+    protected $table   = "certifiates";
+    protected $guarded = ['id'];
 
     public static function getTableName() {
         return with(new static)->getTable();

@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Leave extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $table = "leaves";
-    protected $fillable = [
-       'start_time','end_time','reason_leave_id','status_leave_id','user_id','doucument'
-    ];
+    protected $table   = "leaves";
+    protected $guarded = ['id'];
 
     public static function getTableName() {
         return with(new static)->getTable();

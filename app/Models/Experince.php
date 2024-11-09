@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Experince extends Model
 {
     use HasFactory , SoftDeletes;
-    protected $table = "experinces";
-    protected $fillable = [
-       'company_name','company_phone','company_location','start_date','end_date','note','leave_reason','document','user_id'
-    ];
+    protected $table   = "experinces";
+    protected $guarded = ['id'];
 
     public static function getTableName() {
         return with(new static)->getTable();

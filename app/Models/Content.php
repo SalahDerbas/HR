@@ -9,16 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Content extends Model
 {
     use HasFactory , SoftDeletes;
+    protected $table   = "contents";
+    protected $guarded = ['id'];
 
-    protected $fillable = [
-        'title_en',
-        'title_ar',
-        'description_en',
-        'description_ar',
-        'photo',
-        'status',
-        'type_id',
-    ];
 
     public static function getTableName() {
         return with(new static)->getTable();

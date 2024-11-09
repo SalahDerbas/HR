@@ -16,12 +16,12 @@ class AssetResource extends JsonResource
     {
         parent::toArray($request);
         return [
-            'amount'            => $this['amount'],
-            'note'              => $this['note'],
-            'document'          => $this['document'],
-            'user_id'           => $this['user_id'],
-            'type_asset_id'     => $this['type_asset_id'],
-            'asset_type'        => isset($this['type_asset_id']) ? ((config('app_header.lang') == 'ar') ? $this['getAssetType']['value_ar'] :$this['getAssetType']['value_en']) : NULL,
+            'amount'                   => $this['amount'],
+            'note'                     => $this['note'],
+            'document'                 => $this['document'],
+            'user_id'                  => $this['user_id'],
+            'type_asset_id'            => $this['type_asset_id'],
+            'asset_type'               => isset($this['type_asset_id']) ? ((config('app_header.lang') == 'ar') ? $this['getAssetType']['value_ar'] :$this['getAssetType']['value_en']) : NULL,
 
         ];
     }

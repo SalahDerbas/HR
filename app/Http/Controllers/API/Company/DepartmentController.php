@@ -49,7 +49,7 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Display the specified vacation.
+     * Display the specified Department.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

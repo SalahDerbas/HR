@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Asset extends Model
 {
     use HasFactory , SoftDeletes;
-    protected $table = "assets";
-    protected $fillable = [
-       'amount','note' , 'document', 'type_asset_id' ,'user_id'
-    ];
+    protected $table   = "assets";
+    protected $guarded = ['id'];
 
     public static function getTableName() {
         return with(new static)->getTable();

@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Event extends Model
 {
     use HasFactory , SoftDeletes;
-    protected $table = "events";
-    protected $fillable = [
-       'name','from_time' , 'to_time', 'photo'
-    ];
+    protected $table   = "events";
+    protected $guarded = ['id'];
 
     public static function getTableName() {
         return with(new static)->getTable();

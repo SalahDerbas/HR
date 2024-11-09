@@ -18,11 +18,11 @@ class DashboardResource extends JsonResource
         parent::toArray($request);
         $date = Carbon::parse($this['join_date'])->diff(Carbon::now());
         return [
-            'id'                => $this['id'],
-            'since_period'      => formatDate($this['join_date']),
-            'year'              => $date->y,
-            'month'             => $date->m,
-            'day'               => $date->d,
+            'id'                        => $this['id'],
+            'since_period'              => formatDate($this['join_date']),
+            'year'                      => $date->y,
+            'month'                     => $date->m,
+            'day'                       => $date->d,
 
         ];
     }

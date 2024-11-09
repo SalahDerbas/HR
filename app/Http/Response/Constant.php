@@ -68,6 +68,17 @@ define('SETTING_SUCCESS_CODE'                 , 1061);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 // Validation Code
 define('EMAIL_EXISTS_CODE'                    , 4001);
 define('PASSWORD_REQUIRED_CODE'               , 4002);
@@ -127,8 +138,6 @@ define('IS_DIRECTORY_REQUIRED_CODE'           , 4054);
 define('IS_DIRECTORY_BOOLEAN_CODE'            , 4055);
 define('STORE_USER_SUCCESS_CODE'              , 4056);
 define('UPDATE_PROFILE_SUCCESS_CODE'          , 4057);
-
-
 define('START_DATE_REQUIRED_CODE'             , 4058);
 define('START_DATE_DATE_CODE'                 , 4059);
 define('END_DATE_REQUIRED_CODE'               , 4060);
@@ -143,7 +152,6 @@ define('UPDATE_VACATION_SUCCESS_CODE'         , 4067);
 define('DELETE_VACATION_CODE'                 , 4068);
 define('MISSING_PUNCH_EMPTY_CODE'             , 4069);
 define('MISSING_PUNCHS_SUCCESS_CODE'          , 4070);
-
 define('DATE_REQUIRED_CODE'                   , 4070);
 define('DATE_DATE_CODE'                       , 4071);
 define('TYPE_MISSINGPUNCH_ID_REQUIRED_CODE'   , 4072);
@@ -170,6 +178,23 @@ define('STATUS_ATTENDANCE_ID_EXISTS_CODE'     , 4092);
 define('AMOUNT_REQUIRED_CODE'                 , 4093);
 define('TYPE_ASSET_ID_EXISTS_CODE'            , 4094);
 define('TYPE_ASSET_ID_REQUIRED_CODE'          , 4095);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

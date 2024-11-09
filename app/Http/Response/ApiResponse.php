@@ -20,10 +20,10 @@ class ApiResponse
     public  function responseSuccess($data , $responseMessage = '' , $responseCode = null )
     {
         return responseGlobal([
-            'success' => true  ,
-            'responseMessage' => $responseMessage  ,
-            'responseCode' => $responseCode  ,
-            'data' => $data  ,
+            'success'             => true  ,
+            'responseMessage'     => $responseMessage  ,
+            'responseCode'        => $responseCode  ,
+            'data'                => $data  ,
         ], Response::HTTP_OK);
     }
 
@@ -31,9 +31,9 @@ class ApiResponse
     {
         return responseGlobal([
             'success' => false,
-            'error' => [
-                'message' => $message,
-                'errorCode' => $code,
+            'error'   => [
+                    'message'           => $message,
+                    'errorCode'         => $code,
             ]
         ], $statusCode);
     }
@@ -42,9 +42,9 @@ class ApiResponse
     {
         return responseGlobal([
             'success' => false,
-            'error' => [
-                'message' => $message,
-                'errorCode' => $code,
+            'error'   => [
+                    'message'         => $message,
+                    'errorCode'       => $code,
             ] ,
             'validator' => $errors
         ], $statusCode);

@@ -10,9 +10,7 @@ class MissingPunch extends Model
 {
     use HasFactory , SoftDeletes;
     protected $table = "missing_punches";
-    protected $fillable = [
-       'date','time' , 'reason', 'document' ,'user_id' ,'type_missing_punch_id'
-    ];
+    protected $guarded = ['id'];
 
     public static function getTableName() {
         return with(new static)->getTable();
@@ -21,6 +19,7 @@ class MissingPunch extends Model
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
     }
+
     public function getMissingPunchType(){
         return $this->hasOne(Lookup::class, 'id', 'type_missing_punch_id');
     }

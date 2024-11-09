@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Vacation extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $table = "vacations";
+    protected $table    = "vacations";
     protected $fillable = [
        'start_date',
        'end_date',

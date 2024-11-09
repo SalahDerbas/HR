@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Document extends Model
 {
     use HasFactory , SoftDeletes;
-    protected $table = "documents";
-    protected $fillable = [
-       'document','note' , 'type_document_id' ,'user_id'
-    ];
+    protected $table   = "documents";
+    protected $guarded = ['id'];
 
     public function users(){
         return $this->belongsTo(User::class , 'user_id');
