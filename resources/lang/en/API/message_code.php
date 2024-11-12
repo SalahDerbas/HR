@@ -170,27 +170,7 @@ return [
         'TYPE_ASSET_ID_REQUIRED_CODE'          => 'TYPE_ASSET_ID_REQUIRED_CODE',
         'UPDATE_SETTING_SUCCESS_CODE'          => 'UPDATE_SETTING_SUCCESS_CODE',
         'SETTING_SUCCESS_CODE'                 => 'SETTING_SUCCESS_CODE',
+        'PASSPORT_CODE_CODE'                   => 'PASSPORT_CODE_CODE',
+        'DASHBOARD_SUCCESS_CODE'               => 'DASHBOARD_SUCCESS_CODE',
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ];
+   ];

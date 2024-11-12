@@ -52,7 +52,7 @@ function getStatusText($responseCode){
             NOTIFICATIONS_SUCCESS_CODE            => trans($key.'.NOTIFICATIONS_SUCCESS_CODE'),
             USER_NOT_FOUND_CODE                   => trans($key.'.USER_NOT_FOUND_CODE'),
             ENABLED_NOTIFICATION_SUCCESS_CODE     => trans($key.'.ENABLED_NOTIFICATION_SUCCESS_CODE'),
-            TITLE_EN_REQUIRED_CODE                => trans($key.'.=TITLE_EN_REQUIRED_CODE'),
+            TITLE_EN_REQUIRED_CODE                => trans($key.'.TITLE_EN_REQUIRED_CODE'),
             TITLE_AR_REQUIRED_CODE                => trans($key.'.TITLE_AR_REQUIRED_CODE'),
             BODY_EN_REQUIRED_CODE                 => trans($key.'.BODY_EN_REQUIRED_CODE'),
             BODY_AR_REQUIRED_CODE                 => trans($key.'.BODY_AR_REQUIRED_CODE'),
@@ -183,6 +183,7 @@ function getStatusText($responseCode){
             TYPE_ASSET_ID_REQUIRED_CODE           => trans($key.'.TYPE_ASSET_ID_REQUIRED_CODE'),
             UPDATE_SETTING_SUCCESS_CODE           => trans($key.'.UPDATE_SETTING_SUCCESS_CODE'),
             SETTING_SUCCESS_CODE                  => trans($key.'.SETTING_SUCCESS_CODE'),
+            DASHBOARD_SUCCESS_CODE                => trans($key.'.DASHBOARD_SUCCESS_CODE'),
 
 
 

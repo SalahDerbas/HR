@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Models\Setting;
+use App\Http\Resources\API\Company\SettingResource;
 
 class SettingController extends Controller
 {
@@ -21,7 +22,7 @@ class SettingController extends Controller
             $data       = $collection->flatMap(function ($collection) {
                 return [$collection->key => $collection->value];
             });
-        return responseSuccess($data , getStatusText($code)  , $code);
+        return responseSuccess(new SettingResource($data) , getStatusText($code)  , $code);
     }
 
     /**

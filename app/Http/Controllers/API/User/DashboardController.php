@@ -14,8 +14,7 @@ class DashboardController extends Controller
     {
         try{
             $user = User::findOrFail(Auth::id());
-            return $user->getSickLeave();
-            return new DashboardResource($user);
+            return responseSuccess(new DashboardResource($user), getStatusText(DASHBOARD_SUCCESS_CODE), DASHBOARD_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
         }

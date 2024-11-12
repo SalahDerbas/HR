@@ -63,6 +63,7 @@ define('UPDATE_ASSET_SUCCESS_CODE'            , 1058);
 define('DELETE_ASSET_CODE'                    , 1059);
 define('UPDATE_SETTING_SUCCESS_CODE'          , 1060);
 define('SETTING_SUCCESS_CODE'                 , 1061);
+define('DASHBOARD_SUCCESS_CODE'               , 1062);
 
 
 

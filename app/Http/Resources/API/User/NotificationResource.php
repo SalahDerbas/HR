@@ -3,7 +3,6 @@
 namespace App\Http\Resources\API\User;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Carbon\Carbon;
 
 class NotificationResource extends JsonResource
 {

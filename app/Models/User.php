@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Passport\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -118,9 +119,32 @@ class User extends Authenticatable
         return $this->hasMany(Vacation::class);
     }
 
+    /**
+     * Calculate the total number of sick leave days taken by the user.
+     *
+     * This function retrieves all vacation records of type "Sick Leave" for the user,
+     * then sums the number of days (including both start and end dates) for each record.
+     *
+     * @return int Total number of sick leave days.
+     */
     public function getSickLeave() {
         $sickID = getIDLookups('TV-Sick');
-        return Vacation::where('user_id', $this->id)->where('type_vacation_id', $sickID)->count();
+        $vacations =  Vacation::where('user_id', $this->id)->where('type_vacation_id', $sickID)->get();
+        $count = 0;
+        foreach ($vacations as $vacation){
+            $count+= Carbon::parse($vacation->start_date)->diffInDays(Carbon::parse($vacation->end_date)) + 1;
+        }
+        return $count;
     }
 
+    public function getAnnualLeave() {
+        $sickID = getIDLookups('TV-Sick');
+        $vacations =  Vacation::where('user_id', $this->id)->where('type_vacation_id'  ,'!=',  $sickID)->get();
+        $count = 0;
+        foreach ($vacations as $vacation){
+            $count+= Carbon::parse($vacation->start_date)->diffInDays(Carbon::parse($vacation->end_date)) + 1;
+        }
+        return $count;
+
+    }
 }
