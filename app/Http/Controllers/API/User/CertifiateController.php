@@ -39,13 +39,13 @@ class CertifiateController extends Controller
     public function store(CertifiateRequest $request)
     {
         try{
-            $CertifiateData                    = $request->all();
-            $CertifiateData['user_id']         = Auth::id();
+            $data                    = $request->all();
+            $data['user_id']         = Auth::id();
 
             if ($request->file('document'))
-                $CertifiateData['document']    = UploadPhotoUser($request->file('document'), 'store');
+                $data['document']    = handleFileUpload($request->file('document'), 'store' , 'Certifiate' , NULL);
 
-            Certifiate::create($CertifiateData);
+            Certifiate::create($data);
             return responseSuccess('' , getStatusText(STORE_CERTIFIATE_SUCCESS_CODE)  , STORE_CERTIFIATE_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -82,13 +82,14 @@ class CertifiateController extends Controller
     public function update(CertifiateRequest $request, $id)
     {
         try{
-            $CertifiateData                    = $request->all();
-            $CertifiateData['user_id']         = Auth::id();
+            $data                    = $request->all();
+            $data['user_id']         = Auth::id();
+            $Certifiate              = Certifiate::findOrFail($id);
 
             if ($request->file('document'))
-                $CertifiateData['document']      = UploadPhotoUser($request->file('document'), 'update');
+                $data['document']      = handleFileUpload($request->file('document'), 'update' , 'Certifiate' , $Certifiate->document);
 
-            Certifiate::findOrFail($id)->update($CertifiateData);
+                $Certifiate->update($data);
             return responseSuccess('' , getStatusText(UPDATE_CERTIFIATE_SUCCESS_CODE)  , UPDATE_CERTIFIATE_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);

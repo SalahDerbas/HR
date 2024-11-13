@@ -23,4 +23,8 @@ class MissingPunch extends Model
     public function getMissingPunchType(){
         return $this->hasOne(Lookup::class, 'id', 'type_missing_punch_id');
     }
+
+    public function getStatusMissingPunch(){
+        return $this->hasOne(Lookup::class, 'id', 'status_missing_punch_id');
+    }
 }

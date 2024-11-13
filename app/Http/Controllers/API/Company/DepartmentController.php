@@ -39,9 +39,9 @@ class DepartmentController extends Controller
     public function store(DepartmentRequest $request)
     {
         try{
-            $DepartmentData                    = $request->all();
+            $data                    = $request->all();
 
-            Department::create($DepartmentData);
+            Department::create($data);
             return responseSuccess('' , getStatusText(STORE_DEPATMENT_SUCCESS_CODE)  , STORE_DEPATMENT_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -78,9 +78,9 @@ class DepartmentController extends Controller
     public function update(DepartmentRequest $request, $id)
     {
         try{
-            $DepartmentData                    = $request->all();
+            $data                    = $request->all();
 
-            Department::findOrFail($id)->update($DepartmentData);
+            Department::findOrFail($id)->update($data);
             return responseSuccess('' , getStatusText(UPDATE_DEPATMENT_SUCCESS_CODE)  , UPDATE_DEPATMENT_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);

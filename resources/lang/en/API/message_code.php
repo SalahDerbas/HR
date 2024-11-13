@@ -172,5 +172,6 @@ return [
         'SETTING_SUCCESS_CODE'                 => 'SETTING_SUCCESS_CODE',
         'PASSPORT_CODE_CODE'                   => 'PASSPORT_CODE_CODE',
         'DASHBOARD_SUCCESS_CODE'               => 'DASHBOARD_SUCCESS_CODE',
+        'APPROVE_SUCCESS_CODE'                 => 'APPROVE_SUCCESS_CODE',
 
    ];

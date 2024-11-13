@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 
-class SendOTPEmailMail extends Mailable
+class SendBirthdayMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,10 +17,10 @@ class SendOTPEmailMail extends Mailable
      *
      * @return void
      */
-    public $data;
-    public function __construct($data)
+    public $user;
+    public function __construct($user)
     {
-        $this->data = $data;
+        $this->user = $user;
     }
 
     /**
@@ -30,7 +30,7 @@ class SendOTPEmailMail extends Mailable
      */
     public function build()
     {
-        Log::channel('HR')->debug("[data: " . $this->data. "] SendOTPEmailMail");
-        return $this->from(env('MAIL_USERNAME'))->subject('Verify Your E-mail')->view('emails/verify_email')->with('data', $this->data);
+        Log::channel('HR')->debug("[user_id: " . $this->user['id']. "] SendBirthdayMail");
+        return $this->subject('Happy Birthday!')->view('emails.birthday_email')->with(['user' => $this->user]);
     }
 }

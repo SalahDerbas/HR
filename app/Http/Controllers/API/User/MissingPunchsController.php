@@ -11,6 +11,19 @@ use App\Models\MissingPunch;
 
 class MissingPunchsController extends Controller
 {
+    /**
+     * Constructor to initialize the default notification data for MissingPunch.
+     */
+    protected $array;
+    public function __construct()
+    {
+        $this->array = [
+            'title_en' => 'This is Title (MissingPunch)',
+            'title_ar' => 'This is Title (MissingPunch)',
+            'body_en'  => 'This is Body  (MissingPunch)',
+            'body_ar'  => 'This is Body  (MissingPunch)',
+        ];
+    }
 
     /**
      * Display a listing of the user's MissingPunchs.
@@ -40,13 +53,15 @@ class MissingPunchsController extends Controller
     public function store(MissingPunchRequest $request)
     {
         try{
-            $MissingPunchData             = $request->all();
-            $MissingPunchData['user_id']  = Auth::id();
+            $data                            = $request->all();
+            $data['user_id']                 = Auth::id();
+            $data['status_missing_punch_id'] = getIDLookups('SL-Pending');
 
             if ($request->file('document'))
-                $MissingPunchData['document']  = UploadPhotoUser($request->file('document'), 'store');
+                $data['document']  = handleFileUpload($request->file('document'), 'store' , 'MissingPunch' , NULL);
 
-            MissingPunch::create($MissingPunchData);
+            MissingPunch::create($data);
+            SendNotificationForDirectory($this->array , Auth::user()->directory_id);
             return responseSuccess('' , getStatusText(STORE_MISSING_PUNCH_SUCCESS_CODE)  , STORE_MISSING_PUNCH_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -83,12 +98,13 @@ class MissingPunchsController extends Controller
     public function update(MissingPunchRequest $request, $id)
     {
         try{
-            $MissingPunchData             = $request->all();
+            $data                 = $request->all();
+            $MissingPunch         = MissingPunch::findOrFail($id);
 
             if ($request->file('document'))
-                $MissingPunchData['document']  = UploadPhotoUser($request->file('document'), 'update');
+                $data['document']  = handleFileUpload($request->file('document'), 'update' , 'MissingPunch' , $MissingPunch->document);
 
-            MissingPunch::findOrFail($id)->update($MissingPunchData);
+            $MissingPunch->update($data);
             return responseSuccess('' , getStatusText(UPDATE_MISSING_PUNCH_SUCCESS_CODE)  , UPDATE_MISSING_PUNCH_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);

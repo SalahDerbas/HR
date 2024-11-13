@@ -21,6 +21,8 @@ class CreateMissingPunchesTable extends Migration
             $table->string('document')->nullable();
             $table->unsignedBigInteger('type_missing_punch_id')->nullable();
             $table->foreign('type_missing_punch_id')->references('id')->on('lookups')->onDelete('cascade');
+            $table->unsignedBigInteger('status_missing_punch_id')->nullable();
+            $table->foreign('status_missing_punch_id')->references('id')->on('lookups')->onDelete('cascade');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();

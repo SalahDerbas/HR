@@ -4,13 +4,20 @@
 use App\Http\Response\ApiResponse;
 use App\Models\User;
 use App\Models\Lookup;
+use App\Models\Pushnotification;
+
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 
 
 
-
-
+/**
+* This function retrieves the status text associated with a response code. It uses translations
+* for each code key from a specified language file. If no specific response code is provided,
+* it returns all possible status texts; otherwise, it returns the specific status text or a default
+* "message not found" code if the response code doesn't exist in the list.
+*/
 function getStatusText($responseCode){
     $key         = 'API/message_code';
 
@@ -184,30 +191,7 @@ function getStatusText($responseCode){
             UPDATE_SETTING_SUCCESS_CODE           => trans($key.'.UPDATE_SETTING_SUCCESS_CODE'),
             SETTING_SUCCESS_CODE                  => trans($key.'.SETTING_SUCCESS_CODE'),
             DASHBOARD_SUCCESS_CODE                => trans($key.'.DASHBOARD_SUCCESS_CODE'),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            APPROVE_SUCCESS_CODE                  => trans($key.'.APPROVE_SUCCESS_CODE'),
     ];
 
     return ($responseCode == ALL_MESSAGE_CODE) ? $statusTexts: $statusTexts[$responseCode] ?? MESSAGE_NOT_FOUND_CODE;
@@ -215,88 +199,129 @@ function getStatusText($responseCode){
 }
 
 
-// // =================================================================================================
-// //  Start ALL Function for Response Customize
+// =================================================================================================
+//  Start ALL Function for Response Customize
 
-
+/**
+* This function returns a global API response with the specified data and status code.
+*/
 if (!function_exists('responseGlobal')) {
     function responseGlobal($data , $statusCode){
         return (new ApiResponse())->responseGlobal($data , $statusCode);
     }
 }
 
+/**
+*  This function returns a successful API response with specified data, message, and response code.
+*/
 if (!function_exists('responseSuccess')) {
     function responseSuccess($data , $responseMessage, $responseCode){
         return (new ApiResponse())->responseSuccess($data , $responseMessage , $responseCode);
     }
 }
 
+/**
+*  This function returns an error response with a specified message, status code, and error code.
+*/
 if (!function_exists('responseError')) {
     function responseError($message, $statusCode , $code){
         return (new ApiResponse())->responseError($message, $statusCode , $code);
     }
 }
 
+/**
+*  This function returns a validation error response with message, status code, error code, and validation errors.
+*/
 if (!function_exists('responseValidator')) {
     function responseValidator($message, $statusCode , $code ,$validate_errors){
         return (new ApiResponse())->responseValidator($message, $statusCode , $code , $validate_errors);
     }
 }
 
+/**
+*  This function returns an unauthorized response with a specified message.
+*/
 if (!function_exists('respondUnauthorized')) {
     function respondUnauthorized($message){
         return (new ApiResponse())->respondUnauthorized($message);
     }
 }
 
+/**
+*  This function returns a forbidden response with a specified message.
+*/
 if (!function_exists('respondForbidden')) {
     function respondForbidden($message){
         return (new ApiResponse())->respondForbidden($message);
     }
 }
 
+/**
+* This function returns a "not found" response with a specified message.
+*/
 if (!function_exists('respondNotFound')) {
     function respondNotFound($message){
         return (new ApiResponse())->respondNotFound($message);
     }
 }
 
+/**
+* This function returns an internal server error response with a specified message.
+*/
 if (!function_exists('respondInternalError')) {
     function respondInternalError($message){
         return (new ApiResponse())->respondInternalError($message);
     }
 }
 
+/**
+* This function returns an "unprocessable entity" response with a specified message.
+*/
 if (!function_exists('respondUnprocessableEntity')) {
     function respondUnprocessableEntity($message){
         return (new ApiResponse())->respondUnprocessableEntity($message);
     }
 }
 
+/**
+* This function returns a "method not allowed" response with a specified message.
+*/
 if (!function_exists('respondMethodAllowed')) {
     function respondMethodAllowed($message){
         return (new ApiResponse())->respondMethodAllowed($message);
     }
 }
 
+/**
+* This function returns a "model not found" response with a specified message.
+*/
 if (!function_exists('respondModelNotFound')) {
     function respondModelNotFound($message){
         return (new ApiResponse())->respondModelNotFound($message);
     }
 }
 
+/**
+* This function returns a validation failure response with message, validation errors, and error codes.
+*/
 if (!function_exists('respondValidationFailed')) {
     function respondValidationFailed($message , $validate_errors , $codes){
         return (new ApiResponse())->respondValidationFailed($message , $validate_errors ,$codes);
     }
 }
 
+/**
+* This function returns a response for an invalid or missing private key with a specified message.
+*/
 if (!function_exists('respondPrivateKey')) {
     function respondPrivateKey ($message){
         return (new ApiResponse())->respondPrivateKey($message);
     }
 }
 
+/**
+* This function returns an empty response with a specified message and code.
+*/
 if (!function_exists('respondEmpty')) {
     function respondEmpty ($message , $code)
     {
@@ -304,34 +329,42 @@ if (!function_exists('respondEmpty')) {
     }
 }
 
+/**
+* This function returns a "too many requests" response with a specified message.
+*/
 if (!function_exists('respondTooManyRequest')) {
     function respondTooManyRequest($message)
     {
         return (new ApiResponse())->respondTooManyRequest($message);
     }
 }
+
 //  End ALL Function for Response Customize
 // =================================================================================================
 
 
 
-if (!function_exists('UploadPhotoUser')) {
-    function UploadPhotoUser($file , $type)
+/**
+* Checks if the function 'handleFileUpload' already exists before defining it.
+* This function handles the uploading of files, allowing optional deletion of old files if updating.
+*/
+if (!function_exists('handleFileUpload')) {
+    function handleFileUpload($file, $type, $directory, $oldPath = null)
     {
-        if($type == 'update')  {
-            $file_name = time().$file->getClientOriginalName();
-            $file->move('Profile/' , $file_name);
-            $Image = env('APP_URL').'/Profile/'.$file_name;
-            return $Image;
+        $path = 'public/' . $directory;
+        if($type === 'update' && $oldPath)  {
+            if (Storage::exists($oldPath))
+                Storage::delete($oldPath);
         }
-        $file_name = time().$file->getClientOriginalName();
-        $file->move('Profile/' , $file_name);
-        $Image = env('APP_URL').'/Profile/'.$file_name;
-        return $Image;
+        $newPath = $file->store($path);
+        return env('APP_URL').'/storage/'.$newPath;
+
     }
 }
 
-
+/**
+* This function retrieves a user by email along with related data from associated models.
+*/
 if (!function_exists('getUserWithRelations')) {
     function getUserWithRelations($email)
     {
@@ -348,7 +381,9 @@ if (!function_exists('getUserWithRelations')) {
 }
 
 
-
+/**
+*  This function retrieves the ID of a lookup record by key.
+*/
 if (!function_exists('getIDLookups')) {
     function getIDLookups($key)
     {
@@ -356,10 +391,54 @@ if (!function_exists('getIDLookups')) {
     }
 }
 
-
+/**
+*  This function formats a date to 'Y-m-d' format. Returns NULL if the date is null.
+*/
 if (!function_exists('formatDate')) {
     function formatDate($date)
     {
         return (!is_null($date)) ? Carbon::parse($date)->format('Y-m-d') : NULL ;
+    }
+}
+
+
+if (!function_exists('SendNotificationForDirectory')) {
+    function SendNotificationForDirectory($data , $user_id)
+    {
+        $firebaseToken = User::findOrFail($user_id)->where('fcm_token', '!=', null)->where('enable_notification', true)->pluck('fcm_token')->first();
+
+        if(!is_null($firebaseToken)){
+            $payload = json_encode([
+                "registration_ids" => [$firebaseToken],
+                "notification"     => [
+                        "title"        => $data['title_en'],
+                        "body"         => $data['body_en'],
+                        "created_at"   => date('Y-m-d H:i:s'),
+                ]
+            ]);
+
+            $headers = [
+                'Authorization: key=' . env('SERVER_API_KEY'),
+                'Content-Type: application/json',
+            ];
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL,            'https://fcm.googleapis.com/fcm/send');
+            curl_setopt($ch, CURLOPT_POST,            true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER,      $headers);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,  false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER,  true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS,      $payload);
+            $response = curl_exec($ch);
+
+            Pushnotification::create([
+                'title_en'        =>   $data['title_en'],
+                'title_ar'        =>   $data['title_ar'],
+                'body_en'         =>   $data['body_en'],
+                'body_ar'         =>   $data['body_ar'],
+                'user_id'         =>   $user_id
+            ]);
+        }
+
     }
 }

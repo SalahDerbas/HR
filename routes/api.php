@@ -53,7 +53,11 @@ use App\Http\Controllers\API\Company\{
 |--------------------------------------------------------------------------
 */
 
-// Public User Routes
+/*
+|--------------------------------------------------------------------------
+| Public User Routes
+|--------------------------------------------------------------------------
+*/
 Route::prefix('user')->group( function () {
 
     Route::post('login',               [AuthController::class, 'login'])->name('api.user.login');
@@ -65,7 +69,12 @@ Route::prefix('user')->group( function () {
     Route::post('forget-password',     [AuthController::class, 'forgetPassword'])->name('api.user.forget_password');
     Route::post('reset-password',      [AuthController::class, 'resetPassword'])->name('api.user.reset_password');
 
-    // Content Routes API For HR Project
+
+    /*
+    |--------------------------------------------------------------------------
+    | Content Routes API For HR Project
+    |--------------------------------------------------------------------------
+    */
     Route::prefix('content')->group( function () {
 
         Route::get('terms-conditions',     [ContentController::class, 'getTermsConditions'])->name('api.content.get_terms_conditions');
@@ -79,13 +88,18 @@ Route::prefix('user')->group( function () {
 });
 
 
-
-
-
-// Authenticated User Routes
+/*
+|--------------------------------------------------------------------------
+| Authenticated User Routes
+|--------------------------------------------------------------------------
+*/
 Route::group(['middleware' => ['auth:api']],function () {
 
-    // User Routes API With Authenticate
+    /*
+    |--------------------------------------------------------------------------
+    | User Routes API With Authenticate
+    |--------------------------------------------------------------------------
+    */
     Route::prefix('user')->group( function () {
 
         Route::get('',                        [AuthController::class, 'index'])->name('api.user.index');
@@ -97,7 +111,11 @@ Route::group(['middleware' => ['auth:api']],function () {
         Route::delete('delete',               [AuthController::class, 'delete'])->name('api.user.delete');
 
 
-        // Notification Routes API For HR Project
+        /*
+        |--------------------------------------------------------------------------
+        | Notification Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('notification')->group( function () {
 
             Route::get('list',                [NotificationController::class, 'index'])->name('api.user.notification.index');
@@ -105,34 +123,61 @@ Route::group(['middleware' => ['auth:api']],function () {
 
         });
 
-
+        /*
+        |--------------------------------------------------------------------------
+        | Vacation Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('vacation')->group( function () {
 
-            Route::get('' ,         [VacationController::class , 'index'])->name('api.user.vacation.index');
-            Route::get('{id}' ,     [VacationController::class , 'show'])->name('api.user.vacation.show');
-            Route::post('' ,        [VacationController::class , 'store'])->name('api.user.vacation.store');
-            Route::post('{id}' ,    [VacationController::class , 'update'])->name('api.user.vacation.update');
-            Route::delete('{id}' ,  [VacationController::class , 'destroy'])->name('api.user.vacation.destroy');
+            Route::get('' ,                [VacationController::class , 'index'])->name('api.user.vacation.index');
+            Route::get('{id}' ,            [VacationController::class , 'show'])->name('api.user.vacation.show');
+            Route::post('' ,               [VacationController::class , 'store'])->name('api.user.vacation.store');
+            Route::post('{id}' ,           [VacationController::class , 'update'])->name('api.user.vacation.update');
+            Route::delete('{id}' ,         [VacationController::class , 'destroy'])->name('api.user.vacation.destroy');
+            Route::get('approve/{id}' ,    [VacationController::class , 'approve'])->name('api.user.vacation.approve');
+            Route::get('reject/{id}' ,     [VacationController::class , 'reject'])->name('api.user.vacation.approve');
+
         });
 
+        /*
+        |--------------------------------------------------------------------------
+        | MissingPunchs Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('missing-punches')->group( function () {
 
-            Route::get('' ,         [MissingPunchsController::class , 'index'])->name('api.user.missing_punches.index');
-            Route::get('{id}' ,     [MissingPunchsController::class , 'show'])->name('api.user.missing_punches.show');
-            Route::post('' ,        [MissingPunchsController::class , 'store'])->name('api.user.missing_punches.store');
-            Route::post('{id}' ,    [MissingPunchsController::class , 'update'])->name('api.user.missing_punches.update');
-            Route::delete('{id}' ,  [MissingPunchsController::class , 'destroy'])->name('api.user.missing_punches.destroy');
+            Route::get('' ,                [MissingPunchsController::class , 'index'])->name('api.user.missing_punches.index');
+            Route::get('{id}' ,            [MissingPunchsController::class , 'show'])->name('api.user.missing_punches.show');
+            Route::post('' ,               [MissingPunchsController::class , 'store'])->name('api.user.missing_punches.store');
+            Route::post('{id}' ,           [MissingPunchsController::class , 'update'])->name('api.user.missing_punches.update');
+            Route::delete('{id}' ,         [MissingPunchsController::class , 'destroy'])->name('api.user.missing_punches.destroy');
+            Route::get('approve/{id}' ,    [MissingPunchsController::class , 'approve'])->name('api.user.missing_punches.approve');
+            Route::get('reject/{id}' ,     [MissingPunchsController::class , 'reject'])->name('api.user.missing_punches.approve');
+
         });
 
+        /*
+        |--------------------------------------------------------------------------
+        | Leave Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('leave')->group( function () {
 
-            Route::get('' ,         [LeaveController::class , 'index'])->name('api.user.leave.index');
-            Route::get('{id}' ,     [LeaveController::class , 'show'])->name('api.user.leave.show');
-            Route::post('' ,        [LeaveController::class , 'store'])->name('api.user.leave.store');
-            Route::post('{id}' ,    [LeaveController::class , 'update'])->name('api.user.leave.update');
-            Route::delete('{id}' ,  [LeaveController::class , 'destroy'])->name('api.user.leave.destroy');
+            Route::get('' ,                [LeaveController::class , 'index'])->name('api.user.leave.index');
+            Route::get('{id}' ,            [LeaveController::class , 'show'])->name('api.user.leave.show');
+            Route::post('' ,               [LeaveController::class , 'store'])->name('api.user.leave.store');
+            Route::post('{id}' ,           [LeaveController::class , 'update'])->name('api.user.leave.update');
+            Route::delete('{id}' ,         [LeaveController::class , 'destroy'])->name('api.user.leave.destroy');
+            Route::get('approve/{id}' ,    [LeaveController::class , 'approve'])->name('api.user.leave.approve');
+            Route::get('reject/{id}' ,     [LeaveController::class , 'reject'])->name('api.user.leave.approve');
         });
 
+        /*
+        |--------------------------------------------------------------------------
+        | Experince Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('experince')->group( function () {
 
             Route::get('' ,         [ExperinceController::class , 'index'])->name('api.user.experince.index');
@@ -142,6 +187,11 @@ Route::group(['middleware' => ['auth:api']],function () {
             Route::delete('{id}' ,  [ExperinceController::class , 'destroy'])->name('api.user.experince.destroy');
         });
 
+        /*
+        |--------------------------------------------------------------------------
+        | Event Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('event')->group( function () {
 
             Route::get('' ,         [EventController::class , 'index'])->name('api.user.event.index');
@@ -151,6 +201,11 @@ Route::group(['middleware' => ['auth:api']],function () {
             Route::delete('{id}' ,  [EventController::class , 'destroy'])->name('api.user.event.destroy');
         });
 
+        /*
+        |--------------------------------------------------------------------------
+        | Document Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('document')->group( function () {
 
             Route::get('' ,         [DocumentController::class , 'index'])->name('api.user.document.index');
@@ -160,6 +215,11 @@ Route::group(['middleware' => ['auth:api']],function () {
             Route::delete('{id}' ,  [DocumentController::class , 'destroy'])->name('api.user.document.destroy');
         });
 
+        /*
+        |--------------------------------------------------------------------------
+        | Certifiate Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('certificate')->group( function () {
 
             Route::get('' ,         [CertifiateController::class , 'index'])->name('api.user.certificate.index');
@@ -169,15 +229,28 @@ Route::group(['middleware' => ['auth:api']],function () {
             Route::delete('{id}' ,  [CertifiateController::class , 'destroy'])->name('api.user.certificate.destroy');
         });
 
+        /*
+        |--------------------------------------------------------------------------
+        | Attendance Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('attendance')->group( function () {
 
-            Route::get('' ,         [AttendanceController::class , 'index'])->name('api.user.attendance.index');
-            Route::get('{id}' ,     [AttendanceController::class , 'show'])->name('api.user.attendance.show');
-            Route::post('' ,        [AttendanceController::class , 'store'])->name('api.user.attendance.store');
-            Route::post('{id}' ,    [AttendanceController::class , 'update'])->name('api.user.attendance.update');
-            Route::delete('{id}' ,  [AttendanceController::class , 'destroy'])->name('api.user.attendance.destroy');
+            Route::get('' ,                [AttendanceController::class , 'index'])->name('api.user.attendance.index');
+            Route::get('{id}' ,            [AttendanceController::class , 'show'])->name('api.user.attendance.show');
+            Route::post('' ,               [AttendanceController::class , 'store'])->name('api.user.attendance.store');
+            Route::post('{id}' ,           [AttendanceController::class , 'update'])->name('api.user.attendance.update');
+            Route::delete('{id}' ,         [AttendanceController::class , 'destroy'])->name('api.user.attendance.destroy');
+            Route::get('approve/{id}' ,    [AttendanceController::class , 'approve'])->name('api.user.attendance.approve');
+            Route::get('reject/{id}' ,     [AttendanceController::class , 'reject'])->name('api.user.attendance.approve');
+
         });
 
+        /*
+        |--------------------------------------------------------------------------
+        | Asset Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('asset')->group( function () {
 
             Route::get('' ,         [AssetController::class , 'index'])->name('api.user.asset.index');
@@ -187,25 +260,37 @@ Route::group(['middleware' => ['auth:api']],function () {
             Route::delete('{id}' ,  [AssetController::class , 'destroy'])->name('api.user.asset.destroy');
         });
 
-        // Dashboard Routes API For HR Project
+        /*
+        |--------------------------------------------------------------------------
+        | Dashboard Routes API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::get('dashboard',     [DashboardController::class, 'index'])->name('api.user.dashboard.index');
 
     });
 
-
-
-
-
-    // Company API For HR Project
+    /*
+    |--------------------------------------------------------------------------
+    | Company API For HR Project
+    |--------------------------------------------------------------------------
+    */
     Route::prefix('company')->group( function () {
 
-        // Notification API For HR Project
+        /*
+        |--------------------------------------------------------------------------
+        | Notification API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('notification')->group( function () {
 
             Route::post('send',      [NotificationController::class, 'send'])->name('api.company.notification.send');
         });
 
-        // Department API For HR Project
+        /*
+        |--------------------------------------------------------------------------
+        |Department API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('department')->group( function () {
 
             Route::get('' ,         [DepartmentController::class , 'index'])->name('api.user.department.index');
@@ -215,39 +300,25 @@ Route::group(['middleware' => ['auth:api']],function () {
             Route::delete('{id}' ,  [DepartmentController::class , 'destroy'])->name('api.user.department.destroy');
         });
 
-
-        // Setting API For HR Project
+        /*
+        |--------------------------------------------------------------------------
+        | Setting API For HR Project
+        |--------------------------------------------------------------------------
+        */
         Route::get('index',          [SettingController::class, 'index'])->name('api.company.index');
         Route::post('setting',       [SettingController::class, 'update'])->name('api.company.setting');
 
-
-
     });
-
-
 
 });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Lookups API For HR Project
+/*
+|--------------------------------------------------------------------------
+| Lookups API For HR Project
+|--------------------------------------------------------------------------
+*/
 Route::prefix('lookups')->group( function () {
 
     Route::get('countries',             [LookupController::class, 'countries'])->name('api.lookups.countries');
@@ -268,7 +339,11 @@ Route::prefix('lookups')->group( function () {
 });
 
 
-
+/*
+|--------------------------------------------------------------------------
+| Messages API For HR Project
+|--------------------------------------------------------------------------
+*/
 Route::prefix('message')->group(function () {
     Route::get('list',         [MessageController::class, 'index'])->name('api.message.index');
     Route::get('show/{code}',  [MessageController::class, 'show'])->name('api.message.show');

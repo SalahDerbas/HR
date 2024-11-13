@@ -265,7 +265,7 @@ class AuthController extends Controller
         try{
             $userData           = $request->all();
             if ($request->file('photo'))
-            $userData['photo']  = UploadPhotoUser($request->file('photo'), 'store');
+            $userData['photo']  = handleFileUpload($request->file('photo'), 'store' , 'User' , NULL);
 
             User::create($userData);
             return responseSuccess('' , getStatusText(STORE_USER_SUCCESS_CODE)  , STORE_USER_SUCCESS_CODE);
@@ -291,7 +291,7 @@ class AuthController extends Controller
         try{
             $userData           = $request->all();
             if ($request->file('photo'))
-            $userData['photo']  = UploadPhotoUser($request->file('photo'), 'store');
+            $userData['photo']  = handleFileUpload($request->file('photo'), 'update' , 'User' , Auth::user()->photo);
 
             Auth::user()->update($userData);
             return responseSuccess('' , getStatusText(UPDATE_PROFILE_SUCCESS_CODE)  , UPDATE_PROFILE_SUCCESS_CODE);

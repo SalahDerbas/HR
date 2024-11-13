@@ -15,6 +15,7 @@ class Vacation extends Model
        'end_date',
        'reason',
        'type_vacation_id',
+       'status_vacation_id',
        'user_id',
        'doucument'
     ];
@@ -28,6 +29,8 @@ class Vacation extends Model
     }
     public function getVacationType(){
         return $this->hasOne(Lookup::class, 'id', 'type_vacation_id');
-
+    }
+    public function getStatusVacation(){
+        return $this->hasOne(Lookup::class, 'id', 'status_vacation_id');
     }
 }

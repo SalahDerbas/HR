@@ -39,13 +39,13 @@ class ExperinceController extends Controller
     public function store(ExperinceRequest $request)
     {
         try{
-            $ExperinceData                    = $request->all();
-            $ExperinceData['user_id']         = Auth::id();
+            $data                    = $request->all();
+            $data['user_id']         = Auth::id();
 
             if ($request->file('document'))
-                $ExperinceData['document']    = UploadPhotoUser($request->file('document'), 'store');
+                $data['document']    = handleFileUpload($request->file('document'), 'store' , 'Experince' , NULL);
 
-            Experince::create($ExperinceData);
+            Experince::create($data);
             return responseSuccess('' , getStatusText(STORE_EXPERINCE_SUCCESS_CODE)  , STORE_EXPERINCE_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -82,12 +82,12 @@ class ExperinceController extends Controller
     public function update(ExperinceRequest $request, $id)
     {
         try{
-            $ExperinceData                   = $request->all();
-
+            $data                            = $request->all();
+            $Experince                       = Experince::findOrFail($id);
             if ($request->file('document'))
-                $ExperinceData['document']  = UploadPhotoUser($request->file('document'), 'update');
+                $data['document']  = handleFileUpload($request->file('document'), 'update' , 'Experince' ,$Experince->document );
 
-            Experince::findOrFail($id)->update($ExperinceData);
+            $Experince->update($data);
             return responseSuccess('' , getStatusText(UPDATE_EXPERINCE_SUCCESS_CODE)  , UPDATE_EXPERINCE_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);

@@ -38,12 +38,12 @@ class EventController extends Controller
     public function store(EventRequest $request)
     {
         try{
-            $EventData                    = $request->all();
+            $data                    = $request->all();
 
             if ($request->file('photo'))
-                $EventData['photo']       = UploadPhotoUser($request->file('photo'), 'store');
+                $data['photo']       = handleFileUpload($request->file('photo'), 'store' , 'Event' , NULL);
 
-            Event::create($EventData);
+            Event::create($data);
             return responseSuccess('' , getStatusText(STORE_EVENT_SUCCESS_CODE)  , STORE_EVENT_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -80,12 +80,13 @@ class EventController extends Controller
     public function update(EventRequest $request, $id)
     {
         try{
-            $EventData                   = $request->all();
+            $data                   = $request->all();
+            $Event                       = Event::findOrFail($id);
 
             if ($request->file('photo'))
-                $EventData['photo']      = UploadPhotoUser($request->file('photo'), 'update');
+                $data['photo']      = handleFileUpload($request->file('photo'), 'update' , 'Event' , $Event->photo);
 
-            Event::findOrFail($id)->update($EventData);
+            Event::findOrFail($id)->update($data);
             return responseSuccess('' , getStatusText(UPDATE_EVENT_SUCCESS_CODE)  , UPDATE_EVENT_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);

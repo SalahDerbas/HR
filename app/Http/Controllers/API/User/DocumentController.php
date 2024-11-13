@@ -39,13 +39,13 @@ class DocumentController extends Controller
     public function store(DocumentRequest $request)
     {
         try{
-            $DocumentData                    = $request->all();
-            $DocumentData['user_id']         = Auth::id();
+            $data                    = $request->all();
+            $data['user_id']         = Auth::id();
 
             if ($request->file('document'))
-                $DocumentData['document']       = UploadPhotoUser($request->file('document'), 'store');
+                $data['document']       = handleFileUpload($request->file('document'), 'store' , 'Document' , NULL);
 
-            Document::create($DocumentData);
+            Document::create($data);
             return responseSuccess('' , getStatusText(STORE_DOCUMENT_SUCCESS_CODE)  , STORE_DOCUMENT_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -82,13 +82,14 @@ class DocumentController extends Controller
     public function update(DocumentRequest $request, $id)
     {
         try{
-            $DocumentData                    = $request->all();
-            $DocumentData['user_id']         = Auth::id();
+            $data                    = $request->all();
+            $data['user_id']         = Auth::id();
+            $Document                        = Document::findOrFail($id);
 
             if ($request->file('document'))
-                $DocumentData['document']      = UploadPhotoUser($request->file('document'), 'update');
+                $data['document']      = handleFileUpload($request->file('document'), 'update' , 'Document' , $Document->document);
 
-            Document::findOrFail($id)->update($DocumentData);
+            $Document->update($data);
             return responseSuccess('' , getStatusText(UPDATE_DOCUMENT_SUCCESS_CODE)  , UPDATE_DOCUMENT_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);

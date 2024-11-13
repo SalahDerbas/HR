@@ -11,6 +11,21 @@ use App\Models\Attendance;
 
 class AttendanceController extends Controller
 {
+
+    /**
+     * Constructor to initialize the default notification data for attendance.
+     */
+    protected $array;
+    public function __construct()
+    {
+        $this->array = [
+            'title_en' => 'This is Title (Attendance)',
+            'title_ar' => 'This is Title (Attendance)',
+            'body_en'  => 'This is Body  (Attendance)',
+            'body_ar'  => 'This is Body  (Attendance)',
+        ];
+    }
+
     /**
      * Display a listing of the user's Attendance's.
      *
@@ -39,11 +54,12 @@ class AttendanceController extends Controller
     public function store(AttendanceRequest $request)
     {
         try{
-            $AttendanceData                    = $request->all();
-            $AttendanceData['user_id']         = Auth::id();
+            $data                         = $request->all();
+            $data['user_id']              = Auth::id();
+            $data['status_attendance_id'] = getIDLookups('SL-Pending');
 
-
-            Attendance::create($AttendanceData);
+            Attendance::create($data);
+            SendNotificationForDirectory($this->array , Auth::user()->directory_id);
             return responseSuccess('' , getStatusText(STORE_ATTENDANCE_SUCCESS_CODE)  , STORE_ATTENDANCE_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -80,10 +96,10 @@ class AttendanceController extends Controller
     public function update(AttendanceRequest $request, $id)
     {
         try{
-            $AttendanceData                    = $request->all();
-            $AttendanceData['user_id']         = Auth::id();
+            $data                    = $request->all();
+            $data['user_id']         = Auth::id();
 
-            Attendance::findOrFail($id)->update($AttendanceData);
+            Attendance::findOrFail($id)->update($data);
             return responseSuccess('' , getStatusText(UPDATE_ATTENDANCE_SUCCESS_CODE)  , UPDATE_ATTENDANCE_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -106,4 +122,13 @@ class AttendanceController extends Controller
         }
     }
 
+    public function approve($id)
+    {
+        try{
+            $data = Attendance::findOrFail($id)->update(['status_attendance_id' =>  getIDLookups('SL-Approve') ]);
+            return responseSuccess('', getStatusText(APPROVE_SUCCESS_CODE), APPROVE_SUCCESS_CODE);
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
+    }
 }

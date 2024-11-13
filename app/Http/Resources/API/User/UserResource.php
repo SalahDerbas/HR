@@ -44,6 +44,8 @@ class UserResource extends JsonResource
             'status_user_id'          => $data->status_user_id,
             'status_user_name'        => isset($data->status_user_id) ? ((config('app_header.lang') == 'ar') ? $data->getStatusUser->value_ar :$data->getStatusUser->value_en) : NULL ,
             'directory_id'            => $data->directory_id,
+            'department_id'           => $data->department_id,
+            'department_name'         => isset($data->department_id) ? ((config('app_header.lang') == 'ar') ? $data->getDepartment->name_ar :$data->getDepartment->name_en) : NULL ,
             'photo'                   => $data->photo,
             'is_directory'            => (boolean)$data->is_directory,
             'last_login'              => formatDate($data->last_login),

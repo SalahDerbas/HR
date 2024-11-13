@@ -53,7 +53,7 @@ class SettingController extends Controller
                 Setting::where('key', $key)->update(['value' => $value]);
 
             if($request->file('logo')) {
-                $logo = UploadPhotoUser($request->file('logo'), 'update');
+                $logo = handleFileUpload($request->file('logo'), 'update' , 'Setting' , Setting::where('key','logo')->value('value'));
                 Setting::where('key', 'logo')->update(['value' => $logo]);
             }
             return $this->successSetting( UPDATE_SETTING_SUCCESS_CODE );

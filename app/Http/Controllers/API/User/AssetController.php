@@ -39,14 +39,14 @@ class AssetController extends Controller
     public function store(AssetRequest $request)
     {
         try{
-            $AssetData                    = $request->all();
-            $AssetData['user_id']         = Auth::id();
+            $data                    = $request->all();
+            $data['user_id']         = Auth::id();
 
             if ($request->file('document'))
-                $AssetData['document']      = UploadPhotoUser($request->file('document'), 'store');
+                $data['document']      = handleFileUpload($request->file('document'), 'store' , 'Asset', NULL);
 
 
-            Asset::create($AssetData);
+            Asset::create($data);
             return responseSuccess('' , getStatusText(STORE_ASSET_SUCCESS_CODE)  , STORE_ASSET_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -83,13 +83,14 @@ class AssetController extends Controller
     public function update(AssetRequest $request, $id)
     {
         try{
-            $AssetData                    = $request->all();
-            $AssetData['user_id']         = Auth::id();
+            $data                    = $request->all();
+            $data['user_id']         = Auth::id();
+            $Asset                   = Asset::findOrFail($id);
 
             if ($request->file('document'))
-                $AssetData['document']      = UploadPhotoUser($request->file('document'), 'store');
+                $data['document']      = handleFileUpload($request->file('document'), 'update' , 'Asset' , $Asset->document );
 
-            Asset::findOrFail($id)->update($AssetData);
+            $Asset->update($data);
             return responseSuccess('' , getStatusText(UPDATE_ASSET_SUCCESS_CODE)  , UPDATE_ASSET_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);

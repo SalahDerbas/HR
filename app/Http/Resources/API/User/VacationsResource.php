@@ -24,11 +24,8 @@ class VacationsResource extends JsonResource
             'user_id'                    => $this['user_id'],
             'type_vacation_id'           => $this['type_vacation_id'],
             'vacation_type'              => isset($this['type_vacation_id']) ? ((config('app_header.lang') == 'ar') ? $this['getVacationType']['value_ar'] :$this['getVacationType']['value_en']) : NULL,
-
-
-
-
-
+            'status_vacation_id'         => $this['status_vacation_id'],
+            'status_vacation'            => isset($this['status_vacation_id']) ? ((config('app_header.lang') == 'ar') ? $this['getStatusVacation']['value_ar'] :$this['getStatusVacation']['value_en']) : NULL,
         ];
     }
 }

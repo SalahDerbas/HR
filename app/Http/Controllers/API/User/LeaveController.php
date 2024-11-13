@@ -12,6 +12,20 @@ use App\Models\Leave;
 class LeaveController extends Controller
 {
     /**
+     * Constructor to initialize the default notification data for Leave.
+    */
+    protected $array;
+    public function __construct()
+    {
+        $this->array = [
+            'title_en' => 'This is Title (Leave)',
+            'title_ar' => 'This is Title (Leave)',
+            'body_en'  => 'This is Body  (Leave)',
+            'body_ar'  => 'This is Body  (Leave)',
+        ];
+    }
+
+    /**
      * Display a listing of the user's leave's.
      *
      * @return \Illuminate\Http\Response
@@ -39,14 +53,15 @@ class LeaveController extends Controller
     public function store(LeaveRequest $request)
     {
         try{
-            $leaveData                    = $request->all();
-            $leaveData['user_id']         = Auth::id();
-            $leaveData['status_leave_id'] = getIDLookups('SL-Pending');
+            $data                    = $request->all();
+            $data['user_id']         = Auth::id();
+            $data['status_leave_id'] = getIDLookups('SL-Pending');
 
             if ($request->file('doucument'))
-                $leaveData['doucument']  = UploadPhotoUser($request->file('doucument'), 'store');
+                $data['doucument']  = handleFileUpload($request->file('doucument'), 'store' , 'Leave' , NULL);
 
-            Leave::create($leaveData);
+            Leave::create($data);
+            SendNotificationForDirectory($this->array , Auth::user()->directory_id);
             return responseSuccess('' , getStatusText(STORE_LEAVE_SUCCESS_CODE)  , STORE_LEAVE_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -83,12 +98,13 @@ class LeaveController extends Controller
     public function update(LeaveRequest $request, $id)
     {
         try{
-            $leaveData                   = $request->all();
+            $data                        = $request->all();
+            $Leave                       = Leave::findOrFail($id);
 
             if ($request->file('doucument'))
-                $leaveData['doucument']  = UploadPhotoUser($request->file('doucument'), 'update');
+                $data['doucument']  = handleFileUpload($request->file('doucument'), 'update' , 'Leave' , $Leave->doucument);
 
-            Leave::findOrFail($id)->update($leaveData);
+            $Leave->update($data);
             return responseSuccess('' , getStatusText(UPDATE_LEAVE_SUCCESS_CODE)  , UPDATE_LEAVE_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);

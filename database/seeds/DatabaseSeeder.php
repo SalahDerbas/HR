@@ -5,6 +5,7 @@ use Database\Seeders\UserTableSeeder;
 use Database\Seeders\LookupSeeder;
 use Database\Seeders\CountrySeeder;
 use Database\Seeders\SettingSeeder;
+use Database\Seeders\DepartmentSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LookupSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(SettingSeeder::class);
+        $this->call(DepartmentSeeder::class);
         $this->call(UserTableSeeder::class);
     }
 }

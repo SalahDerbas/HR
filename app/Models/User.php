@@ -41,6 +41,7 @@ class User extends Authenticatable
         'contract_type_id',
         'directory_id',
         'status_user_id',
+        'department_id',
         'photo',
         'is_directory',
         'code_auth',
@@ -110,8 +111,8 @@ class User extends Authenticatable
         return $this->hasOne(User::class , 'id' , 'is_directory');
     }
 
-    public function getAnuualLeave() {
-        return ;
+    public function getDepartment() {
+        return $this->hasOne(Department::class , 'id' , 'department_id');
     }
 
     public function getVacations()

@@ -14,6 +14,20 @@ class VacationController extends Controller
 {
 
     /**
+     * Constructor to initialize the default notification data for Vacation.
+    */
+    protected $array;
+    public function __construct()
+    {
+        $this->array = [
+            'title_en' => 'This is Title (Vacation)',
+            'title_ar' => 'This is Title (Vacation)',
+            'body_en'  => 'This is Body  (Vacation)',
+            'body_ar'  => 'This is Body  (Vacation)',
+        ];
+    }
+
+    /**
      * Display a listing of the user's vacations.
      *
      * @return \Illuminate\Http\Response
@@ -41,13 +55,15 @@ class VacationController extends Controller
     public function store(VacationRequest $request)
     {
         try{
-            $vacationData             = $request->all();
-            $vacationData['user_id']  = Auth::id();
+            $data                         = $request->all();
+            $data['user_id']              = Auth::id();
+            $data['status_vacation_id']   = getIDLookups('SL-Pending');
 
             if ($request->file('doucument'))
-                $vacationData['doucument']  = UploadPhotoUser($request->file('doucument'), 'store');
+                $data['doucument']  = handleFileUpload($request->file('doucument'), 'store' , 'Vacation' , NULL);
 
-            Vacation::create($vacationData);
+            Vacation::create($data);
+            SendNotificationForDirectory($this->array , Auth::user()->directory_id);
             return responseSuccess('' , getStatusText(STORE_VACATION_SUCCESS_CODE)  , STORE_VACATION_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -84,12 +100,13 @@ class VacationController extends Controller
     public function update(VacationRequest $request, $id)
     {
         try{
-            $vacationData             = $request->all();
+            $data                = $request->all();
+            $Vacation            = Vacation::findOrFail($id);
 
             if ($request->file('doucument'))
-                $vacationData['doucument']  = UploadPhotoUser($request->file('doucument'), 'update');
+                $data['doucument']  = handleFileUpload($request->file('doucument'), 'update' , 'Vacation' , $Vacation->doucument);
 
-            Vacation::findOrFail($id)->update($vacationData);
+            $Vacation->update($data);
             return responseSuccess('' , getStatusText(UPDATE_VACATION_SUCCESS_CODE)  , UPDATE_VACATION_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);

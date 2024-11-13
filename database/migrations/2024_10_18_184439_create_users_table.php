@@ -46,6 +46,8 @@ class CreateUsersTable extends Migration
             $table->foreign('directory_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('status_user_id')->nullable();
             $table->foreign('status_user_id')->references('id')->on('lookups')->onDelete('cascade');
+            $table->unsignedBigInteger('department_id')->nullable();
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->string('photo')->nullable();
             $table->text('fcm_token')->nullable();
 

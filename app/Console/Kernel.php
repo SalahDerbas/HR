@@ -20,11 +20,12 @@ class Kernel extends ConsoleKernel
      * Define the application's command schedule.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
-     * @return void
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('email:birthday')->dailyAt('00:00');
+        $schedule->command('email:joindate')->dailyAt('06:00');
+        $schedule->command('vacation:check')->monthlyOn(1, '12:00');
     }
 
     /**
