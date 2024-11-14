@@ -192,6 +192,7 @@ function getStatusText($responseCode){
             SETTING_SUCCESS_CODE                  => trans($key.'.SETTING_SUCCESS_CODE'),
             DASHBOARD_SUCCESS_CODE                => trans($key.'.DASHBOARD_SUCCESS_CODE'),
             APPROVE_SUCCESS_CODE                  => trans($key.'.APPROVE_SUCCESS_CODE'),
+            REJECTED_SUCCESS_CODE                 => trans($key.'.REJECTED_SUCCESS_CODE'),
     ];
 
     return ($responseCode == ALL_MESSAGE_CODE) ? $statusTexts: $statusTexts[$responseCode] ?? MESSAGE_NOT_FOUND_CODE;
@@ -405,7 +406,7 @@ if (!function_exists('formatDate')) {
 if (!function_exists('SendNotificationForDirectory')) {
     function SendNotificationForDirectory($data , $user_id)
     {
-        $firebaseToken = User::findOrFail($user_id)->where('fcm_token', '!=', null)->where('enable_notification', true)->pluck('fcm_token')->first();
+        $firebaseToken = User::where('id', $user_id)->whereNotNull('fcm_token')->where('enable_notification', true)->pluck('fcm_token')->first();
 
         if(!is_null($firebaseToken)){
             $payload = json_encode([

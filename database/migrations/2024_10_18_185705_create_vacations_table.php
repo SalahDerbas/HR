@@ -23,7 +23,7 @@ class CreateVacationsTable extends Migration
             $table->foreign('type_vacation_id')->references('id')->on('lookups')->onDelete('cascade');
             $table->unsignedBigInteger('status_vacation_id')->nullable();
             $table->foreign('status_vacation_id')->references('id')->on('lookups')->onDelete('cascade');
-            $table->bigInteger('user_id')->unsigned();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

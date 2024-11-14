@@ -14,14 +14,30 @@ class LeaveController extends Controller
     /**
      * Constructor to initialize the default notification data for Leave.
     */
-    protected $array;
+    protected $messageStore;
+    protected $messageApprove;
+    protected $messageReject;
     public function __construct()
     {
-        $this->array = [
-            'title_en' => 'This is Title (Leave)',
-            'title_ar' => 'This is Title (Leave)',
-            'body_en'  => 'This is Body  (Leave)',
-            'body_ar'  => 'This is Body  (Leave)',
+        $this->messageStore = [
+            'title_en' => 'This is Title (Store Leave)',
+            'title_ar' => 'This is Title (Store Leave)',
+            'body_en'  => 'This is Body  (Store Leave)',
+            'body_ar'  => 'This is Body  (Store Leave)',
+        ];
+
+        $this->messageApprove = [
+            'title_en' => 'This is Title (Approve Leave)',
+            'title_ar' => 'This is Title (Approve Leave)',
+            'body_en'  => 'This is Body  (Approve Leave)',
+            'body_ar'  => 'This is Body  (Approve Leave)',
+        ];
+
+        $this->messageReject = [
+            'title_en' => 'This is Title (Reject Leave)',
+            'title_ar' => 'This is Title (Reject Leave)',
+            'body_en'  => 'This is Body  (Reject Leave)',
+            'body_ar'  => 'This is Body  (Reject Leave)',
         ];
     }
 
@@ -61,7 +77,7 @@ class LeaveController extends Controller
                 $data['doucument']  = handleFileUpload($request->file('doucument'), 'store' , 'Leave' , NULL);
 
             Leave::create($data);
-            SendNotificationForDirectory($this->array , Auth::user()->directory_id);
+            SendNotificationForDirectory($this->messageStore , Auth::user()->directory_id);
             return responseSuccess('' , getStatusText(STORE_LEAVE_SUCCESS_CODE)  , STORE_LEAVE_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -127,4 +143,41 @@ class LeaveController extends Controller
         }
     }
 
+    /**
+     * Approves the Leave record by updating the status to "Approved".
+     *
+     * @param int $id The ID of the Leave record to approve.
+     * @return \Illuminate\Http\JsonResponse A success response if approval is successful, or an error response if an exception occurs.
+     */
+    public function approve($id)
+    {
+        try{
+            $data = Leave::findOrFail($id);
+            $data->update(['status_leave_id' =>  getIDLookups('SL-Approve') ]);
+            SendNotificationForDirectory($this->messageApprove , $data->user_id);
+
+            return responseSuccess('', getStatusText(APPROVE_SUCCESS_CODE), APPROVE_SUCCESS_CODE);
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
+    }
+
+    /**
+     * Rejects the Leave record by updating the status to "Rejected".
+     *
+     * @param int $id The ID of the Leave record to reject.
+     * @return \Illuminate\Http\JsonResponse A success response if rejection is successful, or an error response if an exception occurs.
+     */
+    public function reject($id)
+    {
+        try{
+            $data = Leave::findOrFail($id);
+            $data->update(['status_leave_id' =>  getIDLookups('SL-Rejected') ]);
+            SendNotificationForDirectory($this->messageReject , $data->user_id);
+
+            return responseSuccess('', getStatusText(REJECTED_SUCCESS_CODE), REJECTED_SUCCESS_CODE);
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
+    }
 }

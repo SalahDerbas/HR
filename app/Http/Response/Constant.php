@@ -65,6 +65,7 @@ define('UPDATE_SETTING_SUCCESS_CODE'          , 1060);
 define('SETTING_SUCCESS_CODE'                 , 1061);
 define('DASHBOARD_SUCCESS_CODE'               , 1062);
 define('APPROVE_SUCCESS_CODE'                 , 1063);
+define('REJECTED_SUCCESS_CODE'                , 1064);
 
 
 

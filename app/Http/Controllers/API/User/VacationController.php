@@ -16,14 +16,30 @@ class VacationController extends Controller
     /**
      * Constructor to initialize the default notification data for Vacation.
     */
-    protected $array;
+    protected $messageStore;
+    protected $messageApprove;
+    protected $messageReject;
     public function __construct()
     {
-        $this->array = [
-            'title_en' => 'This is Title (Vacation)',
-            'title_ar' => 'This is Title (Vacation)',
-            'body_en'  => 'This is Body  (Vacation)',
-            'body_ar'  => 'This is Body  (Vacation)',
+        $this->messageStore = [
+            'title_en' => 'This is Title (Store Vacation)',
+            'title_ar' => 'This is Title (Store Vacation)',
+            'body_en'  => 'This is Body  (Store Vacation)',
+            'body_ar'  => 'This is Body  (Store Vacation)',
+        ];
+
+        $this->messageApprove = [
+            'title_en' => 'This is Title (Approve Vacation)',
+            'title_ar' => 'This is Title (Approve Vacation)',
+            'body_en'  => 'This is Body  (Approve Vacation)',
+            'body_ar'  => 'This is Body  (Approve Vacation)',
+        ];
+
+        $this->messageReject = [
+            'title_en' => 'This is Title (Reject Vacation)',
+            'title_ar' => 'This is Title (Reject Vacation)',
+            'body_en'  => 'This is Body  (Reject Vacation)',
+            'body_ar'  => 'This is Body  (Reject Vacation)',
         ];
     }
 
@@ -63,7 +79,8 @@ class VacationController extends Controller
                 $data['doucument']  = handleFileUpload($request->file('doucument'), 'store' , 'Vacation' , NULL);
 
             Vacation::create($data);
-            SendNotificationForDirectory($this->array , Auth::user()->directory_id);
+            SendNotificationForDirectory($this->messageStore , Auth::user()->directory_id);
+
             return responseSuccess('' , getStatusText(STORE_VACATION_SUCCESS_CODE)  , STORE_VACATION_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
@@ -124,6 +141,44 @@ class VacationController extends Controller
         try{
             Vacation::findOrFail($id)->delete();
             return responseSuccess('', getStatusText(DELETE_VACATION_CODE), DELETE_VACATION_CODE);
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
+    }
+
+    /**
+     * Approves the Vacation record by updating the status to "Approved".
+     *
+     * @param int $id The ID of the Vacation record to approve.
+     * @return \Illuminate\Http\JsonResponse A success response if approval is successful, or an error response if an exception occurs.
+     */
+    public function approve($id)
+    {
+        try{
+            $data = Vacation::findOrFail($id);
+            $data->update(['status_vacation_id' =>  getIDLookups('SL-Approve') ]);
+            SendNotificationForDirectory($this->messageApprove , $data->user_id);
+
+            return responseSuccess('', getStatusText(APPROVE_SUCCESS_CODE), APPROVE_SUCCESS_CODE);
+        } catch (\Exception $e) {
+            return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
+        }
+    }
+
+    /**
+     * Rejects the Vacation record by updating the status to "Rejected".
+     *
+     * @param int $id The ID of the Vacation record to reject.
+     * @return \Illuminate\Http\JsonResponse A success response if rejection is successful, or an error response if an exception occurs.
+     */
+    public function reject($id)
+    {
+        try{
+            $data = Vacation::findOrFail($id);
+            $data->update(['status_vacation_id' =>  getIDLookups('SL-Rejected') ]);
+            SendNotificationForDirectory($this->messageReject , $data->user_id);
+
+            return responseSuccess('', getStatusText(REJECTED_SUCCESS_CODE), REJECTED_SUCCESS_CODE);
         } catch (\Exception $e) {
             return responseError($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY ,DATA_ERROR_CODE);
         }
