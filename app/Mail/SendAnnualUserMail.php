@@ -16,6 +16,7 @@ class SendAnnualUserMail extends Mailable
      * Create a new message instance.
      *
      * @return void
+     * @author Salah Derbas
      */
     public $user;
     public $availableAnnual;
@@ -29,6 +30,7 @@ class SendAnnualUserMail extends Mailable
      * Build the message.
      *
      * @return $this
+     * @author Salah Derbas
      */
     public function build()
     {

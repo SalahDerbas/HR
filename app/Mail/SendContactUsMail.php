@@ -16,6 +16,7 @@ class SendContactUsMail extends Mailable
      * Create a new message instance.
      *
      * @return void
+     * @author Salah Derbas
      */
     public $data;
     public function __construct($data)
@@ -27,6 +28,7 @@ class SendContactUsMail extends Mailable
      * Build the message.
      *
      * @return $this
+     * @author Salah Derbas
      */
     public function build()
     {

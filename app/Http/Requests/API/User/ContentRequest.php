@@ -15,6 +15,7 @@ class ContentRequest extends BaseRequest
      * Determine if the user is authorized to make this request.
      *
      * @return bool
+     * @author Salah Derbas
      */
     public function authorize()
     {
@@ -25,6 +26,7 @@ class ContentRequest extends BaseRequest
      * Get the validation rules for the contact us request.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function contactUsRequest()
     {
@@ -50,6 +52,7 @@ class ContentRequest extends BaseRequest
      *
      * @param string $key
      * @return mixed
+     * @author Salah Derbas
      */
     private function requested($key)
     {
@@ -66,6 +69,7 @@ class ContentRequest extends BaseRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     public function rules()
     {
@@ -76,6 +80,7 @@ class ContentRequest extends BaseRequest
      * Get the validation messages that apply to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     public function messages()
     {
@@ -87,6 +92,7 @@ class ContentRequest extends BaseRequest
      *
      * @param Validator $validator
      * @throws HttpResponseException
+     * @author Salah Derbas
      */
     protected function failedValidation(Validator $validator)
     {

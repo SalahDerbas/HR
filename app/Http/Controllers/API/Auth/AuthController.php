@@ -24,7 +24,8 @@ class AuthController extends Controller
      * If an exception occurs during the process, an error response is returned.
      *
      * @return \Illuminate\Http\JsonResponse
-     */
+     * @author Salah Derbas
+    */
     public function index()
     {
         try{
@@ -46,7 +47,8 @@ class AuthController extends Controller
      * @result string "login to application"
      * @throws \Exception
      * @author Salah Derbas
-     */
+     * @author Salah Derbas
+    */
     public function login(AuthRequest $request)
     {
         try{
@@ -66,7 +68,8 @@ class AuthController extends Controller
      *
      * @param AuthRequest $request The incoming request containing the user's email and OTP.
      * @return \Illuminate\Http\JsonResponse The response indicating the success or failure of the OTP validation.
-     */
+     * @author Salah Derbas
+    */
     public function checkOtp(AuthRequest $request)
     {
         try{
@@ -90,7 +93,8 @@ class AuthController extends Controller
      *
      * @param AuthRequest $request The incoming request containing the user's email.
      * @return mixed The result of the OTP email sending process.
-     */
+     * @author Salah Derbas
+    */
     public function resendOtp(AuthRequest $request)
     {
         try{
@@ -106,7 +110,8 @@ class AuthController extends Controller
      *
      * @param AuthRequest $request The incoming request containing the Google ID.
      * @return \Illuminate\Http\JsonResponse The response indicating the success of the login process.
-     */
+     * @author Salah Derbas
+    */
     public function loginByGoogle(AuthRequest $request)
     {
         try{
@@ -123,7 +128,8 @@ class AuthController extends Controller
      *
      * @param AuthRequest $request The incoming request containing the Facebook ID.
      * @return \Illuminate\Http\JsonResponse The response indicating the success of the login process.
-     */
+     * @author Salah Derbas
+    */
     public function loginByFacebook(AuthRequest $request)
     {
         try{
@@ -143,7 +149,8 @@ class AuthController extends Controller
      *
      * @param AuthRequest $request The request containing the Apple ID.
      * @return \Illuminate\Http\JsonResponse The success response with user data.
-     */
+     * @author Salah Derbas
+    */
     public function loginByApple(AuthRequest $request)
     {
         try{
@@ -162,7 +169,8 @@ class AuthController extends Controller
      *
      * @param AuthRequest $request The request containing the user's email address.
      * @return \Illuminate\Http\JsonResponse The response after sending the OTP.
-     */
+     * @author Salah Derbas
+    */
     public function forgetPassword(AuthRequest $request)
     {
         try{
@@ -181,7 +189,8 @@ class AuthController extends Controller
      *
      * @param AuthRequest $request The request containing the user's email and new password.
      * @return \Illuminate\Http\JsonResponse A success response indicating password reset completion.
-     */
+     * @author Salah Derbas
+    */
     public function resetPassword(AuthRequest $request)
     {
         try{
@@ -199,7 +208,8 @@ class AuthController extends Controller
      * returns it in a structured response. If an error occurs during retrieval,
      *
      * @return \Illuminate\Http\JsonResponse The success response with user profile data, or an error response if an exception occurs.
-     */
+     * @author Salah Derbas
+    */
     public function getProfile()
     {
         try{
@@ -218,7 +228,8 @@ class AuthController extends Controller
      * refreshed or an error response if an exception occurs.
      *
      * @return \Illuminate\Http\JsonResponse
-     */
+     * @author Salah Derbas
+    */
     public function refreshToken()
     {
         try{
@@ -237,7 +248,8 @@ class AuthController extends Controller
      * logout or an error response if an exception occurs.
      *
      * @return \Illuminate\Http\JsonResponse
-     */
+     * @author Salah Derbas
+    */
     public function logout()
     {
         try{
@@ -259,7 +271,8 @@ class AuthController extends Controller
      *
      * @param AuthRequest $request - The request containing user data.
      * @return \Illuminate\Http\JsonResponse
-     */
+     * @author Salah Derbas
+    */
     public function store(AuthRequest $request)
     {
         try{
@@ -285,7 +298,8 @@ class AuthController extends Controller
      *
      * @param AuthRequest $request - The request containing updated user data.
      * @return \Illuminate\Http\JsonResponse
-     */
+     * @author Salah Derbas
+    */
     public function updateProfile(AuthRequest $request)
     {
         try{
@@ -310,7 +324,8 @@ class AuthController extends Controller
      * if an exception occurs.
      *
      * @return \Illuminate\Http\JsonResponse
-     */
+     * @author Salah Derbas
+    */
     public function delete()
     {
         try{
@@ -331,7 +346,8 @@ class AuthController extends Controller
      * @result string "send OTP to email for user for verify"
      * @throws \Exception
      * @author Salah Derbas
-     */
+     * @author Salah Derbas
+    */
     private function sendOTPEmail($email , $otp)
     {
         SendOTPEmailJob::dispatch($email, $otp);
@@ -345,7 +361,8 @@ class AuthController extends Controller
      *
      * @param User $user The authenticated user object.
      * @return \Illuminate\Http\JsonResponse The response containing the user's information and success status.
-     */
+     * @author Salah Derbas
+    */
     private function successAuth($user)
     {
         Auth::login($user);

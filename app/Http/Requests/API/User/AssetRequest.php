@@ -16,6 +16,7 @@ class AssetRequest extends BaseRequest
      * Determine if the user is authorized to make this request.
      *
      * @return bool
+     * @author Salah Derbas
      */
     public function authorize()
     {
@@ -26,6 +27,7 @@ class AssetRequest extends BaseRequest
      * Get the validation rules that update vacation to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function assetUpdateRequest()
     {
@@ -51,6 +53,7 @@ class AssetRequest extends BaseRequest
      * Get the validation rules that store vacation to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function assetStoreRequest()
     {
@@ -77,6 +80,7 @@ class AssetRequest extends BaseRequest
      *
      * @param string $key
      * @return mixed
+     * @author Salah Derbas
      */
     private function requested($key)
     {
@@ -94,11 +98,13 @@ class AssetRequest extends BaseRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     /**
      * Get the validation rules for the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     public function rules()
     {
@@ -109,6 +115,7 @@ class AssetRequest extends BaseRequest
      * Get the validation messages for the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     public function messages()
     {
@@ -119,6 +126,7 @@ class AssetRequest extends BaseRequest
      *
      * @param Validator $validator
      * @throws HttpResponseException
+     * @author Salah Derbas
      */
     protected function failedValidation(Validator $validator)
     {

@@ -11,6 +11,7 @@ class UserIsDelete implements Rule
      * Create a new rule instance.
      *
      * @return void
+     * @author Salah Derbas
      */
     protected $email = null;
     public function __construct($email)
@@ -24,6 +25,7 @@ class UserIsDelete implements Rule
      * @param  string  $attribute
      * @param  mixed  $value
      * @return bool
+     * @author Salah Derbas
      */
     public function passes($attribute, $value)
     {
@@ -34,6 +36,7 @@ class UserIsDelete implements Rule
      * Get the validation error message.
      *
      * @return string
+     * @author Salah Derbas
      */
     public function message()
     {

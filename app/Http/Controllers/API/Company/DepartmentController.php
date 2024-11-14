@@ -15,6 +15,7 @@ class DepartmentController extends Controller
      * Display a listing of the user's Department's.
      *
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function index()
     {
@@ -35,6 +36,7 @@ class DepartmentController extends Controller
      *
      * @param  \App\Http\Requests\API\User\DepartmentRequest  $request
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function store(DepartmentRequest $request)
     {
@@ -53,6 +55,7 @@ class DepartmentController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function show($id)
     {
@@ -74,6 +77,7 @@ class DepartmentController extends Controller
      * @param  \App\Http\Requests\API\User\DepartmentRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function update(DepartmentRequest $request, $id)
     {
@@ -92,6 +96,7 @@ class DepartmentController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function destroy($id)
     {

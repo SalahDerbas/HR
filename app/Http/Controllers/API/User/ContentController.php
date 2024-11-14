@@ -19,6 +19,7 @@ class ContentController extends Controller
      *
      * @param string $key The key representing the content type.
      * @return \Illuminate\Http\JsonResponse The JSON response with content data or an error message.
+     * @author Salah Derbas
      */
     private function getContentData($key)
     {
@@ -35,6 +36,7 @@ class ContentController extends Controller
      * Get the Terms and Conditions content.
      *
      * @return \Illuminate\Http\JsonResponse The JSON response with Terms and Conditions content.
+     * @author Salah Derbas
      */
     public function getTermsConditions()
     {
@@ -49,6 +51,7 @@ class ContentController extends Controller
      * Get the Privacy Policy content.
      *
      * @return \Illuminate\Http\JsonResponse The JSON response with Privacy Policy content.
+     * @author Salah Derbas
      */
     public function getPrivacyPolicy()
     {
@@ -63,6 +66,7 @@ class ContentController extends Controller
      * Get the About Us content.
      *
      * @return \Illuminate\Http\JsonResponse The JSON response with About Us content.
+     * @author Salah Derbas
      */
     public function getAboutUs()
     {
@@ -77,6 +81,7 @@ class ContentController extends Controller
      * Get the FAQ content.
      *
      * @return \Illuminate\Http\JsonResponse The JSON response with FAQ content.
+     * @author Salah Derbas
      */
     public function getFAQ()
     {
@@ -91,6 +96,7 @@ class ContentController extends Controller
      * Get the Sliders content.
      *
      * @return \Illuminate\Http\JsonResponse The JSON response with Sliders content.
+     * @author Salah Derbas
      */
     public function getSliders()
     {
@@ -105,6 +111,7 @@ class ContentController extends Controller
      * send email for contact us content.
      *
      * @return a success response indicating the email was sent successfully
+     * @author Salah Derbas
      */
 
     public function contactUs(ContentRequest $request)

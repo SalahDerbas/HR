@@ -15,6 +15,7 @@ class NotificationRequest extends BaseRequest
      * Determine if the user is authorized to make this request.
      *
      * @return bool
+     * @author Salah Derbas
      */
     public function authorize()
     {
@@ -25,6 +26,7 @@ class NotificationRequest extends BaseRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function notificationSendRequest()
     {
@@ -52,6 +54,7 @@ class NotificationRequest extends BaseRequest
      *
      * @param string $key
      * @return mixed
+     * @author Salah Derbas
      */
     private function requested($key)
     {
@@ -67,6 +70,7 @@ class NotificationRequest extends BaseRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     public function rules()
     {
@@ -77,6 +81,7 @@ class NotificationRequest extends BaseRequest
      * Get the validation messages that apply to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     public function messages()
     {
@@ -88,6 +93,7 @@ class NotificationRequest extends BaseRequest
      *
      * @param Validator $validator
      * @throws HttpResponseException
+     * @author Salah Derbas
      */
     protected function failedValidation(Validator $validator)
     {

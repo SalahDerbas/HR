@@ -56,6 +56,7 @@ class Handler extends ExceptionHandler
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @throws \Throwable
+     * @author Salah Derbas
      */
     public function render($request, Throwable $exception)
     {

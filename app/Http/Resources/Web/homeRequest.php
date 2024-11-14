@@ -1,24 +1,19 @@
 <?php
 
-namespace App\Http\Resources\API\Message;
+namespace App\Http\Resources\Web;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MessageResource extends JsonResource
+class homeRequest extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     * @author Salah Derbas
      */
     public function toArray($request)
     {
-        parent::toArray($request);
-        return [
-            'message'      => $this['message'],
-            'code'         => $this['code'],
-        ];
+        return parent::toArray($request);
     }
 }

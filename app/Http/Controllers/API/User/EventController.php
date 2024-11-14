@@ -14,6 +14,7 @@ class EventController extends Controller
      * Display a listing of the user's Event's.
      *
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function index()
     {
@@ -34,6 +35,7 @@ class EventController extends Controller
      *
      * @param  \App\Http\Requests\API\User\EventRequest  $request
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function store(EventRequest $request)
     {
@@ -55,6 +57,7 @@ class EventController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function show($id)
     {
@@ -76,6 +79,7 @@ class EventController extends Controller
      * @param  \App\Http\Requests\API\User\EventRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function update(EventRequest $request, $id)
     {
@@ -98,6 +102,7 @@ class EventController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function destroy($id)
     {

@@ -12,6 +12,7 @@ class UserGoogleIdIsFound implements Rule
      * Create a new rule instance.
      *
      * @return void
+     * @author Salah Derbas
      */
     protected $user;
     public function __construct($user)
@@ -26,6 +27,7 @@ class UserGoogleIdIsFound implements Rule
      * @param string $attribute The attribute being validated (not used here).
      * @param mixed $value The value being validated (not used here).
      * @return bool Always returns true.
+     * @author Salah Derbas
      */
     public function passes($attribute, $value)
     {
@@ -40,6 +42,7 @@ class UserGoogleIdIsFound implements Rule
      * Find a user by their Google ID.
      *
      * @return User|null The user object if found, or null if not.
+     * @author Salah Derbas
      */
     private function findUserByGoogleId()
     {
@@ -50,6 +53,7 @@ class UserGoogleIdIsFound implements Rule
      * Find a user by their email address.
      *
      * @return User|null The user object if found, or null if not.
+     * @author Salah Derbas
      */
     private function findUserByEmail()
     {
@@ -60,6 +64,7 @@ class UserGoogleIdIsFound implements Rule
      * Create a new user with the provided details.
      *
      * @return void
+     * @author Salah Derbas
      */
     private function createUser()
     {
@@ -77,6 +82,7 @@ class UserGoogleIdIsFound implements Rule
      *
      * @param User $user The user object to update.
      * @return void
+     * @author Salah Derbas
      */
     private function updateUser($user)
     {

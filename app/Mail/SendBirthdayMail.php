@@ -16,6 +16,7 @@ class SendBirthdayMail extends Mailable
      * Create a new message instance.
      *
      * @return void
+     * @author Salah Derbas
      */
     public $user;
     public function __construct($user)
@@ -27,6 +28,7 @@ class SendBirthdayMail extends Mailable
      * Build the message.
      *
      * @return $this
+     * @author Salah Derbas
      */
     public function build()
     {

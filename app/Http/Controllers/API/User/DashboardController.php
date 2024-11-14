@@ -10,6 +10,16 @@ use App\Http\Resources\API\User\DashboardResource;
 
 class DashboardController extends Controller
 {
+    /**
+     * Retrieves the authenticated user's dashboard data and returns a success response.
+     *
+     * This function finds the user by their authenticated ID, formats the data using
+     * a DashboardResource, and returns a successful response. If an error occurs during
+     * the process, an error response is returned.
+     *
+     * @return \Illuminate\Http\JsonResponse The success or error JSON response.
+     * @author Salah Derbas
+     */
     public function index()
     {
         try{

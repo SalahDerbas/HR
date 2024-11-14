@@ -16,6 +16,7 @@ class SettingController extends Controller
      *
      * @param int $code The status code for the response.
      * @return \Illuminate\Http\JsonResponse A success response with all settings data.
+     * @author Salah Derbas
      */
     private function successSetting($code){
         $collection = Setting::all();
@@ -29,6 +30,7 @@ class SettingController extends Controller
      * Display a listing of all settings.
      *
      * @return \Illuminate\Http\JsonResponse A success response containing all settings.
+     * @author Salah Derbas
      */
     public function index()
     {
@@ -44,6 +46,7 @@ class SettingController extends Controller
      *
      * @param \Illuminate\Http\Request $request The request containing settings data to update.
      * @return \Illuminate\Http\JsonResponse A success response after updating settings.
+     * @author Salah Derbas
      */
     public function update(Request $request)
     {

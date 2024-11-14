@@ -13,7 +13,8 @@ class LeaveController extends Controller
 {
     /**
      * Constructor to initialize the default notification data for Leave.
-    */
+    * @author Salah Derbas
+     */
     protected $messageStore;
     protected $messageApprove;
     protected $messageReject;
@@ -45,6 +46,7 @@ class LeaveController extends Controller
      * Display a listing of the user's leave's.
      *
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function index()
     {
@@ -65,6 +67,7 @@ class LeaveController extends Controller
      *
      * @param  \App\Http\Requests\API\User\LeaveRequest  $request
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function store(LeaveRequest $request)
     {
@@ -89,6 +92,7 @@ class LeaveController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function show($id)
     {
@@ -110,6 +114,7 @@ class LeaveController extends Controller
      * @param  \App\Http\Requests\API\User\LeaveRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function update(LeaveRequest $request, $id)
     {
@@ -132,6 +137,7 @@ class LeaveController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function destroy($id)
     {
@@ -148,6 +154,7 @@ class LeaveController extends Controller
      *
      * @param int $id The ID of the Leave record to approve.
      * @return \Illuminate\Http\JsonResponse A success response if approval is successful, or an error response if an exception occurs.
+     * @author Salah Derbas
      */
     public function approve($id)
     {
@@ -167,6 +174,7 @@ class LeaveController extends Controller
      *
      * @param int $id The ID of the Leave record to reject.
      * @return \Illuminate\Http\JsonResponse A success response if rejection is successful, or an error response if an exception occurs.
+     * @author Salah Derbas
      */
     public function reject($id)
     {

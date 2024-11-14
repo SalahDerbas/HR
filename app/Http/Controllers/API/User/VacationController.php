@@ -15,7 +15,8 @@ class VacationController extends Controller
 
     /**
      * Constructor to initialize the default notification data for Vacation.
-    */
+    * @author Salah Derbas
+     */
     protected $messageStore;
     protected $messageApprove;
     protected $messageReject;
@@ -47,6 +48,7 @@ class VacationController extends Controller
      * Display a listing of the user's vacations.
      *
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function index()
     {
@@ -67,6 +69,7 @@ class VacationController extends Controller
      *
      * @param  \App\Http\Requests\API\User\VacationRequest  $request
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function store(VacationRequest $request)
     {
@@ -92,6 +95,7 @@ class VacationController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function show($id)
     {
@@ -113,6 +117,7 @@ class VacationController extends Controller
      * @param  \App\Http\Requests\API\User\VacationRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function update(VacationRequest $request, $id)
     {
@@ -135,6 +140,7 @@ class VacationController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function destroy($id)
     {
@@ -151,6 +157,7 @@ class VacationController extends Controller
      *
      * @param int $id The ID of the Vacation record to approve.
      * @return \Illuminate\Http\JsonResponse A success response if approval is successful, or an error response if an exception occurs.
+     * @author Salah Derbas
      */
     public function approve($id)
     {
@@ -170,6 +177,7 @@ class VacationController extends Controller
      *
      * @param int $id The ID of the Vacation record to reject.
      * @return \Illuminate\Http\JsonResponse A success response if rejection is successful, or an error response if an exception occurs.
+     * @author Salah Derbas
      */
     public function reject($id)
     {

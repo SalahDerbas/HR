@@ -16,6 +16,7 @@ class NotificationController extends Controller
      * Display the push notifications for the authenticated user.
      *
      * @return \Illuminate\Http\JsonResponse
+     * @author Salah Derbas
      */
     public function index()
     {
@@ -35,6 +36,7 @@ class NotificationController extends Controller
      * Toggle the notification setting for the authenticated user.
      *
      * @return \Illuminate\Http\JsonResponse
+     * @author Salah Derbas
      */
     public function updateEnable()
     {
@@ -58,6 +60,7 @@ class NotificationController extends Controller
      * @param object $data The notification data.
      * @param string $firebaseToken The user's FCM token.
      * @return void
+     * @author Salah Derbas
      */
     private function storeNotification($data, $firebaseToken)
     {
@@ -76,6 +79,7 @@ class NotificationController extends Controller
      * @param array $fcmTokens Array of FCM tokens.
      * @param object $data The notification data.
      * @return void
+     * @author Salah Derbas
      */
     private function pushNotificationByFirebase($fcmTokens, $data)
     {
@@ -112,6 +116,7 @@ class NotificationController extends Controller
      *
      * @param NotificationRequest $request
      * @return \Illuminate\Http\JsonResponse
+     * @author Salah Derbas
      */
     public function send(NotificationRequest $request)
     {

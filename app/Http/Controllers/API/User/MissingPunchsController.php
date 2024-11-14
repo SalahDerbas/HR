@@ -13,6 +13,7 @@ class MissingPunchsController extends Controller
 {
     /**
      * Constructor to initialize the default notification data for MissingPunch.
+     * @author Salah Derbas
      */
     protected $messageStore;
     protected $messageApprove;
@@ -45,6 +46,7 @@ class MissingPunchsController extends Controller
      * Display a listing of the user's MissingPunchs.
      *
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function index()
     {
@@ -65,6 +67,7 @@ class MissingPunchsController extends Controller
      *
      * @param  \App\Http\Requests\API\User\MissingPunchRequest  $request
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function store(MissingPunchRequest $request)
     {
@@ -89,6 +92,7 @@ class MissingPunchsController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function show($id)
     {
@@ -110,6 +114,7 @@ class MissingPunchsController extends Controller
      * @param  \App\Http\Requests\API\User\MissingPunchRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function update(MissingPunchRequest $request, $id)
     {
@@ -132,6 +137,7 @@ class MissingPunchsController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function destroy($id)
     {
@@ -148,6 +154,7 @@ class MissingPunchsController extends Controller
      *
      * @param int $id The ID of the MissingPunch record to approve.
      * @return \Illuminate\Http\JsonResponse A success response if approval is successful, or an error response if an exception occurs.
+     * @author Salah Derbas
      */
     public function approve($id)
     {
@@ -167,6 +174,7 @@ class MissingPunchsController extends Controller
      *
      * @param int $id The ID of the MissingPunch record to reject.
      * @return \Illuminate\Http\JsonResponse A success response if rejection is successful, or an error response if an exception occurs.
+     * @author Salah Derbas
      */
     public function reject($id)
     {

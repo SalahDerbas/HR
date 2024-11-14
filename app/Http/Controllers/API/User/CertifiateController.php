@@ -15,6 +15,7 @@ class CertifiateController extends Controller
      * Display a listing of the user's Certifiate's.
      *
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function index()
     {
@@ -35,6 +36,7 @@ class CertifiateController extends Controller
      *
      * @param  \App\Http\Requests\API\User\CertifiateRequest  $request
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function store(CertifiateRequest $request)
     {
@@ -57,6 +59,7 @@ class CertifiateController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function show($id)
     {
@@ -78,6 +81,7 @@ class CertifiateController extends Controller
      * @param  \App\Http\Requests\API\User\CertifiateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function update(CertifiateRequest $request, $id)
     {
@@ -101,6 +105,7 @@ class CertifiateController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function destroy($id)
     {

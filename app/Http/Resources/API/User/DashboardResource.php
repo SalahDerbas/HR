@@ -12,6 +12,7 @@ class DashboardResource extends JsonResource
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     * @author Salah Derbas
      */
     public function toArray($request)
     {
@@ -47,6 +48,7 @@ class DashboardResource extends JsonResource
      * Retrieve vacation settings for sick and annual leave.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function getVacationSettings()
     {

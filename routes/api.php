@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the 'api' middleware group. Enjoy building your API!
 |
+* @author Salah Derbas
 */
 
 
@@ -51,12 +52,14 @@ use App\Http\Controllers\API\Company\{
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
+* @author Salah Derbas
 */
 
 /*
 |--------------------------------------------------------------------------
 | Public User Routes
 |--------------------------------------------------------------------------
+* @author Salah Derbas
 */
 Route::prefix('user')->group( function () {
 
@@ -74,7 +77,8 @@ Route::prefix('user')->group( function () {
     |--------------------------------------------------------------------------
     | Content Routes API For HR Project
     |--------------------------------------------------------------------------
-    */
+    * @author Salah Derbas
+*/
     Route::prefix('content')->group( function () {
 
         Route::get('terms-conditions',     [ContentController::class, 'getTermsConditions'])->name('api.content.get_terms_conditions');
@@ -92,6 +96,7 @@ Route::prefix('user')->group( function () {
 |--------------------------------------------------------------------------
 | Authenticated User Routes
 |--------------------------------------------------------------------------
+* @author Salah Derbas
 */
 Route::group(['middleware' => ['auth:api']],function () {
 
@@ -99,6 +104,7 @@ Route::group(['middleware' => ['auth:api']],function () {
     |--------------------------------------------------------------------------
     | User Routes API With Authenticate
     |--------------------------------------------------------------------------
+    * @author Salah Derbas
     */
     Route::prefix('user')->group( function () {
 
@@ -115,6 +121,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Notification Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('notification')->group( function () {
 
@@ -127,6 +134,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Vacation Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('vacation')->group( function () {
 
@@ -144,6 +152,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | MissingPunchs Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('missing-punches')->group( function () {
 
@@ -161,6 +170,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Leave Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('leave')->group( function () {
 
@@ -177,6 +187,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Experince Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('experince')->group( function () {
 
@@ -191,6 +202,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Event Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('event')->group( function () {
 
@@ -205,6 +217,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Document Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('document')->group( function () {
 
@@ -219,6 +232,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Certifiate Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('certificate')->group( function () {
 
@@ -233,6 +247,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Attendance Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('attendance')->group( function () {
 
@@ -250,6 +265,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Asset Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('asset')->group( function () {
 
@@ -264,6 +280,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Dashboard Routes API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::get('dashboard',     [DashboardController::class, 'index'])->name('api.user.dashboard.index');
 
@@ -273,6 +290,7 @@ Route::group(['middleware' => ['auth:api']],function () {
     |--------------------------------------------------------------------------
     | Company API For HR Project
     |--------------------------------------------------------------------------
+    * @author Salah Derbas
     */
     Route::prefix('company')->group( function () {
 
@@ -280,6 +298,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Notification API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('notification')->group( function () {
 
@@ -290,6 +309,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         |Department API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::prefix('department')->group( function () {
 
@@ -304,6 +324,7 @@ Route::group(['middleware' => ['auth:api']],function () {
         |--------------------------------------------------------------------------
         | Setting API For HR Project
         |--------------------------------------------------------------------------
+        * @author Salah Derbas
         */
         Route::get('index',          [SettingController::class, 'index'])->name('api.company.index');
         Route::post('setting',       [SettingController::class, 'update'])->name('api.company.setting');
@@ -318,6 +339,7 @@ Route::group(['middleware' => ['auth:api']],function () {
 |--------------------------------------------------------------------------
 | Lookups API For HR Project
 |--------------------------------------------------------------------------
+* @author Salah Derbas
 */
 Route::prefix('lookups')->group( function () {
 
@@ -343,6 +365,7 @@ Route::prefix('lookups')->group( function () {
 |--------------------------------------------------------------------------
 | Messages API For HR Project
 |--------------------------------------------------------------------------
+* @author Salah Derbas
 */
 Route::prefix('message')->group(function () {
     Route::get('list',         [MessageController::class, 'index'])->name('api.message.index');

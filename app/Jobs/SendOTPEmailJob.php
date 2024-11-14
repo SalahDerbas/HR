@@ -21,6 +21,7 @@ class SendOTPEmailJob implements ShouldQueue
      * Create a new job instance.
      *
      * @return void
+     * @author Salah Derbas
      */
     public function __construct($email , $otp)
     {
@@ -32,6 +33,7 @@ class SendOTPEmailJob implements ShouldQueue
      * Execute the job.
      *
      * @return void
+     * @author Salah Derbas
      */
     public function handle()
     {

@@ -17,6 +17,7 @@ class DepartmentRequest extends BaseRequest
      * Determine if the user is authorized to make this request.
      *
      * @return bool
+     * @author Salah Derbas
      */
     public function authorize()
     {
@@ -27,6 +28,7 @@ class DepartmentRequest extends BaseRequest
      * Get the validation rules that update leave to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function departmentUpdateRequest()
     {
@@ -50,6 +52,7 @@ class DepartmentRequest extends BaseRequest
      * Get the validation rules that store leave to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function departmentStoreRequest()
     {
@@ -73,6 +76,7 @@ class DepartmentRequest extends BaseRequest
      *
      * @param string $key
      * @return mixed
+     * @author Salah Derbas
      */
     private function requested($key)
     {
@@ -90,11 +94,13 @@ class DepartmentRequest extends BaseRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     /**
      * Get the validation rules for the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     public function rules()
     {
@@ -105,6 +111,7 @@ class DepartmentRequest extends BaseRequest
      * Get the validation messages for the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     public function messages()
     {
@@ -115,6 +122,7 @@ class DepartmentRequest extends BaseRequest
      *
      * @param Validator $validator
      * @throws HttpResponseException
+     * @author Salah Derbas
      */
     protected function failedValidation(Validator $validator)
     {

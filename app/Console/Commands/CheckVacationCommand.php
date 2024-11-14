@@ -15,21 +15,24 @@ class CheckVacationCommand extends Command
      * The name and signature of the console command.
      *
      * @var string
-     */
+     * @author Salah Derbas
+    */
     protected $signature = 'vacation:check';
 
     /**
      * The console command description.
      *
      * @var string
-     */
+     * @author Salah Derbas
+    */
     protected $description = 'Check monthly vacation status for each user';
 
     /**
      * Create a new command instance.
      *
      * @return void
-     */
+     * @author Salah Derbas
+    */
     public function __construct()
     {
         parent::__construct();
@@ -39,7 +42,8 @@ class CheckVacationCommand extends Command
      * Execute the console command.
      *
      * @return int
-     */
+     * @author Salah Derbas
+    */
     public function handle()
     {
         $users = User::all();

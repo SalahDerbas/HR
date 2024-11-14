@@ -15,6 +15,7 @@ class ExperinceController extends Controller
      * Display a listing of the user's Experince's.
      *
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function index()
     {
@@ -35,6 +36,7 @@ class ExperinceController extends Controller
      *
      * @param  \App\Http\Requests\API\User\ExperinceRequest  $request
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function store(ExperinceRequest $request)
     {
@@ -57,6 +59,7 @@ class ExperinceController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function show($id)
     {
@@ -78,6 +81,7 @@ class ExperinceController extends Controller
      * @param  \App\Http\Requests\API\User\ExperinceRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function update(ExperinceRequest $request, $id)
     {
@@ -99,6 +103,7 @@ class ExperinceController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function destroy($id)
     {

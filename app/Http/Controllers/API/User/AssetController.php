@@ -15,6 +15,7 @@ class AssetController extends Controller
      * Display a listing of the user's Asset's.
      *
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function index()
     {
@@ -35,6 +36,7 @@ class AssetController extends Controller
      *
      * @param  \App\Http\Requests\API\User\AssetRequest  $request
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function store(AssetRequest $request)
     {
@@ -58,6 +60,7 @@ class AssetController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function show($id)
     {
@@ -79,6 +82,7 @@ class AssetController extends Controller
      * @param  \App\Http\Requests\API\User\AssetRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function update(AssetRequest $request, $id)
     {
@@ -102,6 +106,7 @@ class AssetController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author Salah Derbas
      */
     public function destroy($id)
     {

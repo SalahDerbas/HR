@@ -1,13 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Response\ApiResponse;
+
 use App\Models\User;
 use App\Models\Lookup;
 use App\Models\Pushnotification;
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
 
 
 
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Storage;
 * for each code key from a specified language file. If no specific response code is provided,
 * it returns all possible status texts; otherwise, it returns the specific status text or a default
 * "message not found" code if the response code doesn't exist in the list.
+* @author Salah Derbas
 */
 function getStatusText($responseCode){
     $key         = 'API/message_code';
@@ -205,6 +207,7 @@ function getStatusText($responseCode){
 
 /**
 * This function returns a global API response with the specified data and status code.
+* @author Salah Derbas
 */
 if (!function_exists('responseGlobal')) {
     function responseGlobal($data , $statusCode){
@@ -214,6 +217,7 @@ if (!function_exists('responseGlobal')) {
 
 /**
 *  This function returns a successful API response with specified data, message, and response code.
+* @author Salah Derbas
 */
 if (!function_exists('responseSuccess')) {
     function responseSuccess($data , $responseMessage, $responseCode){
@@ -223,6 +227,7 @@ if (!function_exists('responseSuccess')) {
 
 /**
 *  This function returns an error response with a specified message, status code, and error code.
+* @author Salah Derbas
 */
 if (!function_exists('responseError')) {
     function responseError($message, $statusCode , $code){
@@ -232,6 +237,7 @@ if (!function_exists('responseError')) {
 
 /**
 *  This function returns a validation error response with message, status code, error code, and validation errors.
+* @author Salah Derbas
 */
 if (!function_exists('responseValidator')) {
     function responseValidator($message, $statusCode , $code ,$validate_errors){
@@ -241,6 +247,7 @@ if (!function_exists('responseValidator')) {
 
 /**
 *  This function returns an unauthorized response with a specified message.
+* @author Salah Derbas
 */
 if (!function_exists('respondUnauthorized')) {
     function respondUnauthorized($message){
@@ -250,6 +257,7 @@ if (!function_exists('respondUnauthorized')) {
 
 /**
 *  This function returns a forbidden response with a specified message.
+* @author Salah Derbas
 */
 if (!function_exists('respondForbidden')) {
     function respondForbidden($message){
@@ -259,6 +267,7 @@ if (!function_exists('respondForbidden')) {
 
 /**
 * This function returns a "not found" response with a specified message.
+* @author Salah Derbas
 */
 if (!function_exists('respondNotFound')) {
     function respondNotFound($message){
@@ -268,6 +277,7 @@ if (!function_exists('respondNotFound')) {
 
 /**
 * This function returns an internal server error response with a specified message.
+* @author Salah Derbas
 */
 if (!function_exists('respondInternalError')) {
     function respondInternalError($message){
@@ -277,6 +287,7 @@ if (!function_exists('respondInternalError')) {
 
 /**
 * This function returns an "unprocessable entity" response with a specified message.
+* @author Salah Derbas
 */
 if (!function_exists('respondUnprocessableEntity')) {
     function respondUnprocessableEntity($message){
@@ -286,6 +297,7 @@ if (!function_exists('respondUnprocessableEntity')) {
 
 /**
 * This function returns a "method not allowed" response with a specified message.
+* @author Salah Derbas
 */
 if (!function_exists('respondMethodAllowed')) {
     function respondMethodAllowed($message){
@@ -295,6 +307,7 @@ if (!function_exists('respondMethodAllowed')) {
 
 /**
 * This function returns a "model not found" response with a specified message.
+* @author Salah Derbas
 */
 if (!function_exists('respondModelNotFound')) {
     function respondModelNotFound($message){
@@ -304,6 +317,7 @@ if (!function_exists('respondModelNotFound')) {
 
 /**
 * This function returns a validation failure response with message, validation errors, and error codes.
+* @author Salah Derbas
 */
 if (!function_exists('respondValidationFailed')) {
     function respondValidationFailed($message , $validate_errors , $codes){
@@ -313,6 +327,7 @@ if (!function_exists('respondValidationFailed')) {
 
 /**
 * This function returns a response for an invalid or missing private key with a specified message.
+* @author Salah Derbas
 */
 if (!function_exists('respondPrivateKey')) {
     function respondPrivateKey ($message){
@@ -322,6 +337,7 @@ if (!function_exists('respondPrivateKey')) {
 
 /**
 * This function returns an empty response with a specified message and code.
+* @author Salah Derbas
 */
 if (!function_exists('respondEmpty')) {
     function respondEmpty ($message , $code)
@@ -332,6 +348,7 @@ if (!function_exists('respondEmpty')) {
 
 /**
 * This function returns a "too many requests" response with a specified message.
+* @author Salah Derbas
 */
 if (!function_exists('respondTooManyRequest')) {
     function respondTooManyRequest($message)
@@ -348,6 +365,7 @@ if (!function_exists('respondTooManyRequest')) {
 /**
 * Checks if the function 'handleFileUpload' already exists before defining it.
 * This function handles the uploading of files, allowing optional deletion of old files if updating.
+* @author Salah Derbas
 */
 if (!function_exists('handleFileUpload')) {
     function handleFileUpload($file, $type, $directory, $oldPath = null)
@@ -365,6 +383,7 @@ if (!function_exists('handleFileUpload')) {
 
 /**
 * This function retrieves a user by email along with related data from associated models.
+* @author Salah Derbas
 */
 if (!function_exists('getUserWithRelations')) {
     function getUserWithRelations($email)
@@ -384,6 +403,7 @@ if (!function_exists('getUserWithRelations')) {
 
 /**
 *  This function retrieves the ID of a lookup record by key.
+* @author Salah Derbas
 */
 if (!function_exists('getIDLookups')) {
     function getIDLookups($key)
@@ -394,6 +414,7 @@ if (!function_exists('getIDLookups')) {
 
 /**
 *  This function formats a date to 'Y-m-d' format. Returns NULL if the date is null.
+* @author Salah Derbas
 */
 if (!function_exists('formatDate')) {
     function formatDate($date)
@@ -403,6 +424,19 @@ if (!function_exists('formatDate')) {
 }
 
 
+/**
+ * Sends a push notification to the user based on the provided data.
+ *
+ * This function retrieves the user's Firebase token and sends a notification
+ * using Firebase Cloud Messaging (FCM). It also stores the notification
+ * details in the Pushnotification table for record-keeping.
+ *
+ * @param array $data The data for the notification, including title and body in English and Arabic.
+ * @param int $user_id The ID of the user to send the notification to.
+ *
+ * @return void
+ * @author Salah Derbas
+*/
 if (!function_exists('SendNotificationForDirectory')) {
     function SendNotificationForDirectory($data , $user_id)
     {

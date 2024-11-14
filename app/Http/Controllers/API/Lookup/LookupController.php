@@ -16,6 +16,7 @@ class LookupController extends Controller
      * Returns a collection of countries.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function countries()
     {
@@ -31,6 +32,7 @@ class LookupController extends Controller
      * Returns a collection of gender lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function genders()
     {
@@ -45,6 +47,7 @@ class LookupController extends Controller
      * Returns a collection of region lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function regions()
     {
@@ -59,6 +62,7 @@ class LookupController extends Controller
      * Returns a collection of material status lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function materialStatus()
     {
@@ -73,6 +77,7 @@ class LookupController extends Controller
      * Returns a collection of work type lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function workTypes()
     {
@@ -87,6 +92,7 @@ class LookupController extends Controller
      * Returns a collection of contract type lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function contractTypes()
     {
@@ -101,6 +107,7 @@ class LookupController extends Controller
      * Returns a collection of user status lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function statusUser()
     {
@@ -115,6 +122,7 @@ class LookupController extends Controller
      * Returns a collection of Attendance status lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function statusAttendance()
     {
@@ -128,6 +136,7 @@ class LookupController extends Controller
      * Returns a collection of reason leave lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function reasonLeave()
     {
@@ -141,6 +150,7 @@ class LookupController extends Controller
      * Returns a collection of leave status lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function statusLeave()
     {
@@ -154,6 +164,7 @@ class LookupController extends Controller
      * Returns a collection of asset Types lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function assetTypes()
     {
@@ -167,6 +178,7 @@ class LookupController extends Controller
      * Returns a collection of vacation Types lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function vacationTypes()
     {
@@ -180,6 +192,7 @@ class LookupController extends Controller
      * Returns a collection of missingPunch Types lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function missingPunchTypes()
     {
@@ -193,6 +206,7 @@ class LookupController extends Controller
      * Returns a collection of document Types lookups.
      *
      * @return \Illuminate\Database\Eloquent\Collection
+     * @author Salah Derbas
      */
     public function documentTypes()
     {
@@ -208,6 +222,7 @@ class LookupController extends Controller
      *
      * @param string $code The lookup code.
      * @return \Illuminate\Database\Eloquent\Collection The collection of lookup items.
+     * @author Salah Derbas
      */
     private function fetchLookupByCode(string $code)
     {

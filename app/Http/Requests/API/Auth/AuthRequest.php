@@ -36,6 +36,7 @@ class AuthRequest extends BaseRequest
      * Determine if the user is authorized to make this request.
      *
      * @return bool
+     * @author Salah Derbas
      */
     public function authorize()
     {
@@ -45,6 +46,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules that apply to the login request.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function loginRequest()
     {
@@ -66,6 +68,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules that apply to the store request.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function storeRequest()
     {
@@ -142,6 +145,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules that apply to the update request.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function updateProfileRequest()
     {
@@ -215,6 +219,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules that apply to the OTP check request.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function checkOtpRequest()
     {
@@ -236,6 +241,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules for resending the OTP.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function resendOtpRequest(){
         return [
@@ -254,6 +260,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules for logging in via Google.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function loginByGoogleRequest()
     {
@@ -276,6 +283,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules for logging in via Facebook.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function loginByFacebookRequest()
     {
@@ -293,6 +301,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules for logging in via Apple.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function loginByAppleRequest()
     {
@@ -311,6 +320,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules for forgetting the password.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function forgetPasswordRequest()
     {
@@ -330,6 +340,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules for resetting the password.
      *
      * @return array
+     * @author Salah Derbas
      */
     private function resetPasswordRequest()
     {
@@ -357,6 +368,7 @@ class AuthRequest extends BaseRequest
      *
      * @param string $key
      * @return mixed
+     * @author Salah Derbas
      */
     private function requested($key)
     {
@@ -383,6 +395,7 @@ class AuthRequest extends BaseRequest
      * Get the validation rules for the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     public function rules()
     {
@@ -393,6 +406,7 @@ class AuthRequest extends BaseRequest
      * Get the validation messages for the request.
      *
      * @return array
+     * @author Salah Derbas
      */
     public function messages()
     {
@@ -404,6 +418,7 @@ class AuthRequest extends BaseRequest
      *
      * @param Validator $validator
      * @throws HttpResponseException
+     * @author Salah Derbas
      */
     protected function failedValidation(Validator $validator)
     {

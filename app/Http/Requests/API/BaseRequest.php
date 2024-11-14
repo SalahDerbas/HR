@@ -15,6 +15,7 @@ abstract class BaseRequest extends FormRequest
      * @param Validator $validator The validator instance containing the error messages.
      * @param array $errorMap A mapping of error messages to validation codes.
      * @throws HttpResponseException If there are validation errors, this exception is thrown with a response.
+     * @author Salah Derbas
      */
     protected function handleFailedValidation(Validator $validator, array $errorMap)
     {
@@ -38,6 +39,7 @@ abstract class BaseRequest extends FormRequest
      * Override the failedValidation method from FormRequest to customize the validation failure handling.
      *
      * @param Validator $validator The validator instance containing the error messages.
+     * @author Salah Derbas
      */
     protected function failedValidation(Validator $validator)
     {
